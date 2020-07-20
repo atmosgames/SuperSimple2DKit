@@ -1,0 +1,511 @@
+fileFormatVersion: 2
+guid: 6601089fcdc67504eb56b99aa1179c23
+ScriptedImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6253301633089597446
+    second: UI (PSB)_0
+  - first:
+      213: 7459951692087713241
+    second: UI (PSB)_1
+  - first:
+      213: 4373151612415194564
+    second: UI (PSB)_2
+  - first:
+      213: 3104382749151319164
+    second: UI (PSB)_3
+  - first:
+      213: -4183957698942534864
+    second: UI (PSB)_4
+  - first:
+      213: -5881792469163476186
+    second: UI (PSB)_5
+  - first:
+      213: -6646942592255541715
+    second: UI (PSB)_6
+  - first:
+      213: 459267994583953973
+    second: UI (PSB)_7
+  - first:
+      213: 775932282455908028
+    second: UI (PSB)_8
+  - first:
+      213: -2904881301683478148
+    second: UI (PSB)_9
+  - first:
+      213: 2767084422593201916
+    second: UI (PSB)_10
+  - first:
+      213: 5650479464997775866
+    second: UI (PSB)_11
+  - first:
+      213: 2716740631819225205
+    second: UI (PSB)_12
+  - first:
+      213: 3097304895277323496
+    second: UI (PSB)_13
+  - first:
+      213: -7710339602235327707
+    second: UI (PSB)_14
+  - first:
+      213: -3389026521718245895
+    second: UI (PSB)_15
+  - first:
+      213: -213849048409614057
+    second: UI (PSB)_16
+  - first:
+      213: -9219385281827106110
+    second: UI (PSB)_17
+  - first:
+      213: -3189607930111532096
+    second: UI (PSB)_18
+  - first:
+      213: 8105055242500195397
+    second: UI (PSB)_19
+  - first:
+      213: -7019216750411545273
+    second: UI (PSB)_20
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 0
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: Controls
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 933
+      height: 286
+    spriteID: 4c8a7abcc2bd8f14e9420984cb3a89db
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -204, y: -170}
+  - name: IconHeart
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 944
+      y: 4
+      width: 75
+      height: 69
+    spriteID: a43b4ae076ff4e649abd8bee76ebb21a
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 739, y: -1907}
+  - name: RoundedRectangle
+    originalName: 
+    pivot: {x: 0.49999997, y: 0.52798843}
+    alignment: 9
+    border: {x: 14, y: 9, z: 21, w: 10}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 577
+      width: 711
+      height: 24
+    spriteID: b0f28837c6972294e8d3d556fb04d24c
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -314, y: -1356}
+  - name: IconCoin
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 944
+      y: 81
+      width: 54
+      height: 54
+    spriteID: e8f48dd03f9208f45af0d69c80c5b6b6
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 729, y: -1721}
+  - name: PauseButton
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 109
+      y: 609
+      width: 103
+      height: 103
+    spriteID: b755f12f06241b847a2fd76d32bb97ec
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -3448, y: 444}
+  - name: PauseOverlay
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 813
+      y: 462
+      width: 166
+      height: 93
+    spriteID: 282014a5147738449b2914aa61fd4a70
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 813, y: 462}
+  - name: IconKey
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 652
+      y: 302
+      width: 150
+      height: 150
+    spriteID: 24f6d2f8e12648b4fb92fb7288bdb5e1
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -2859, y: -1570}
+  - name: IconBlank
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 817
+      y: 302
+      width: 150
+      height: 150
+    spriteID: 7c163009273a5f946af02634aa2bfebe
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -2522, y: -1570}
+  - name: Triangle
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 649
+      y: 462
+      width: 146
+      height: 84
+    spriteID: 2ea4b1e871600894d87c3afed4f1fcca
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -1198, y: -372}
+  - name: IconE
+    originalName: 
+    pivot: {x: 0.5, y: -0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 609
+      width: 97
+      height: 117
+    spriteID: 210a51276efcac74b8b0c8c33f8dba7f
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -1867, y: -362}
+  - name: Fader
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 126, y: 0, z: 124, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 300
+      width: 637
+      height: 269
+    spriteID: a6147fa1530a77348961e4dc29181ade
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -463, y: -240}
+  platformSettings:
+  - name: Default
+    overridden: 1
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  mosaicLayers: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  importedTextureWidth: 1024
+  importedTextureHeight: 1024
+  documentSize: {x: 3840, y: 2160}
+  paperDollMode: 0
+  keepDupilcateSpriteName: 0
+  spriteCategoryList:
+    categories: []
+  textureActualWidth: 1024
+  textureActualHeight: 1024
+  spritePackingTag: 
+  resliceFromLayer: 0
+  characterMode: 1
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: PauseButton
+    spriteName: PauseButton
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b755f12f06241b847a2fd76d32bb97ec
+    layerID: 211
+    mosaicPosition: {x: 109, y: 609}
+  - name: IconHeart
+    spriteName: IconHeart
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a43b4ae076ff4e649abd8bee76ebb21a
+    layerID: 196
+    mosaicPosition: {x: 944, y: 4}
+  - name: RoundedRectangle
+    spriteName: RoundedRectangle
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b0f28837c6972294e8d3d556fb04d24c
+    layerID: 195
+    mosaicPosition: {x: 4, y: 577}
+  - name: IconCoin
+    spriteName: IconCoin
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e8f48dd03f9208f45af0d69c80c5b6b6
+    layerID: 197
+    mosaicPosition: {x: 944, y: 81}
+  - name: IconKey
+    spriteName: IconKey
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 24f6d2f8e12648b4fb92fb7288bdb5e1
+    layerID: 215
+    mosaicPosition: {x: 649, y: 300}
+  - name: Triangle
+    spriteName: Triangle
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 2ea4b1e871600894d87c3afed4f1fcca
+    layerID: 221
+    mosaicPosition: {x: 649, y: 462}
+  - name: Fader
+    spriteName: Fader
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a6147fa1530a77348961e4dc29181ade
+    layerID: 223
+    mosaicPosition: {x: 4, y: 300}
+  - name: IconE
+    spriteName: IconE
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 210a51276efcac74b8b0c8c33f8dba7f
+    layerID: 222
+    mosaicPosition: {x: 4, y: 609}
+  - name: IconBlank
+    spriteName: IconBlank
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7c163009273a5f946af02634aa2bfebe
+    layerID: 216
+    mosaicPosition: {x: 813, y: 300}
+  - name: Controls
+    spriteName: Controls
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 4c8a7abcc2bd8f14e9420984cb3a89db
+    layerID: 141
+    mosaicPosition: {x: 4, y: 4}
+  - name: PauseOverlay
+    spriteName: PauseOverlay
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 282014a5147738449b2914aa61fd4a70
+    layerID: 167
+    mosaicPosition: {x: 813, y: 462}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+  generateGOHierarchy: 0
+  textureAssetName: UI Texture
+  prefabAssetName: UI Prefab
+  spriteLibAssetName: UI Sprite Lib
+  secondarySpriteTextures: []
