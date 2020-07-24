@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3336127086821943934}
   - component: {fileID: 3336127086821943935}
   m_Layer: 0
-  m_Name: ForegroundBuilding
+  m_Name: BuildingForeground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 8.63}
+  m_Size: {x: 8.63, y: 8.63}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

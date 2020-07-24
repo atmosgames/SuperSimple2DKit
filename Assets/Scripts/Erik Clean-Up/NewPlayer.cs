@@ -106,7 +106,7 @@ public class NewPlayer : PhysicsObject
         //Lerp launch back to zero at all times
         launch += (0 - launch) * Time.deltaTime * launchRecovery;
 
-        if (Input.GetButtonDown("Pause"))
+        if (Input.GetButtonDown("Cancel"))
         {
             pauseMenu.SetActive(true);
         }

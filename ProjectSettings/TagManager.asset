@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Gem
+  - PreventStuckOnWall
+  - Startup
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Ground
+  - CameraBounds
+  - Player
+  - DialogueTrigger
+  - AI
+  - IgnorePlayer
+  - DeathZone
+  - Bombs
+  - SoundTrigger
+  - Post Processing
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Layer6
+    uniqueID: 1942244593
+    locked: 0
+  - name: Layer5
+    uniqueID: 2509298527
+    locked: 0
+  - name: Layer4
+    uniqueID: 884540619
+    locked: 0
+  - name: Layer3
+    uniqueID: 1637060131
+    locked: 0
+  - name: Layer2
+    uniqueID: 4192335089
+    locked: 0
+  - name: Layer1
+    uniqueID: 3312312327
+    locked: 0
+  - name: Player
+    uniqueID: 3769207007
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Interactables
+    uniqueID: 301310029
+    locked: 0
+  - name: Layer0
+    uniqueID: 616639249
+    locked: 0
+  - name: Layer-1
+    uniqueID: 2509501325
+    locked: 0
+  - name: Layer-2
+    uniqueID: 2054600095
+    locked: 0
+  - name: Layer-3
+    uniqueID: 2062937167
+    locked: 0
+  - name: Layer-4
+    uniqueID: 2770302407
+    locked: 0
+  - name: Layer-5
+    uniqueID: 3254382151
+    locked: 0
+  - name: Layer-6
+    uniqueID: 2569035313
+    locked: 0

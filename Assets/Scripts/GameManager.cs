@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public DialogueBoxController dialogueBoxController;
     public HUD hud; //A reference to the HUD holding your health UI, coins, dialogue, etc.
     public Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
-    private static GameManager _instance;
+    private static GameManager instance;
     [SerializeField] public AudioTrigger gameMusic;
     [SerializeField] public AudioTrigger gameAmbience;
 

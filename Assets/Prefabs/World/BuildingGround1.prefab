@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7962181565976495539}
   - component: {fileID: 1906979567047075101}
   m_Layer: 0
-  m_Name: Building1
+  m_Name: BuildingGround1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 616639249
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 8066746068401100097, guid: 1bead99fff13e024a8189bf62eb86b04,
     type: 3}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 32.251213, y: 10.11}
+  m_Size: {x: 23.39, y: 10.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -101,7 +101,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 23.39, y: 10.06}
-    newSize: {x: 32.251213, y: 10.11}
+    newSize: {x: 23.39, y: 10.06}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
