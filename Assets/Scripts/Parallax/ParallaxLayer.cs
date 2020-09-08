@@ -2,33 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/*Finds all of the gameObjects that have a ParallaxLayer.cs script, and moves them based on the deltaX and deltaY*/
+/*Allows the controller to move each layer based on the parallaxAmount!*/
 
 public class ParallaxLayer : MonoBehaviour
 {
-    public float parallaxFactor; //The amount of parallax! -1 is simulates being close to the camera, 1 simulates being very far from the camera!
-    [System.NonSerialized] public Vector3 newPos;
+    [Range(-1f, 1f)]
+    public float parallaxAmount; //The amount of parallax! 1 simulates being close to the camera, -1 simulates being very far from the camera!
+    [System.NonSerialized] public Vector3 newPosition;
     private bool adjusted = false;
 
-    public void Move(float deltaX, float deltaY)
-    {   
-        newPos = transform.localPosition;
-        newPos.x -= deltaX * (parallaxFactor * 40) * (Time.deltaTime);
-        newPos.y -= deltaY * (parallaxFactor * 40) * (Time.deltaTime);
-        transform.localPosition = newPos;
-
-        /*Because the camera has to lerp to it's target position the moment the level loads, 
-        we wait for that to occur (1 second) while the black fader is covering the screen, 
-        and then adjust the localPosition back to zero, but just one! */
-        if (!adjusted) StartCoroutine(SolidifyZeroPosition());
-
-    }
-
-    public IEnumerator SolidifyZeroPosition()
+    public void MoveLayer(float positionChangeX, float positionChangeY)
     {
-        yield return new WaitForSeconds(1f);
-        transform.localPosition = Vector3.zero;
-        adjusted = true;
+        newPosition = transform.localPosition;
+        newPosition.x -= positionChangeX * (-parallaxAmount * 40) * (Time.deltaTime);
+        newPosition.y -= positionChangeY * (-parallaxAmount * 40) * (Time.deltaTime);
+        transform.localPosition = newPosition;
     }
+
 }
- 

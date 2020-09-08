@@ -8539,7 +8539,68 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneLayers
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 976129540260522420, guid: b922eb766c4ce644c8d045b3f23ec055,
+        type: 3}
+      propertyPath: parallaxAmount
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135164040344606887, guid: b922eb766c4ce644c8d045b3f23ec055,
+        type: 3}
+      propertyPath: parallaxAmount
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906521772104054097, guid: b922eb766c4ce644c8d045b3f23ec055,
+        type: 3}
+      propertyPath: parallaxAmount
+      value: -0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313268991194317400, guid: b922eb766c4ce644c8d045b3f23ec055,
+        type: 3}
+      propertyPath: parallaxAmount
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393591174996305389, guid: b922eb766c4ce644c8d045b3f23ec055,
+        type: 3}
+      propertyPath: parallaxAmount
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4628112550251862794, guid: b922eb766c4ce644c8d045b3f23ec055,
+        type: 3}
+      propertyPath: parallaxAmount
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324499299221659600, guid: b922eb766c4ce644c8d045b3f23ec055,
+        type: 3}
+      propertyPath: parallaxAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599270527514347408, guid: b922eb766c4ce644c8d045b3f23ec055,
+        type: 3}
+      propertyPath: parallaxAmount
+      value: 0.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 6837199503676601289, guid: b922eb766c4ce644c8d045b3f23ec055,
+        type: 3}
+      propertyPath: parallaxAmount
+      value: -0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801762479666477418, guid: b922eb766c4ce644c8d045b3f23ec055,
+        type: 3}
+      propertyPath: parallaxAmount
+      value: -0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8006756778435004978, guid: b922eb766c4ce644c8d045b3f23ec055,
+        type: 3}
+      propertyPath: parallaxAmount
+      value: 0.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967134684587555185, guid: b922eb766c4ce644c8d045b3f23ec055,
+        type: 3}
+      propertyPath: parallaxAmount
+      value: -0.81
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 480616165428083212, guid: b922eb766c4ce644c8d045b3f23ec055, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b922eb766c4ce644c8d045b3f23ec055, type: 3}
 --- !u!1001 &1201722028519914531
 PrefabInstance:

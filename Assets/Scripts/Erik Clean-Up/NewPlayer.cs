@@ -179,6 +179,10 @@ public class NewPlayer : PhysicsObject
             animator.SetInteger("moveDirection", (int)Input.GetAxis("HorizontalDirection"));
             animator.SetBool("hasChair", GameManager.Instance.inventory.ContainsKey("chair"));
             targetVelocity = move * maxSpeed;
+
+
+
+
         }
         else
         {
