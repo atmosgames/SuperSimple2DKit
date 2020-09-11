@@ -19,7 +19,7 @@ public class ParallaxController : MonoBehaviour
         oldCameraPosition.y = Camera.main.transform.position.y;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Camera.main.transform.position.x != oldCameraPosition.x || (Camera.main.transform.position.y) != oldCameraPosition.y)
         {
