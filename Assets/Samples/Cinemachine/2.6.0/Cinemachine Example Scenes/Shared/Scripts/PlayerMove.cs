@@ -20,6 +20,8 @@ public class PlayerMove : MonoBehaviour
     float m_currentJumpSpeed;
     float m_restY;
 
+    Camera cam;
+
     private void Reset()
     {
         Speed = 5;
@@ -44,7 +46,7 @@ public class PlayerMove : MonoBehaviour
         Vector3 fwd;
         switch (InputForward)
         {
-            case ForwardMode.Camera: fwd = Camera.main.transform.forward; break;
+            case ForwardMode.Camera: fwd = cam.transform.forward; break;
             case ForwardMode.Player: fwd = transform.forward; break;
             case ForwardMode.World: default: fwd = Vector3.forward; break;
         }

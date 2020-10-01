@@ -11,13 +11,20 @@ public class PlayerMoveOnSphere : MonoBehaviour
     public bool rotatePlayer = true;
     public float rotationDamping = 0.5f;
 
-    // Update is called once per frame
-    void Update()
+    Camera cam;
+
+	private void Start()
+	{
+        cam = Camera.main;
+	}
+
+	// Update is called once per frame
+	void Update()
     {
         Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         if (input.magnitude > 0)
         {
-            input = Camera.main.transform.rotation * input;
+            input = cam.transform.rotation * input;
             if (input.magnitude > 0.001f)
             {
                 transform.position += input * (speed * Time.deltaTime);
