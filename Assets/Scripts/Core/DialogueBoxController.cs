@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 /*Controls the dialogue box and it's communication with Dialogue.cs, which contains the character dialogue*/
 
@@ -46,6 +47,46 @@ public class DialogueBoxController : MonoBehaviour
     private bool horizontalKeyIsDown = true;
     private bool submitKeyIsDown = true;
     private bool typing = true;
+    [SerializeField] private bool interactHeld;
+    [SerializeField] private bool jumpHeld;
+
+    private Controls controls;
+
+    private void Awake() => controls = new Controls();
+
+    private void OnEnable() {
+        controls.Enable();
+
+        controls.Player.Interact.started += Interact;
+        controls.Player.Interact.canceled += Interact;
+
+        controls.Player.Jump.started += Jump;
+        controls.Player.Jump.canceled += Jump;
+    }
+
+    private void OnDisable() {
+        controls.Disable();
+
+        controls.Player.Interact.started -= Interact;
+        controls.Player.Interact.canceled -= Interact;
+
+        controls.Player.Jump.started -= Jump;
+        controls.Player.Jump.canceled -= Jump;
+    }
+
+    private void Interact(InputAction.CallbackContext ctx) {
+        if(ctx.started)
+            interactHeld = true;
+        else if(ctx.canceled)
+            interactHeld = false;
+    }
+
+    private void Jump(InputAction.CallbackContext ctx) {
+        if(ctx.started)
+            jumpHeld = true;
+        else if(ctx.canceled)
+            jumpHeld = false;
+    }
 
     // Update is called once per frame
     void Update()
@@ -54,7 +95,7 @@ public class DialogueBoxController : MonoBehaviour
         {
             //Submit
             //Check for key press
-            if (((Input.GetAxis("Submit") > 0) || (Input.GetAxis("Jump") > 0)) && !submitKeyIsDown)
+            if ((interactHeld || jumpHeld) && !submitKeyIsDown)
             {
                 submitKeyIsDown = true;
                 if (!typing)
@@ -78,21 +119,25 @@ public class DialogueBoxController : MonoBehaviour
             }
 
             //Check for first release to ensure we can't spam
-            if (submitKeyIsDown && Input.GetAxis("Submit") < .001 && Input.GetAxis("Jump") < .001)
+            if (submitKeyIsDown)
             {
-                if (!typing)
+                if(interactHeld || jumpHeld)
                 {
-                    submitKeyIsDown = false;
-                    if (index == 0)
+                    if (!typing)
                     {
-                        ableToAdvance = true;
+                        submitKeyIsDown = false;
+                        if (index == 0)
+                        {
+                            ableToAdvance = true;
+                        }
                     }
                 }
+                
             }
 
             //Choices
             //Check for key press
-            if ((Input.GetAxis("Horizontal") != 0) && !horizontalKeyIsDown && animator.GetBool("hasChoices") == true)
+            if ((controls.Player.Direction.ReadValue<Vector2>().x != 0) && !horizontalKeyIsDown && animator.GetBool("hasChoices") == true)
             {
                 if (animator.GetInteger("choiceSelection") == 1)
                 {
@@ -109,7 +154,7 @@ public class DialogueBoxController : MonoBehaviour
             }
 
             //Check for first release to ensure we can't spam
-            if (horizontalKeyIsDown && Input.GetAxis("Horizontal") == 0)
+            if (horizontalKeyIsDown && controls.Player.Direction.ReadValue<Vector2>().x == 0)
             {
                 horizontalKeyIsDown = false;
             }
