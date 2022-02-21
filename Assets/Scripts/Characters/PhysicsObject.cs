@@ -13,18 +13,13 @@ public class PhysicsObject : MonoBehaviour
     [System.NonSerialized] public Vector2 targetVelocity;
     [System.NonSerialized] public bool grounded;
     [System.NonSerialized] protected Vector2 groundNormal;
-    protected Rigidbody2D rb2d;
+    [SerializeField] private Rigidbody2D rb2d; //Changed to private since I have no idea why it was bugging out protected
     [System.NonSerialized] public Vector2 velocity;
     [SerializeField] protected ContactFilter2D contactFilter;
     [SerializeField] protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
     [SerializeField] protected List<RaycastHit2D> hitBufferList = new List<RaycastHit2D>(16);
     protected const float minMoveDistance = 0.001f;
     protected const float shellRadius = 0.01f;
-
-    void OnEnable()
-    {
-        rb2d = GetComponent<Rigidbody2D>();
-    }
 
     void Start()
     {

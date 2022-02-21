@@ -11,12 +11,25 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] AudioClip openSound;
     [SerializeField] GameObject pauseMenu;
 
-    // Use this for initialization
+    private Controls controls;
+
+    private void Awake() => controls = new Controls();
+
     void OnEnable()
     {
+        controls.Enable();
         Cursor.visible = true;
         GameManager.Instance.audioSource.PlayOneShot(openSound);
         Time.timeScale = 0f;
+
+        controls.UI.Escape.performed += _ => Unpause();
+    }
+
+    void OnDisable()
+    {
+        controls.Disable();
+
+        controls.UI.Escape.performed -= _ => Unpause();
     }
 
     public void Unpause()

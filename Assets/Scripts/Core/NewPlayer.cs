@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 /*Adds player functionality to a physics object*/
 
@@ -23,6 +24,7 @@ public class NewPlayer : PhysicsObject
     [SerializeField] private ParticleSystem jumpParticles;
     [SerializeField] private GameObject pauseMenu;
     public RecoveryCounter recoveryCounter;
+    private Controls controls;
 
     // Singleton instantiation
     private static NewPlayer instance;
@@ -53,7 +55,9 @@ public class NewPlayer : PhysicsObject
     [System.NonSerialized] public bool pounded;
     [System.NonSerialized] public bool pounding;
     [System.NonSerialized] public bool shooting = false;
-
+    [SerializeField] private bool lmbHeld; 
+    [SerializeField] private bool rmbHeld; 
+    
     [Header ("Inventory")]
     public float ammo;
     public int coins;
@@ -77,6 +81,34 @@ public class NewPlayer : PhysicsObject
     public AudioClip stepSound;
     [System.NonSerialized] public int whichHurtSound;
 
+    private void Awake() => controls = new Controls();
+
+    private void OnEnable() {
+        controls.Enable();
+
+        controls.Player.LMB.started += OnLeftClick;
+        controls.Player.LMB.canceled += OnLeftClick;
+
+        controls.Player.RMB.started += OnRightClick;
+        controls.Player.RMB.canceled += OnRightClick;
+
+        controls.UI.Escape.performed += _ => PauseGame();
+        controls.Player.Jump.performed += _ => Jump(1f);
+    }
+
+    private void OnDisable() {
+        controls.Disable();
+
+        controls.Player.LMB.started -= OnLeftClick;
+        controls.Player.LMB.canceled -= OnLeftClick;
+
+        controls.Player.RMB.started -= OnRightClick;
+        controls.Player.RMB.canceled -= OnRightClick;
+
+        controls.UI.Escape.performed -= _ => PauseGame();
+        controls.Player.Jump.performed -= _ => Jump(0f);
+    }
+
     void Start()
     {
         Cursor.visible = false;
@@ -92,10 +124,53 @@ public class NewPlayer : PhysicsObject
         SetGroundType();
     }
 
-    private void Update()
+    private void OnLeftClick(InputAction.CallbackContext ctx)
     {
-        ComputeVelocity();
+        if (ctx.started)
+        {
+            lmbHeld = true; 
+
+            if(rmbHeld)
+            {
+                shooting = true;
+            } 
+            else 
+            {
+                Attack();
+            } 
+        }
+        else if (ctx.canceled)
+        {
+            lmbHeld = false;
+
+            if(shooting)
+            {
+                shooting = false;
+                Shoot(); //Holster that weapon 
+            } 
+        }
     }
+
+    private void OnRightClick(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            rmbHeld = true; 
+        }
+        else if (ctx.canceled) 
+        {
+            rmbHeld = false;
+            lmbHeld = false; //Reset the left click state if the right click is canceled
+
+            if(shooting)
+            {
+                shooting = false;
+                Shoot(); //Holster that weapon 
+            }
+        }
+    }
+
+    private void Update() => ComputeVelocity();
 
     protected void ComputeVelocity()
     {
@@ -106,54 +181,23 @@ public class NewPlayer : PhysicsObject
         //Lerp launch back to zero at all times
         launch += (0 - launch) * Time.deltaTime * launchRecovery;
 
-        if (Input.GetButtonDown("Cancel"))
-        {
-            pauseMenu.SetActive(true);
-        }
-
         //Movement, jumping, and attacking!
         if (!frozen)
         {
-            move.x = Input.GetAxis("Horizontal") + launch;
-
-            if (Input.GetButtonDown("Jump") && animator.GetBool("grounded") == true && !jumping)
-            {
-                animator.SetBool("pounded", false);
-                Jump(1f);
-            }
+            move.x = controls.Player.Direction.ReadValue<Vector2>().x + launch;
 
             //Flip the graphic's localScale
             if (move.x > 0.01f)
-            {
                graphic.transform.localScale = new Vector3(origLocalScale.x, transform.localScale.y, transform.localScale.z);
-            }
             else if (move.x < -0.01f)
-            {
                graphic.transform.localScale = new Vector3(-origLocalScale.x, transform.localScale.y, transform.localScale.z);
-            }
 
-            //Punch
-            if (Input.GetMouseButtonDown(0))
-            {
-                animator.SetTrigger("attack");
-                Shoot(false);
-            }
-
-            //Secondary attack (currently shooting) with right click
-            if (Input.GetMouseButtonDown(1))
-            {
-                Shoot(true);
-            }
-            else if (Input.GetMouseButtonUp(1))
-            {
-                Shoot(false);
-            }
-
-            if (shooting)
-            {
-                SubtractAmmo();
-            }
-
+            if(lmbHeld && rmbHeld)
+                Shoot();
+            
+            if(shooting)
+                SubtractAmmo();         
+                
             //Allow the player to jump even if they have just fallen off an edge ("fall forgiveness")
             if (!grounded)
             {
@@ -175,14 +219,10 @@ public class NewPlayer : PhysicsObject
             //Set each animator float, bool, and trigger to it knows which animation to fire
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
             animator.SetFloat("velocityY", velocity.y);
-            animator.SetInteger("attackDirectionY", (int)Input.GetAxis("VerticalDirection"));
-            animator.SetInteger("moveDirection", (int)Input.GetAxis("HorizontalDirection"));
+            animator.SetInteger("attackDirectionY", (int)controls.Player.Direction.ReadValue<Vector2>().y);
+            animator.SetInteger("moveDirection", (int)controls.Player.Direction.ReadValue<Vector2>().x);
             animator.SetBool("hasChair", GameManager.Instance.inventory.ContainsKey("chair"));
             targetVelocity = move * maxSpeed;
-
-
-
-
         }
         else
         {
@@ -218,7 +258,6 @@ public class NewPlayer : PhysicsObject
         shooting = false;
         launch = 0;
     }
-
 
     public void GetHurt(int hurtDirection, int hitPower)
     {
@@ -269,7 +308,6 @@ public class NewPlayer : PhysicsObject
         Time.timeScale = 1f;
     }
 
-
     public IEnumerator Die()
     {
         if (!frozen)
@@ -293,23 +331,23 @@ public class NewPlayer : PhysicsObject
         health = maxHealth;
     }
 
-    public void SubtractAmmo()
-    {
-        if (ammo > 0)
-        {
-            ammo -= 20 * Time.deltaTime;
-        }
-    }
-
     public void Jump(float jumpMultiplier)
     {
-        if (velocity.y != jumpPower)
+        if (!frozen)
         {
-            velocity.y = jumpPower * jumpMultiplier; //The jumpMultiplier allows us to use the Jump function to also launch the player from bounce platforms
-            PlayJumpSound();
-            PlayStepSound();
-            JumpEffect();
-            jumping = true;
+            if (animator.GetBool("grounded") == true)
+            {
+                animator.SetBool("pounded", false);
+
+                if (velocity.y != jumpPower)
+                {
+                    velocity.y = jumpPower * jumpMultiplier; //The jumpMultiplier allows us to use the Jump function to also launch the player from bounce platforms
+                    PlayJumpSound();
+                    PlayStepSound();
+                    JumpEffect();
+                    jumping = true;
+                }
+            }  
         }
     }
 
@@ -317,7 +355,7 @@ public class NewPlayer : PhysicsObject
     {
         //Play a step sound at a random pitch between two floats, while also increasing the volume based on the Horizontal axis
         audioSource.pitch = (Random.Range(0.9f, 1.1f));
-        audioSource.PlayOneShot(stepSound, Mathf.Abs(Input.GetAxis("Horizontal") / 10));
+        audioSource.PlayOneShot(stepSound, Mathf.Abs(controls.Player.Direction.ReadValue<Vector2>().x / 10));
     }
 
     public void PlayJumpSound()
@@ -325,7 +363,6 @@ public class NewPlayer : PhysicsObject
         audioSource.pitch = (Random.Range(1f, 1f));
         GameManager.Instance.audioSource.PlayOneShot(jumpSound, .1f);
     }
-
 
     public void JumpEffect()
     {
@@ -368,6 +405,7 @@ public class NewPlayer : PhysicsObject
             FreezeFrameEffect(.3f);
         }
     }
+
     public void PoundEffect()
     {
         //As long as the player as activated the pound in ActivatePound, the following will occur when hitting the ground.
@@ -397,31 +435,34 @@ public class NewPlayer : PhysicsObject
             sprite.gameObject.SetActive(!hide);
     }
 
-    public void Shoot(bool equip)
+    private void Shoot() 
     {
-        //Flamethrower ability
-        if (GameManager.Instance.inventory.ContainsKey("flamethrower"))
+        if (!frozen)
         {
-            if (equip)
-            {
-                if (!shooting)
+            //Flamethrower ability
+            //if (GameManager.Instance.inventory.ContainsKey("flamethrower"))
+            //{
+                if (shooting)
                 {
                     animator.SetBool("shooting", true);
                     GameManager.Instance.audioSource.PlayOneShot(equipSound);
                     flameParticlesAudioSource.Play();
-                    shooting = true;
                 }
-            }
-            else
-            {
-                if (shooting)
+                else 
                 {
                     animator.SetBool("shooting", false);
                     flameParticlesAudioSource.Stop();
                     GameManager.Instance.audioSource.PlayOneShot(holsterSound);
-                    shooting = false;
                 }
-            }
+            //}
+        }
+    }
+
+    private void Attack()
+    {
+        if(!frozen)
+        {
+            animator.SetTrigger("attack");
         }
     }
 
@@ -432,5 +473,19 @@ public class NewPlayer : PhysicsObject
         {
             GameManager.Instance.GetInventoryItem(cheatItems[i], null);
         }
+    }
+
+    private void SubtractAmmo()
+    {
+        if (ammo > 0)
+        {
+            ammo -= 20 * Time.deltaTime;
+        }
+    }
+
+    private void PauseGame()
+    {
+        if(!pauseMenu.activeSelf)
+            pauseMenu.SetActive(true);
     }
 }
