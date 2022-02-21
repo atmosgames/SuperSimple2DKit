@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /*Triggers a dialogue conversation, passing unique commands and information to the dialogue box and inventory system for fetch quests, etc.*/
 
@@ -38,6 +39,32 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private int requiredCoins; //Or the required coins (cannot require both an item and coins)
     public Animator useItemAnimator; //If the player uses an item, like a key, an animator can be fired (ie to open a door)
     [SerializeField] private string useItemAnimatorBool; //An animator bool can be set to true once an item is used, like ae key.
+    [SerializeField] private bool interactHeld;
+
+    private Controls controls;
+
+    private void Awake() => controls = new Controls();
+
+    private void OnEnable() {
+        controls.Enable();
+
+        controls.Player.Interact.started += Interact;
+        controls.Player.Interact.canceled += Interact;
+    }
+
+    private void OnDisable() {
+        controls.Disable();
+
+        controls.Player.Interact.started -= Interact;
+        controls.Player.Interact.canceled -= Interact;
+    }
+
+    private void Interact(InputAction.CallbackContext ctx) {
+        if(ctx.started)
+            interactHeld = true;
+        else if(ctx.canceled)
+            interactHeld = false;
+    }
 
     void OnTriggerStay2D(Collider2D col)
     {
@@ -49,7 +76,7 @@ public class DialogueTrigger : MonoBehaviour
         if (col.gameObject == NewPlayer.Instance.gameObject && !sleeping && !completed && NewPlayer.Instance.grounded)
         {
             iconAnimator.SetBool("active", true);
-            if (autoHit || (Input.GetAxis("Submit") > 0))
+            if (autoHit || interactHeld)
             {
                 iconAnimator.SetBool("active", false);
                 if (requiredItem == "" && requiredCoins == 0 || !GameManager.Instance.inventory.ContainsKey(requiredItem) && requiredCoins == 0 || (requiredCoins != 0 && NewPlayer.Instance.coins < requiredCoins))
