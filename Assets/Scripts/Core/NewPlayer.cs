@@ -272,7 +272,9 @@ public class NewPlayer : PhysicsObject
 
     public IEnumerator Die()
     {
-        if (!frozen)
+        yield return new WaitForSeconds(5f);
+        GameManager.Instance.EndGame("1");
+        /*if (!frozen)
         {
             dead = true;
             deathParticles.Emit(10);
@@ -283,7 +285,7 @@ public class NewPlayer : PhysicsObject
             GameManager.Instance.hud.animator.SetTrigger("coverScreen");
             GameManager.Instance.hud.loadSceneName = SceneManager.GetActiveScene().name;
             Time.timeScale = 1f;
-        }
+        }*/
     }
 
     public void ResetLevel()

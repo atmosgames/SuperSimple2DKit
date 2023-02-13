@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /*Manages inventory, keeps several component references, and any other future control of the game itself you may need*/
 
@@ -14,12 +15,35 @@ public class GameManager : MonoBehaviour
     [SerializeField] public AudioTrigger gameMusic;
     [SerializeField] public AudioTrigger gameAmbience;
 
+    [System.Serializable]
+    public class EndingClass
+    {
+        public string key;
+        public Ending val;
+    }
+
+    [SerializeField] 
+    private List<EndingClass> endingList = new List<EndingClass>();
+    private Dictionary<string, Ending> endingDict = new Dictionary<string, Ending>();
+
+    void Awake()
+    {
+        if(Instance != this) Destroy(gameObject);
+
+        foreach (var kvp in endingList)
+        {
+            endingDict[kvp.key] = kvp.val;
+        }
+    }
     // Singleton instantiation
     public static GameManager Instance
     {
         get
         {
-            if (instance == null) instance = GameObject.FindObjectOfType<GameManager>();
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<GameManager>();
+            }
             return instance;
         }
     }
@@ -51,6 +75,17 @@ public class GameManager : MonoBehaviour
     {   
         inventory.Clear();
         hud.SetInventoryImage(hud.blankUI);
+    }
+
+    public void EndGame(string ending)
+    {
+        if (!endingDict.ContainsKey(ending))
+            Debug.LogError("Wrong ending name: " + ending);
+        else
+        {
+            SceneManager.LoadScene("EndingScene");
+            EndingPlayer.currentEnding = endingDict[ending];
+        }
     }
 
 }
