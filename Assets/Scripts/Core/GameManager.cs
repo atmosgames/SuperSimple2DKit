@@ -6,10 +6,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public class Item
+    {
+        public Sprite itemImage;
+        public int slotNumber;
+        public Item(Sprite sprite, int number)
+        {
+            itemImage = sprite;
+            slotNumber = number;
+        }
+    }
     public AudioSource audioSource; //A primary audioSource a large portion of game sounds are passed through
     public DialogueBoxController dialogueBoxController;
     public HUD hud; //A reference to the HUD holding your health UI, coins, dialogue, etc.
-    public Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
+    public Dictionary<string, Item> inventory = new Dictionary<string, Item>();
+    public bool[] isFull;
     private static GameManager instance;
     [SerializeField] public AudioTrigger gameMusic;
     [SerializeField] public AudioTrigger gameAmbience;
@@ -33,24 +44,35 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     public void GetInventoryItem(string name, Sprite image)
     {
-        inventory.Add(name, image);
-
-        if (image != null)
+        for (int i = 0; i < isFull.Length; i++)
         {
-            hud.SetInventoryImage(inventory[name]);
+            if (!isFull[i])
+            {
+                Item item = new Item(image, i);
+                inventory.Add(name, item);
+                isFull[i] = true;
+                if (image != null)
+                {
+                    hud.SetInventoryImage(inventory[name].itemImage, i);
+                }
+                break;
+            }
+            
         }
+
     }
 
     public void RemoveInventoryItem(string name)
     {
+        hud.SetInventoryImage(hud.blankUI, inventory[name].slotNumber);
         inventory.Remove(name);
-        hud.SetInventoryImage(hud.blankUI);
+        
     }
 
     public void ClearInventory()
     {   
         inventory.Clear();
-        hud.SetInventoryImage(hud.blankUI);
+        hud.SetInventoryImage(hud.blankUI, 0);
     }
 
 }

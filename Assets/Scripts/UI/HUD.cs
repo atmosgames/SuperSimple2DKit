@@ -14,7 +14,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private GameObject ammoBar;
     public TextMeshProUGUI coinsMesh;
     [SerializeField] private GameObject healthBar;
-    [SerializeField] private Image inventoryItemGraphic;
+    [SerializeField] private Image[] inventoryItemGraphic;
     [SerializeField] private GameObject startUp;
 
     private float ammoBarWidth;
@@ -36,7 +36,7 @@ public class HUD : MonoBehaviour
         ammoBarWidthEased = ammoBarWidth;
         coins = (float)NewPlayer.Instance.coins;
         coinsEased = coins;
-        blankUI = inventoryItemGraphic.GetComponent<Image>().sprite;
+        blankUI = inventoryItemGraphic[0].GetComponent<Image>().sprite;
     }
 
     void Update()
@@ -71,9 +71,9 @@ public class HUD : MonoBehaviour
         animator.SetTrigger("hurt");
     }
 
-    public void SetInventoryImage(Sprite image)
+    public void SetInventoryImage(Sprite image, int slotNumber)
     {
-        inventoryItemGraphic.sprite = image;
+        inventoryItemGraphic[slotNumber].sprite = image;
     }
 
     void ResetScene()
