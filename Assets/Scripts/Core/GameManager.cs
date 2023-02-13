@@ -15,8 +15,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] public AudioTrigger gameMusic;
     [SerializeField] public AudioTrigger gameAmbience;
 
-    public static Ending currentEnding;
-
     [System.Serializable]
     public class EndingClass
     {
@@ -86,7 +84,7 @@ public class GameManager : MonoBehaviour
         else
         {
             SceneManager.LoadScene("EndingScene");
-            currentEnding = endingDict[ending];
+            EndingPlayer.currentEnding = endingDict[ending];
         }
     }
 

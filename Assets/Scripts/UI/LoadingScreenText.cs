@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class LoadingScreenText : MonoBehaviour
 {
 
@@ -45,5 +46,8 @@ public class LoadingScreenText : MonoBehaviour
             textMesh.text += '\n';
             yield return lineWait;
         }
+
+        yield return lineWait;
+        SceneManager.LoadScene("Demolevel");
     }
 }
