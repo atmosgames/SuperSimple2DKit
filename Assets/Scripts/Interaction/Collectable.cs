@@ -69,7 +69,7 @@ public class Collectable : MonoBehaviour
 
         NewPlayer.Instance.FlashEffect();
 
-        Debug.Log("dziala");
+        
         //If my parent has an Ejector script, it means that my parent is actually what needs to be destroyed, along with me, once collected
         if (transform.parent.GetComponent<Ejector>() != null)
         {
