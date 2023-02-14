@@ -89,7 +89,9 @@ public class GameManager : MonoBehaviour
     public void RemoveInventoryItem(string name)
     {
         hud.SetInventoryImage(hud.blankUI, inventory[name].slotNumber);
+        isFull[inventory[name].slotNumber] = false;
         inventory.Remove(name);
+
         
     }
 

@@ -35,43 +35,13 @@ public class Collectable : MonoBehaviour
         }
     }
 
-    public void Collect()
+    public void ObjectDestroy()
     {
-        if (itemType == ItemType.InventoryItem)
-        {
-            if (itemName != "")
-            {
-                GameManager.Instance.GetInventoryItem(itemName, UIImage);
-                if (itemName == "Melee") NewPlayer.Instance.allowPlayerAttackMelee = true;
-            }
-        }
-        else if (itemType == ItemType.Coin)
-        {
-            NewPlayer.Instance.coins += itemAmount;
-        }
-        else if (itemType == ItemType.Health)
-        {
-            if (NewPlayer.Instance.health < NewPlayer.Instance.maxHealth)
-            {
-                GameManager.Instance.hud.HealthBarHurt();
-                NewPlayer.Instance.health += itemAmount;
-            }
-        }
-        else if (itemType == ItemType.Ammo)
-        {
-            if (NewPlayer.Instance.ammo < NewPlayer.Instance.maxAmmo)
-            {
-                GameManager.Instance.hud.HealthBarHurt();
-                NewPlayer.Instance.ammo += itemAmount;
-            }
-        }
-
         GameManager.Instance.audioSource.PlayOneShot(collectSounds[Random.Range(0, collectSounds.Length)], Random.Range(.6f, 1f));
 
         NewPlayer.Instance.FlashEffect();
 
-        
-        //If my parent has an Ejector script, it means that my parent is actually what needs to be destroyed, along with me, once collected
+        // If my parent has an Ejector script, it means that my parent is actually what needs to be destroyed, along with me, once collected
         if (transform.parent.GetComponent<Ejector>() != null)
         {
             Destroy(transform.parent.gameObject);
@@ -80,6 +50,51 @@ public class Collectable : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Collect()
+    {
+        
+
+        if (itemType == ItemType.InventoryItem)
+        {
+            if(GameManager.Instance.isFull[0] == false || GameManager.Instance.isFull[1] == false)
+            {
+                if (itemName != "")
+                {
+                    GameManager.Instance.GetInventoryItem(itemName, UIImage);
+                    if (itemName == "Melee") NewPlayer.Instance.allowPlayerAttackMelee = true;
+                }
+                ObjectDestroy();
+
+            }
+            
+        }
+        else if (itemType == ItemType.Coin)
+        {
+            NewPlayer.Instance.coins += itemAmount;
+            ObjectDestroy();
+        }
+        else if (itemType == ItemType.Health)
+        {
+            if (NewPlayer.Instance.health < NewPlayer.Instance.maxHealth)
+            {
+                GameManager.Instance.hud.HealthBarHurt();
+                NewPlayer.Instance.health += itemAmount;
+            }
+            ObjectDestroy();
+        }
+        else if (itemType == ItemType.Ammo)
+        {
+            if (NewPlayer.Instance.ammo < NewPlayer.Instance.maxAmmo)
+            {
+                GameManager.Instance.hud.HealthBarHurt();
+                NewPlayer.Instance.ammo += itemAmount;
+            }
+            ObjectDestroy();
+        }
+
+        
 
     }
 }
