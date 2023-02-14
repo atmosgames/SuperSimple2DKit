@@ -56,7 +56,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.23
 --- !u!114 &-4086543313817287849
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   intensity:
-    m_OverrideState: 0
-    m_Value: 0.86
+    m_OverrideState: 1
+    m_Value: 0.56
   xMultiplier:
     m_OverrideState: 0
     m_Value: 1
@@ -145,8 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   distance:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   cropToFit:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
