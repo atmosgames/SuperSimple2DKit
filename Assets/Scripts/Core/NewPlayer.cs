@@ -24,6 +24,9 @@ public class NewPlayer : PhysicsObject
     [SerializeField] private GameObject pauseMenu;
     public RecoveryCounter recoveryCounter;
 
+
+    public bool allowPlayerAttackMelee = false;
+
     // Singleton instantiation
     private static NewPlayer instance;
     public static NewPlayer Instance
@@ -135,7 +138,7 @@ public class NewPlayer : PhysicsObject
             }
 
             //Punch
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && allowPlayerAttackMelee == true)
             {
                 animator.SetTrigger("attack");
                 Shoot(false);
