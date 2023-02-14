@@ -15,7 +15,6 @@ public class Collectable : MonoBehaviour
     [SerializeField] private int itemAmount;
     [SerializeField] private string itemName; //If an inventory item, what is its name?
     [SerializeField] private Sprite UIImage; //What image will be displayed if we collect an inventory item?
-
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -73,6 +72,7 @@ public class Collectable : MonoBehaviour
         else if (itemType == ItemType.Bug)
         {
             NewPlayer.Instance.bugs += itemAmount;
+            BugPostprocess.Instance.MultiplyBugEffect();
             ObjectDestroy();
         }
         else if (itemType == ItemType.Health)
