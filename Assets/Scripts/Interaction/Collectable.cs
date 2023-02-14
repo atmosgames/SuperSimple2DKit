@@ -7,7 +7,7 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
 
-    enum ItemType { InventoryItem, Coin, Health, Ammo }; //Creates an ItemType category
+    enum ItemType { InventoryItem, Bug, Health, Ammo }; //Creates an ItemType category
     [SerializeField] ItemType itemType; //Allows us to select what type of item the gameObject is in the inspector
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip bounceSound;
@@ -70,9 +70,9 @@ public class Collectable : MonoBehaviour
             }
             
         }
-        else if (itemType == ItemType.Coin)
+        else if (itemType == ItemType.Bug)
         {
-            NewPlayer.Instance.coins += itemAmount;
+            NewPlayer.Instance.bugs += itemAmount;
             ObjectDestroy();
         }
         else if (itemType == ItemType.Health)

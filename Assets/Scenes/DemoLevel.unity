@@ -259,6 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 30030648}
   - component: {fileID: 30030647}
+  - component: {fileID: 30030650}
   m_Layer: 0
   m_Name: Global Volume
   m_TagString: Untagged
@@ -298,6 +299,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &30030650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30030646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b5a911df35fc14ba3112e4114eeefe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &77635002
 GameObject:
   m_ObjectHideFlags: 0
@@ -2502,6 +2515,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 1cece6b8e403544279b30b97a7ce2d13,
         type: 3}
+    - target: {fileID: 3057818840298777500, guid: 0bb5add0cec3748978e0e827fdcbd8d8,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057818840298777500, guid: 0bb5add0cec3748978e0e827fdcbd8d8,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bb5add0cec3748978e0e827fdcbd8d8, type: 3}
 --- !u!1 &556293161
@@ -2589,7 +2612,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dcdca9bc02eb36b45bbce3ed3deb08dd, type: 2}
+  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11436,6 +11459,10 @@ PrefabInstance:
     - target: {fileID: 1263890939840604, guid: b022250573709434c9737ce47e1017e3, type: 3}
       propertyPath: m_Name
       value: Startup
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571500532489486, guid: b022250573709434c9737ce47e1017e3, type: 3}
+      propertyPath: m_Name
+      value: Bugs
       objectReference: {fileID: 0}
     - target: {fileID: 4056615123376922, guid: b022250573709434c9737ce47e1017e3, type: 3}
       propertyPath: m_RootOrder

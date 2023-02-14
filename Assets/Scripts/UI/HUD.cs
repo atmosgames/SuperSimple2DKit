@@ -34,7 +34,7 @@ public class HUD : MonoBehaviour
         healthBarWidthEased = healthBarWidth;
         ammoBarWidth = 1;
         ammoBarWidthEased = ammoBarWidth;
-        coins = (float)NewPlayer.Instance.coins;
+        coins = (float)NewPlayer.Instance.bugs;
         coinsEased = coins;
         blankUI = inventoryItemGraphic[0].GetComponent<Image>().sprite;
     }
@@ -43,7 +43,7 @@ public class HUD : MonoBehaviour
     {
         //Update coins text mesh to reflect how many coins the player has! However, we want them to count up.
         coinsMesh.text = Mathf.Round(coinsEased).ToString();
-        coinsEased += ((float)NewPlayer.Instance.coins - coinsEased) * Time.deltaTime * 5f;
+        coinsEased += ((float)NewPlayer.Instance.bugs - coinsEased) * Time.deltaTime * 5f;
 
         if (coinsEased >= coins)
         {
