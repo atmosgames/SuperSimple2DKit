@@ -25,7 +25,7 @@ public class NewPlayer : PhysicsObject
     public RecoveryCounter recoveryCounter;
 
 
-    public bool allowPlayerAttackMelee = false;
+    
 
     // Singleton instantiation
     private static NewPlayer instance;
@@ -56,6 +56,10 @@ public class NewPlayer : PhysicsObject
     [System.NonSerialized] public bool pounded;
     [System.NonSerialized] public bool pounding;
     [System.NonSerialized] public bool shooting = false;
+
+    public bool allowPlayerAttackMelee = false;
+    [SerializeField] float attackCooldown = 0.5f;
+    private float nextAttack = 0f;
 
     [Header ("Inventory")]
     public float ammo;
@@ -147,10 +151,13 @@ public class NewPlayer : PhysicsObject
             }
 
             //Punch
-            if (Input.GetMouseButtonDown(0) && allowPlayerAttackMelee == true)
+
+
+            if (Input.GetMouseButtonDown(0) && allowPlayerAttackMelee == true && Time.time > nextAttack)
             {
                 animator.SetTrigger("attack");
                 Shoot(false);
+                nextAttack = Time.time + attackCooldown;
             }
 
             //Secondary attack (currently shooting) with right click
