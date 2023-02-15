@@ -116,6 +116,10 @@ public class NewPlayer : PhysicsObject
             pauseMenu.SetActive(true);
         }
 
+        if (GameManager.Instance.inventory.ContainsKey("RedBalloon") && GameManager.Instance.inventory.ContainsKey("BlueBalloon"))
+        {
+            gravityModifier = -3f;
+        }
         //Movement, jumping, and attacking!
         if (!frozen)
         {
@@ -124,7 +128,12 @@ public class NewPlayer : PhysicsObject
             if (Input.GetButtonDown("Jump") && animator.GetBool("grounded") == true && !jumping)
             {
                 animator.SetBool("pounded", false);
-                Jump(1f);
+                if (GameManager.Instance.inventory.ContainsKey("RedBalloon") || GameManager.Instance.inventory.ContainsKey("BlueBalloon"))
+                {
+                    Jump(1.2f);
+                }
+                else Jump(1f);
+                
             }
 
             //Flip the graphic's localScale
