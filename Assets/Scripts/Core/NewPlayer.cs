@@ -61,6 +61,7 @@ public class NewPlayer : PhysicsObject
     [SerializeField] float attackCooldown = 0.5f;
     private float nextAttack = 0f;
 
+
     [Header ("Inventory")]
     public float ammo;
     public int bugs;
@@ -150,15 +151,40 @@ public class NewPlayer : PhysicsObject
                graphic.transform.localScale = new Vector3(-origLocalScale.x, transform.localScale.y, transform.localScale.z);
             }
 
-            //Punch
 
-
-            if (Input.GetMouseButtonDown(0) && allowPlayerAttackMelee == true && Time.time > nextAttack)
+            if (GameManager.Instance.isFull[0] == true || GameManager.Instance.isFull[1] == true)
             {
-                animator.SetTrigger("attack");
-                Shoot(false);
-                nextAttack = Time.time + attackCooldown;
+                if (Input.GetAxisRaw("Slot1") != 0)
+                {
+                    foreach (string name in GameManager.Instance.keys)
+                    {
+                        if (GameManager.Instance.inventory[name].slotNumber == 0)
+                        {
+                            //Punch
+                            if (name == "Melee") MeleeAction();
+                            //Baloon
+                            if (name == "RedBalloon" || name == "BlueBalloon") BalloonAction(name);
+                            break;
+                        }
+                    }
+                }
+
+                if (Input.GetAxisRaw("Slot2") != 0)
+                {
+                    foreach (string name in GameManager.Instance.keys)
+                    {
+                        if (GameManager.Instance.inventory[name].slotNumber == 1)
+                        {
+                            //Punch
+                            if (name == "Melee") MeleeAction();
+                            //Baloon
+                            if (name == "RedBalloon" || name == "BlueBalloon") BalloonAction(name);
+                            break;
+                        }
+                    }
+                }
             }
+
 
             //Secondary attack (currently shooting) with right click
             if (Input.GetMouseButtonDown(1))
@@ -210,6 +236,21 @@ public class NewPlayer : PhysicsObject
             //If the player is set to frozen, his launch should be zeroed out!
             launch = 0;
         }
+    }
+
+    public void MeleeAction()
+    {
+        if (allowPlayerAttackMelee == true && Time.time > nextAttack)
+        {
+            animator.SetTrigger("attack");
+            Shoot(false);
+            nextAttack = Time.time + attackCooldown;
+        }
+    }
+
+    public void BalloonAction(string name)
+    {
+        GameManager.Instance.RemoveInventoryItem(name);
     }
 
     public void SetGroundType()
