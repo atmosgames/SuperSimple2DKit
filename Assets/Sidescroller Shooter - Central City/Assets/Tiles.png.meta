@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -1252,7 +1252,6 @@ TextureImporter:
       Tiles_43: -1204737630
       Tiles_41: 551462346
       Tiles_50: 99180403
-      Tiles_47: -1291832813
       Tiles_44: -1439904380
       Tiles_1: 1838780452
       Tiles_0: -744055429
@@ -1287,11 +1286,12 @@ TextureImporter:
       Tiles_52: -233133718
       Tiles_9: 1039406408
       Tiles_49: 1704704474
+      Tiles_47: -1291832813
       Tiles_7: 532073000
-      Tiles_31: 1810750968
       Tiles_4: -1085562313
       Tiles_30: 738598183
       Tiles_53: 1177487852
+      Tiles_31: 1810750968
       Tiles_33: 307507310
       Tiles_13: -73566043
       Tiles_37: 1519322126

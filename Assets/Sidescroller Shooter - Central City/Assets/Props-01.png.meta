@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -2255,8 +2255,8 @@ TextureImporter:
       Props-01_0: 1690765652
       Props-01_14: -1853940744
       Props-01_9: -404823174
-      Props-01_46: 1087693081
       Props-01_58: 1681436595
+      Props-01_46: 1087693081
       Props-01_1: -2001217229
       Props-01_23: 1311278585
       Props-01_57: 925364686
