@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-public class BugPostprocess : MonoBehaviour
+public class Postprocess : MonoBehaviour
 {
     private VolumeProfile volumeProfile;
     private ChromaticAberration ca;
@@ -11,12 +11,12 @@ public class BugPostprocess : MonoBehaviour
     private float minDistortion = 0f;
     private float minAbberation = 0f;
 
-    private static BugPostprocess instance;
-    public static BugPostprocess Instance
+    private static Postprocess instance;
+    public static Postprocess Instance
     {
         get
         {
-            if (instance == null) instance = GameObject.FindObjectOfType<BugPostprocess>();
+            if (instance == null) instance = GameObject.FindObjectOfType<Postprocess>();
             return instance;
         }
     }
