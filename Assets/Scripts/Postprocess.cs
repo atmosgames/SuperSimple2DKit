@@ -71,7 +71,9 @@ public class Postprocess : MonoBehaviour
         }
 
         if (!volumeProfile.TryGet(out motionBlur)) throw new System.NullReferenceException(nameof(motionBlur));
-        motionBlur.intensity.Override(2f);
+        motionBlur.intensity.Override(0.2f);
+
+        NewPlayer.Instance.cameraEffects.Shake(5, 0.5f);
 
     }
  
