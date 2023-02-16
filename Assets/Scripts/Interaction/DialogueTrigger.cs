@@ -27,14 +27,17 @@ public class DialogueTrigger : MonoBehaviour
 
     [Header ("Fetch Quest")]
     [SerializeField] private GameObject deleteGameObject; //If an NPC is holding the object, and gives it to you, this object will destroy
-    [SerializeField] private string getWhichItem; //The inventory item given if items is fetched
+    [SerializeField] private string getWhichItem1; //The inventory item given if items is fetched
+    [SerializeField] private string getWhichItem2;
     [SerializeField] private int getBugsAmount; //Or the amount of coins given if item is fetched
     [SerializeField] private string finishTalkingAnimatorBool; //After completing a conversation, an animation can be fired
     [SerializeField] private string finishTalkingActivateObjectString; //After completing a conversation, an object's name can be searched for and activated.
-    [SerializeField] private Sprite getItemSprite; //The sprite of the inventory item given, shown in HUD
+    [SerializeField] private Sprite getItemSprite1; //The sprite of the inventory item given, shown in HUD
+    [SerializeField] private Sprite getItemSprite2;
     [SerializeField] private AudioClip getSound; //When the player is given an object, this sound will play
     [SerializeField] private bool instantGet; //Player can be immediately given an item the moment the conversation begins
-    [SerializeField] private string requiredItem; //The required fetch quest item
+    [SerializeField] private string requiredItem1; //The required fetch quest item
+    [SerializeField] private string requiredItem2;
     [SerializeField] private int requiredBugs; //Or the required coins (cannot require both an item and coins)
     public Animator useItemAnimator; //If the player uses an item, like a key, an animator can be fired (ie to open a door)
     [SerializeField] private string useItemAnimatorBool; //An animator bool can be set to true once an item is used, like ae key.
@@ -52,11 +55,14 @@ public class DialogueTrigger : MonoBehaviour
             if (autoHit || (Input.GetAxis("Submit") > 0))
             {
                 iconAnimator.SetBool("active", false);
-                if (requiredItem == "" && requiredBugs == 0 || !GameManager.Instance.inventory.ContainsKey(requiredItem) && requiredBugs == 0 || (requiredBugs != 0 && NewPlayer.Instance.bugs < requiredBugs))
+                if ((requiredItem1 == "" && requiredBugs == 0 || requiredItem2 == "" && requiredBugs == 0) ||
+                    (!GameManager.Instance.inventory.ContainsKey(requiredItem1) && requiredBugs == 0 || 
+                    !GameManager.Instance.inventory.ContainsKey(requiredItem2) && requiredBugs == 0) || 
+                    (requiredBugs != 0 && NewPlayer.Instance.bugs < requiredBugs))
                 {
                     GameManager.Instance.dialogueBoxController.Appear(dialogueStringA, characterName, this, false, audioLinesA, audioChoices, finishTalkingAnimatorBool, finishTalkingActivateObject, finishTalkingActivateObjectString, repeat);
                 }
-                else if (requiredBugs == 0 && GameManager.Instance.inventory.ContainsKey(requiredItem) || (requiredBugs != 0 && NewPlayer.Instance.bugs >= requiredBugs))
+                else if ((requiredBugs == 0 && GameManager.Instance.inventory.ContainsKey(requiredItem1) || requiredBugs == 0 && GameManager.Instance.inventory.ContainsKey(requiredItem2)) || (requiredBugs != 0 && NewPlayer.Instance.bugs >= requiredBugs))
                 {
                     if (dialogueStringB != "")
                     {
@@ -101,9 +107,13 @@ public class DialogueTrigger : MonoBehaviour
 
             Collect();
 
-            if (GameManager.Instance.inventory.ContainsKey(requiredItem))
+            if (GameManager.Instance.inventory.ContainsKey(requiredItem1))
             {
-                GameManager.Instance.RemoveInventoryItem(requiredItem);
+                GameManager.Instance.RemoveInventoryItem(requiredItem1);
+            }
+            else if(GameManager.Instance.inventory.ContainsKey(requiredItem2))
+            {
+                GameManager.Instance.RemoveInventoryItem(requiredItem2);
             }
             else
             {
@@ -118,9 +128,13 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (!completed)
         {
-            if (getWhichItem != "")
+            if (getWhichItem1 != "")
             {
-                GameManager.Instance.GetInventoryItem(getWhichItem, getItemSprite);
+                GameManager.Instance.GetInventoryItem(getWhichItem1, getItemSprite1);
+            }
+            else if (getWhichItem2 != "")
+            {
+                GameManager.Instance.GetInventoryItem(getWhichItem2, getItemSprite2);
             }
 
             if (getBugsAmount != 0)
@@ -139,7 +153,14 @@ public class DialogueTrigger : MonoBehaviour
 
     public void InstantGet()
     {
-        GameManager.Instance.GetInventoryItem(getWhichItem, null);
+        if (getWhichItem1 != "")
+        {
+            GameManager.Instance.GetInventoryItem(getWhichItem1, getItemSprite1);
+        }
+        else if (getWhichItem2 != "")
+        {
+            GameManager.Instance.GetInventoryItem(getWhichItem2, getItemSprite2);
+        }
         instantGet = false;
     }
 }
