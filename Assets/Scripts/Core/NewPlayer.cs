@@ -69,6 +69,8 @@ public class NewPlayer : PhysicsObject
     public int maxHealth;
     public int maxAmmo;
 
+    public GameObject dynamite;
+
     [Header ("Sounds")]
     public AudioClip deathSound;
     public AudioClip equipSound;
@@ -155,7 +157,7 @@ public class NewPlayer : PhysicsObject
 
             if (GameManager.Instance.isFull[0] == true || GameManager.Instance.isFull[1] == true)
             {
-                if (Input.GetAxisRaw("Slot1") != 0)
+                if (Input.GetKeyDown(KeyCode.Z))
                 {
                     foreach (string name in GameManager.Instance.keys)
                     {
@@ -167,13 +169,15 @@ public class NewPlayer : PhysicsObject
                             if (name == "RedBalloon" || name == "BlueBalloon") BalloonAction(name);
                             //Beer
                             if (name == "LightBeer" || name == "DarkBeer") BeerAction(name);
+                            //Dynamite
+                            if (name == "Dynamite") DynamiteAction(name);
 
                             break;
                         }
                     }
                 }
 
-                if (Input.GetAxisRaw("Slot2") != 0)
+                if (Input.GetKeyDown(KeyCode.X))
                 {
                     foreach (string name in GameManager.Instance.keys)
                     {
@@ -261,6 +265,13 @@ public class NewPlayer : PhysicsObject
     {
         drunkEffectActive = true;
         GameManager.Instance.RemoveInventoryItem(name);
+    }
+
+    public void DynamiteAction(string name)
+    {
+        GameManager.Instance.RemoveInventoryItem(name);
+        Instantiate(dynamite, null);
+
     }
 
     public void SetGroundType()

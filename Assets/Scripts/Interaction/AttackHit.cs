@@ -8,8 +8,8 @@ so we use it for both player attacks and enemy attacks.
 
 public class AttackHit : MonoBehaviour
 {
-    private enum AttacksWhat { EnemyBase, NewPlayer };
-    [SerializeField] private AttacksWhat attacksWhat;
+    public enum AttacksWhat { EnemyBase, NewPlayer, DestructibleWall};
+    public AttacksWhat attacksWhat;
     [SerializeField] private bool oneHitKill;
     [SerializeField] private float startCollisionDelay; //Some enemy types, like EnemyBombs, should not be able blow up until a set amount of time
     private int targetSide = 1; //Is the attack target on the left or right side of this object?
@@ -66,6 +66,11 @@ public class AttackHit : MonoBehaviour
         {
             transform.parent.GetComponent<EnemyBase>().Die();
         }
+    }
+
+    public void ExplodeObject()
+    {
+        Destroy(gameObject);
     }
 
     //Temporarily disable this collider to ensure bombs can launch from inside enemies without blowing up!
