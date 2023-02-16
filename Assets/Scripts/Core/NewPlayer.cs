@@ -25,7 +25,7 @@ public class NewPlayer : PhysicsObject
     public RecoveryCounter recoveryCounter;
 
 
-    public bool allowPlayerAttackMelee = false;
+    
 
     // Singleton instantiation
     private static NewPlayer instance;
@@ -56,6 +56,11 @@ public class NewPlayer : PhysicsObject
     [System.NonSerialized] public bool pounded;
     [System.NonSerialized] public bool pounding;
     [System.NonSerialized] public bool shooting = false;
+
+    [SerializeField] float attackCooldown = 0.5f;
+    private float nextAttack = 0f;
+
+    public bool drunkEffectActive = false;
 
     [Header ("Inventory")]
     public float ammo;
@@ -100,6 +105,7 @@ public class NewPlayer : PhysicsObject
     private void Update()
     {
         ComputeVelocity();
+        if(drunkEffectActive == true) Postprocess.Instance.DrunkEffect();
     }
 
     protected void ComputeVelocity()
@@ -116,6 +122,10 @@ public class NewPlayer : PhysicsObject
             pauseMenu.SetActive(true);
         }
 
+        if (GameManager.Instance.inventory.ContainsKey("RedBalloon") && GameManager.Instance.inventory.ContainsKey("BlueBalloon"))
+        {
+            gravityModifier = -3f;
+        }
         //Movement, jumping, and attacking!
         if (!frozen)
         {
@@ -124,7 +134,12 @@ public class NewPlayer : PhysicsObject
             if (Input.GetButtonDown("Jump") && animator.GetBool("grounded") == true && !jumping)
             {
                 animator.SetBool("pounded", false);
-                Jump(1f);
+                if (GameManager.Instance.inventory.ContainsKey("RedBalloon") || GameManager.Instance.inventory.ContainsKey("BlueBalloon"))
+                {
+                    Jump(1.2f);
+                }
+                else Jump(1f);
+                
             }
 
             //Flip the graphic's localScale
@@ -137,12 +152,43 @@ public class NewPlayer : PhysicsObject
                graphic.transform.localScale = new Vector3(-origLocalScale.x, transform.localScale.y, transform.localScale.z);
             }
 
-            //Punch
-            if (Input.GetMouseButtonDown(0) && allowPlayerAttackMelee == true)
+
+            if (GameManager.Instance.isFull[0] == true || GameManager.Instance.isFull[1] == true)
             {
-                animator.SetTrigger("attack");
-                Shoot(false);
+                if (Input.GetAxisRaw("Slot1") != 0)
+                {
+                    foreach (string name in GameManager.Instance.keys)
+                    {
+                        if (GameManager.Instance.inventory[name].slotNumber == 0)
+                        {
+                            //Punch
+                            if (name == "Melee") MeleeAction();
+                            //Baloon
+                            if (name == "RedBalloon" || name == "BlueBalloon") BalloonAction(name);
+                            //Beer
+                            if (name == "LightBeer" || name == "DarkBeer") BeerAction(name);
+
+                            break;
+                        }
+                    }
+                }
+
+                if (Input.GetAxisRaw("Slot2") != 0)
+                {
+                    foreach (string name in GameManager.Instance.keys)
+                    {
+                        if (GameManager.Instance.inventory[name].slotNumber == 1)
+                        {
+                            //Punch
+                            if (name == "Melee") MeleeAction();
+                            //Baloon
+                            if (name == "RedBalloon" || name == "BlueBalloon") BalloonAction(name);
+                            break;
+                        }
+                    }
+                }
             }
+
 
             //Secondary attack (currently shooting) with right click
             if (Input.GetMouseButtonDown(1))
@@ -194,6 +240,27 @@ public class NewPlayer : PhysicsObject
             //If the player is set to frozen, his launch should be zeroed out!
             launch = 0;
         }
+    }
+
+    public void MeleeAction()
+    {
+        if (Time.time > nextAttack)
+        {
+            animator.SetTrigger("attack");
+            Shoot(false);
+            nextAttack = Time.time + attackCooldown;
+        }
+    }
+
+    public void BalloonAction(string name)
+    {
+        GameManager.Instance.RemoveInventoryItem(name);
+    }
+
+    public void BeerAction(string name)
+    {
+        drunkEffectActive = true;
+        GameManager.Instance.RemoveInventoryItem(name);
     }
 
     public void SetGroundType()

@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public DialogueBoxController dialogueBoxController;
     public HUD hud; //A reference to the HUD holding your health UI, coins, dialogue, etc.
     public Dictionary<string, Item> inventory = new Dictionary<string, Item>();
+    public Dictionary<string, Item>.KeyCollection keys;
     public bool[] isFull;
     private static GameManager instance;
     [SerializeField] public AudioTrigger gameMusic;
@@ -74,6 +75,7 @@ public class GameManager : MonoBehaviour
             {
                 Item item = new Item(image, i);
                 inventory.Add(name, item);
+                keys = inventory.Keys;
                 isFull[i] = true;
                 if (image != null)
                 {
@@ -91,8 +93,8 @@ public class GameManager : MonoBehaviour
         hud.SetInventoryImage(hud.blankUI, inventory[name].slotNumber);
         isFull[inventory[name].slotNumber] = false;
         inventory.Remove(name);
+        keys = inventory.Keys;
 
-        
     }
 
     public void ClearInventory()
