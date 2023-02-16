@@ -133,7 +133,7 @@ public class NewPlayer : PhysicsObject
 
         if (GameManager.Instance.inventory.ContainsKey("RedBalloon") && GameManager.Instance.inventory.ContainsKey("BlueBalloon"))
         {
-            gravityModifier = -3f;
+            gravityModifier = -1.5f;
         }
         //Movement, jumping, and attacking!
         if (!frozen)

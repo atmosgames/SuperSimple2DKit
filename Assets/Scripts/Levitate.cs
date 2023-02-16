@@ -12,12 +12,12 @@ public class Levitate : MonoBehaviour
     private float start;
     void Start()
     {
-        start = transform.position.y;
+        start = transform.localPosition.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, start + Mathf.Sin(Time.time * speed) * height,transform.position.z);
+        transform.localPosition = new Vector3(transform.localPosition.x, start + Mathf.Sin(Time.time * speed) * height,transform.localPosition.z);
     }
 }

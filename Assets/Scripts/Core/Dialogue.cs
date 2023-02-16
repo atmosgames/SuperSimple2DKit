@@ -55,6 +55,21 @@ public class Dialogue : MonoBehaviour
             "Ignore"
         });
 
+        dialogue.Add("Seller2A", new string[] {
+            "Do you want to get another one?",
+            "This one is actually for free"
+        });
+
+        dialogue.Add("Seller2AChoice1", new string[] {
+            "",
+            "Get balloon"
+        });
+
+        dialogue.Add("Seller2AChoice2", new string[] {
+            "",
+            "Ignore"
+        });
+
 
         dialogue.Add("ElevatorAUp", new string[] {
             "Where do you wanna go?",
