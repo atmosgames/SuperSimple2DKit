@@ -124,9 +124,18 @@ public class NewPlayer : PhysicsObject
             pauseMenu.SetActive(true);
         }
 
+        if (GameManager.Instance.inventory.ContainsKey("RedBalloon") || GameManager.Instance.inventory.ContainsKey("BlueBalloon"))
+        {
+            gravityModifier = 1.8f;
+        }
+        else
+        {
+            gravityModifier = 3.2f;
+        }
+
         if (GameManager.Instance.inventory.ContainsKey("RedBalloon") && GameManager.Instance.inventory.ContainsKey("BlueBalloon"))
         {
-            gravityModifier = -3f;
+            gravityModifier = -1.5f;
         }
         //Movement, jumping, and attacking!
         if (!frozen)
@@ -138,7 +147,7 @@ public class NewPlayer : PhysicsObject
                 animator.SetBool("pounded", false);
                 if (GameManager.Instance.inventory.ContainsKey("RedBalloon") || GameManager.Instance.inventory.ContainsKey("BlueBalloon"))
                 {
-                    Jump(1.2f);
+                    Jump(1.0f);
                 }
                 else Jump(1f);
                 
@@ -259,6 +268,12 @@ public class NewPlayer : PhysicsObject
     public void BalloonAction(string name)
     {
         GameManager.Instance.RemoveInventoryItem(name);
+        var objs = GetComponentsInChildren<AddObjToInventory>();
+        foreach (var obj in objs)
+        {
+            if (obj.invName == name)
+                obj.gameObject.SetActive(false);
+        }
     }
 
     public void BeerAction(string name)

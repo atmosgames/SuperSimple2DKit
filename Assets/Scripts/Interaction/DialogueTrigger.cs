@@ -41,6 +41,34 @@ public class DialogueTrigger : MonoBehaviour
     public Animator useItemAnimator; //If the player uses an item, like a key, an animator can be fired (ie to open a door)
     [SerializeField] private string useItemAnimatorBool; //An animator bool can be set to true once an item is used, like ae key.
 
+    private bool toReset = false;
+
+    public void SetDialgueA(string s)
+    {
+        dialogueStringA = s;
+    }
+
+    public void SetDialgueB(string s)
+    {
+        dialogueStringB = s;
+    }
+
+    public void SetActivateObject1(GameObject go)
+    {
+        activateObjectChoice1 = go;
+    }
+
+    public void SetActivateObject2(GameObject go)
+    {
+        activateObjectChoice2 = go;
+    }
+
+    public void Reset()
+    {
+
+        toReset = true;
+    }
+
     void OnTriggerStay2D(Collider2D col)
     {
         if (instantGet)
@@ -143,5 +171,14 @@ public class DialogueTrigger : MonoBehaviour
     {
         GameManager.Instance.GetInventoryItem(getWhichItem, null);
         instantGet = false;
+    }
+
+    private void Update()
+    {
+        if(toReset)
+        {
+            sleeping = false;
+            completed = false;
+        }
     }
 }

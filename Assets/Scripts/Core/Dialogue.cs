@@ -23,52 +23,84 @@ public class Dialogue : MonoBehaviour
         });
 
         //NPC
-        dialogue.Add("CharacterA", new string[] {
+        dialogue.Add("SellerA", new string[] {
             "Hi there!",
-            "I'm an NPC! This conversation is called 'npcA'...",
-            "If you go and find me 80 coins, my dialogue will move on to 'npcB'!",
-            "Feel free to edit my dialogue in the 'Dialogue.cs' file!",
-            "To keep it simple, you can also ask me one, and only one, question...",
-            "...Like you just did! And I'll just move on to the next sentence.",
-            "I'll answer that question, but it won't change much about the game!",
-            "You can always tweak the 'DialogueBox.cs' script to add more functionality!"
+            "Wanna buy some balloons?",
+            "What!?",
+            "You don't have any money?",
+            "If you get me something to drink I'll give you one"
         });
 
-        dialogue.Add("CharacterAChoice1", new string[] {
-            "",
-            "",
-            "Let me go find some coins!",
-        });
-
-        dialogue.Add("CharacterAChoice2", new string[] {
-            "",
-            "",
-            "What else can you do?"
-        });
-
-        dialogue.Add("ElevatorA", new string[] {
+        dialogue.Add("SellerB", new string[] {
             "Hi there!",
-            "I'm an NPC! This conversation is called 'npcA'...",
-            "If you go and find me 80 coins, my dialogue will move on to 'npcB'!"
+            "Wanna buy some balloons?",
+            "What!?",
+            "You don't have any money?",
+            "If you get me something to drink I'll give you one"
         });
 
-        dialogue.Add("ElevatorAChoice1", new string[] {
+        dialogue.Add("SellerBChoice1", new string[] {
             "",
             "",
-            "Let me go find some coins!",
+            "",
+            "",
+            "Give beer"
         });
 
-        dialogue.Add("ElevatorAChoice2", new string[] {
+        dialogue.Add("SellerBChoice2", new string[] {
             "",
             "",
-            "What else can you do?"
+            "",
+            "",
+            "Ignore"
         });
 
-        dialogue.Add("CharacterB", new string[] {
-            "Hey! You found 80 coins! That means 'npcB' is now being used inside 'Dialogue.cs'!",
-            "After my dialogue completes, I'll take 80 coins, or however many you specify in the inspector...",
-            "And I'll also give you a new ability!",
-            "In this case, how about a generic DOWNWARD SMASH? Simply attack while pressing down in mid-air!"
+        dialogue.Add("Seller2A", new string[] {
+            "Do you want to get another one?",
+            "This one is actually for free"
         });
+
+        dialogue.Add("Seller2AChoice1", new string[] {
+            "",
+            "Get balloon"
+        });
+
+        dialogue.Add("Seller2AChoice2", new string[] {
+            "",
+            "Ignore"
+        });
+
+
+        dialogue.Add("ElevatorAUp", new string[] {
+            "Where do you wanna go?",
+        });
+        dialogue.Add("ElevatorAMiddle", new string[] {
+            "Where do you wanna go?",
+        });
+        dialogue.Add("ElevatorABottom", new string[] {
+            "Where do you wanna go?",
+        }); 
+       
+        dialogue.Add("ElevatorAUpChoice1", new string[] {
+            "Inside"
+        });
+        dialogue.Add("ElevatorAUpChoice2", new string[] {
+            "Street"
+        });
+
+        dialogue.Add("ElevatorAMiddleChoice1", new string[] {
+            "Roof"
+        });
+        dialogue.Add("ElevatorAMiddleChoice2", new string[] {
+            "Street"
+        });
+
+        dialogue.Add("ElevatorABottomChoice1", new string[] {
+            "Roof"
+        });
+        dialogue.Add("ElevatorABottomChoice2", new string[] {
+            "Inside"
+        });
+
     }
 }

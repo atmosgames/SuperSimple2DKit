@@ -156,6 +156,7 @@ public class DialogueBoxController : MonoBehaviour
         animator.SetBool("active", true);
         activated = true;
         NewPlayer.Instance.Freeze(true);
+        index = -1;
         StartCoroutine(Advance());
     }
 
@@ -287,6 +288,8 @@ public class DialogueBoxController : MonoBehaviour
 
     IEnumerator TypeText()
     {
+        if(characterDiologue.Length == 2)
+            index = 0;
         WaitForSeconds wait = new WaitForSeconds(.01f);
         foreach (char c in characterDiologue[index])
         {

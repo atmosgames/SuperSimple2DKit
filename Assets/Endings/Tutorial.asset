@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09bafd11350c2144abe52ae1e410e1f3, type: 3}
+  m_Name: Tutorial
+  m_EditorClassIdentifier: 
+  title: No other choice
+  description: 'The AI wasn''t sure how to cope with closed door so it decided to
+    jump of the building.
+
+    Unexpectadly the AI survived and was taken back home
+    by an ambulance.'
+  cutscene: {fileID: 11400000, guid: c2082c12cce956b4bb46f25653cef18f, type: 2}
