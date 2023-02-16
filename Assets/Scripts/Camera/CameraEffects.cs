@@ -12,6 +12,8 @@ public class CameraEffects : MonoBehaviour
     [SerializeField] private CinemachineBasicMultiChannelPerlin multiChannelPerlin;
     public float screenYDefault;
     public float screenYTalking;
+    public float defaultShake = 1;
+    public float defaultShakeLength = 0.2f;
     [Range(0, 10)]
     [System.NonSerialized] public float shakeLength = 10;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
@@ -23,7 +25,8 @@ public class CameraEffects : MonoBehaviour
         screenYDefault = cinemachineFramingTransposer.m_ScreenX;
         
         //Inform the player what CameraEffect it should be controlling, no matter what scene we are on.
-        NewPlayer.Instance.cameraEffects = this;
+        if(NewPlayer.Instance)
+            NewPlayer.Instance.cameraEffects = this;
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
         multiChannelPerlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
@@ -40,5 +43,11 @@ public class CameraEffects : MonoBehaviour
     {
         shakeLength = length;
         multiChannelPerlin.m_FrequencyGain = shake;
+    }
+
+    public void ShakeS(float length)
+    {
+        shakeLength = length;
+        multiChannelPerlin.m_FrequencyGain = defaultShake;
     }
 }

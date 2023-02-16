@@ -48,6 +48,6 @@ public class LoadingScreenText : MonoBehaviour
         }
 
         yield return lineWait;
-        SceneManager.LoadScene("Demolevel");
+        SceneManager.LoadScene("World");
     }
 }

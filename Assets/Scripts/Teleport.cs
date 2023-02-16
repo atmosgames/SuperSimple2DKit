@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject player;
+    [SerializeField] private AudioSource source;
 
-    // Update is called once per frame
-    void Update()
+    void OnEnable()
     {
+        player.transform.position = transform.position;
         
+        if(source)
+            source.Play();
+
+        gameObject.SetActive(false);
     }
 }
