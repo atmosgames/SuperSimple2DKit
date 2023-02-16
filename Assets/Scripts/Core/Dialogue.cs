@@ -46,6 +46,24 @@ public class Dialogue : MonoBehaviour
             "What else can you do?"
         });
 
+        dialogue.Add("ElevatorA", new string[] {
+            "Hi there!",
+            "I'm an NPC! This conversation is called 'npcA'...",
+            "If you go and find me 80 coins, my dialogue will move on to 'npcB'!"
+        });
+
+        dialogue.Add("ElevatorAChoice1", new string[] {
+            "",
+            "",
+            "Let me go find some coins!",
+        });
+
+        dialogue.Add("ElevatorAChoice2", new string[] {
+            "",
+            "",
+            "What else can you do?"
+        });
+
         dialogue.Add("CharacterB", new string[] {
             "Hey! You found 80 coins! That means 'npcB' is now being used inside 'Dialogue.cs'!",
             "After my dialogue completes, I'll take 80 coins, or however many you specify in the inspector...",

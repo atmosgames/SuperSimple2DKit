@@ -31,6 +31,8 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private int getBugsAmount; //Or the amount of coins given if item is fetched
     [SerializeField] private string finishTalkingAnimatorBool; //After completing a conversation, an animation can be fired
     [SerializeField] private string finishTalkingActivateObjectString; //After completing a conversation, an object's name can be searched for and activated.
+    [SerializeField] private GameObject activateObjectChoice1; 
+    [SerializeField] private GameObject activateObjectChoice2; 
     [SerializeField] private Sprite getItemSprite; //The sprite of the inventory item given, shown in HUD
     [SerializeField] private AudioClip getSound; //When the player is given an object, this sound will play
     [SerializeField] private bool instantGet; //Player can be immediately given an item the moment the conversation begins
@@ -54,13 +56,13 @@ public class DialogueTrigger : MonoBehaviour
                 iconAnimator.SetBool("active", false);
                 if (requiredItem == "" && requiredBugs == 0 || !GameManager.Instance.inventory.ContainsKey(requiredItem) && requiredBugs == 0 || (requiredBugs != 0 && NewPlayer.Instance.bugs < requiredBugs))
                 {
-                    GameManager.Instance.dialogueBoxController.Appear(dialogueStringA, characterName, this, false, audioLinesA, audioChoices, finishTalkingAnimatorBool, finishTalkingActivateObject, finishTalkingActivateObjectString, repeat);
+                    GameManager.Instance.dialogueBoxController.Appear(dialogueStringA, characterName, this, false, audioLinesA, audioChoices, finishTalkingAnimatorBool, finishTalkingActivateObject, finishTalkingActivateObjectString, repeat, activateObjectChoice1, activateObjectChoice2);
                 }
                 else if (requiredBugs == 0 && GameManager.Instance.inventory.ContainsKey(requiredItem) || (requiredBugs != 0 && NewPlayer.Instance.bugs >= requiredBugs))
                 {
                     if (dialogueStringB != "")
                     {
-                        GameManager.Instance.dialogueBoxController.Appear(dialogueStringB, characterName, this, true, audioLinesB, audioChoices, "", null, "", repeat);
+                        GameManager.Instance.dialogueBoxController.Appear(dialogueStringB, characterName, this, true, audioLinesB, audioChoices, "", null, "", repeat, activateObjectChoice1, activateObjectChoice2);
                     }
                     else
                     {

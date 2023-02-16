@@ -47,6 +47,9 @@ public class DialogueBoxController : MonoBehaviour
     private bool submitKeyIsDown = true;
     private bool typing = true;
 
+    private GameObject activateObjectChoice1;
+    private GameObject activateObjectChoice2;
+
     // Update is called once per frame
     void Update()
     {
@@ -116,8 +119,11 @@ public class DialogueBoxController : MonoBehaviour
         }
     }
 
-    public void Appear(string fName, string characterName, DialogueTrigger dTrigger, bool useItemAfterClose, AudioClip[] audioL, AudioClip[] audioC, string finishTalkingAnimBool, GameObject finishTalkingActivateGObject, string finishTalkingActivateGOString, bool r)
+    public void Appear(string fName, string characterName, DialogueTrigger dTrigger, bool useItemAfterClose, AudioClip[] audioL, AudioClip[] audioC, string finishTalkingAnimBool, GameObject finishTalkingActivateGObject, string finishTalkingActivateGOString, bool r,
+                        GameObject activateObjectChoice1,  GameObject activateObjectChoice2)
     {
+        this.activateObjectChoice1 = activateObjectChoice1;
+        this.activateObjectChoice2 = activateObjectChoice2;
         repeat = r;
         finishTalkingAnimatorBool = finishTalkingAnimBool;
         finishTalkingActivateGameObject = finishTalkingActivateGObject;
@@ -161,10 +167,14 @@ public class DialogueBoxController : MonoBehaviour
             yield return new WaitForSeconds(.1f);
             if (animator.GetInteger("choiceSelection") == 1)
             {
+                if (activateObjectChoice1)
+                    activateObjectChoice1.SetActive(true);
                 dialogueAudioSource.PlayOneShot(audioChoices[0]);
             }
             else
             {
+                if (activateObjectChoice2)
+                    activateObjectChoice2.SetActive(true);
                 dialogueAudioSource.PlayOneShot(audioChoices[1]);
             }
         }
@@ -235,11 +245,15 @@ public class DialogueBoxController : MonoBehaviour
             yield return new WaitForSeconds(.1f);
             if (animator.GetInteger("choiceSelection") == 1)
             {
+                if (activateObjectChoice1)
+                    activateObjectChoice1.SetActive(true);
                 dialogueAudioSource.PlayOneShot(audioChoices[0]);
                 yield return new WaitForSeconds(audioChoices[0].length);
             }
             else
             {
+                if (activateObjectChoice2)
+                    activateObjectChoice2.SetActive(true);
                 dialogueAudioSource.PlayOneShot(audioChoices[1]);
                 yield return new WaitForSeconds(audioChoices[1].length);
             }
