@@ -109,8 +109,8 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Wrong ending name: " + ending);
         else
         {
-            SceneManager.LoadScene("EndingScene");
             EndingPlayer.currentEnding = endingDict[ending];
+            SceneManager.LoadScene("EndingScene");
         }
     }
 
