@@ -62,7 +62,6 @@ public class Collectable : MonoBehaviour
                 if (itemName != "")
                 {
                     GameManager.Instance.GetInventoryItem(itemName, UIImage);
-                    if (itemName == "Melee") NewPlayer.Instance.allowPlayerAttackMelee = true;
                 }
                 ObjectDestroy();
 

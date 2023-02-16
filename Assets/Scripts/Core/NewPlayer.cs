@@ -57,10 +57,10 @@ public class NewPlayer : PhysicsObject
     [System.NonSerialized] public bool pounding;
     [System.NonSerialized] public bool shooting = false;
 
-    public bool allowPlayerAttackMelee = false;
     [SerializeField] float attackCooldown = 0.5f;
     private float nextAttack = 0f;
 
+    public bool drunkEffectActive = false;
 
     [Header ("Inventory")]
     public float ammo;
@@ -105,6 +105,7 @@ public class NewPlayer : PhysicsObject
     private void Update()
     {
         ComputeVelocity();
+        if(drunkEffectActive == true) Postprocess.Instance.DrunkEffect();
     }
 
     protected void ComputeVelocity()
@@ -164,6 +165,9 @@ public class NewPlayer : PhysicsObject
                             if (name == "Melee") MeleeAction();
                             //Baloon
                             if (name == "RedBalloon" || name == "BlueBalloon") BalloonAction(name);
+                            //Beer
+                            if (name == "LightBeer" || name == "DarkBeer") BeerAction(name);
+
                             break;
                         }
                     }
@@ -240,7 +244,7 @@ public class NewPlayer : PhysicsObject
 
     public void MeleeAction()
     {
-        if (allowPlayerAttackMelee == true && Time.time > nextAttack)
+        if (Time.time > nextAttack)
         {
             animator.SetTrigger("attack");
             Shoot(false);
@@ -250,6 +254,12 @@ public class NewPlayer : PhysicsObject
 
     public void BalloonAction(string name)
     {
+        GameManager.Instance.RemoveInventoryItem(name);
+    }
+
+    public void BeerAction(string name)
+    {
+        drunkEffectActive = true;
         GameManager.Instance.RemoveInventoryItem(name);
     }
 
