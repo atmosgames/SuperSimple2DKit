@@ -177,7 +177,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Update()
     {
-        if(toReset)
+        if(toReset && completed && sleeping)
         {
             toReset = false;
             sleeping = false;

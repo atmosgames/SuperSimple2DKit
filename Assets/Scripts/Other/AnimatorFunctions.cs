@@ -12,10 +12,22 @@ public class AnimatorFunctions : MonoBehaviour
     [SerializeField] private ParticleSystem particleSystem;
     [SerializeField] private Animator setBoolInAnimator;
 
+    public void PunchEffect()
+    {
+        //gsf
+    }
+
+    public void PlayStepSound()
+    {
+        //heh
+    }
+
     // If we don't specify what audio source to play sounds through, just use the one on player.
     void Start()
     {
-        if (!audioSource) audioSource = NewPlayer.Instance.audioSource;
+        if(NewPlayer.Instance)
+            if (!audioSource) 
+                audioSource = NewPlayer.Instance.audioSource;
     }
 
     //Hide and unhide the player
@@ -40,6 +52,16 @@ public class AnimatorFunctions : MonoBehaviour
     void PlaySound(AudioClip whichSound)
     {
         audioSource.PlayOneShot(whichSound);
+    }
+
+    public void LandEffect()
+    {
+        //lol
+    }
+
+    public void PoundEffect()
+    {
+        //lol2
     }
 
     public void EmitParticles(int amount)
