@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SafeEntry
+  m_Name: Open
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -37,7 +37,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -7503921836827717929}
-    m_Position: {x: 200, y: 0, z: 0}
+    m_Position: {x: 350, y: 100, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
