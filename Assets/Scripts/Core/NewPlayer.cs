@@ -85,6 +85,8 @@ public class NewPlayer : PhysicsObject
     public AudioClip[] poundActivationSounds;
     public AudioClip outOfAmmoSound;
     public AudioClip stepSound;
+    public AudioClip balloonBreakSound;
+    public AudioClip drinkingSound;
     [System.NonSerialized] public int whichHurtSound;
 
     void Start()
@@ -196,6 +198,11 @@ public class NewPlayer : PhysicsObject
                             if (name == "Melee") MeleeAction();
                             //Baloon
                             if (name == "RedBalloon" || name == "BlueBalloon") BalloonAction(name);
+                            //Beer
+                            if (name == "LightBeer" || name == "DarkBeer") BeerAction(name);
+                            //Dynamite
+                            if (name == "Dynamite") DynamiteAction(name);
+
                             break;
                         }
                     }
@@ -268,6 +275,7 @@ public class NewPlayer : PhysicsObject
     public void BalloonAction(string name)
     {
         GameManager.Instance.RemoveInventoryItem(name);
+        audioSource.PlayOneShot(balloonBreakSound);
         var objs = GetComponentsInChildren<AddObjToInventory>();
         foreach (var obj in objs)
         {
@@ -279,6 +287,7 @@ public class NewPlayer : PhysicsObject
     public void BeerAction(string name)
     {
         drunkEffectActive = true;
+        audioSource.PlayOneShot(drinkingSound);
         GameManager.Instance.RemoveInventoryItem(name);
     }
 
@@ -447,7 +456,7 @@ public class NewPlayer : PhysicsObject
 
     public void PunchEffect()
     {
-        GameManager.Instance.audioSource.PlayOneShot(punchSound);
+        //GameManager.Instance.audioSource.PlayOneShot(punchSound);
         cameraEffects.Shake(100, 1f);
     }
 
