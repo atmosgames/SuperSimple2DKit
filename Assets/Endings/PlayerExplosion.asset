@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09bafd11350c2144abe52ae1e410e1f3, type: 3}
   m_Name: PlayerExplosion
   m_EditorClassIdentifier: 
-  title: 
-  description: 
+  title: Explosion Enjoyer
+  description: Who would have thought that running into the exploding dynamite might
+    end badly.
   cutscene: {fileID: 11400000, guid: 1641199f85a4ca94b8863430c0e5cc5e, type: 2}
