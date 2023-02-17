@@ -8,31 +8,23 @@ public class DynamiteExplosion : MonoBehaviour
     [SerializeField] AudioClip explosionFx;
     [SerializeField] GameObject smokeEffect;
     [SerializeField] GameObject explosionEffect;
-    [SerializeField] GameObject Graphics;
-
-    private Vector2 startPosition;
-    private bool explosionStarted = false;
-
 
     // Start is called before the first frame update
     void Start()
     {
-        startPosition = NewPlayer.Instance.transform.position;
-        gameObject.transform.position = startPosition;
-        Debug.Log("dynamite exists");
+        gameObject.transform.position = NewPlayer.Instance.transform.position;
     }
-
 
     void OnCollisionEnter2D() 
     {
         Debug.Log("function works");
-        if(!explosionStarted) StartCoroutine(Countdown());
-        explosionStarted = true;
+        StartCoroutine(Countdown());
+        
     }
 
     IEnumerator Countdown()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         var hitColliders = Physics2D.OverlapCircleAll(transform.position, 1.5f);
         foreach (Collider2D hitCollider in hitColliders)
         {
@@ -48,29 +40,18 @@ public class DynamiteExplosion : MonoBehaviour
                 }
             }
         }
+        dynamiteFx.PlayOneShot(explosionFx);
+        explosionEffect.SetActive(true);
+        smokeEffect.SetActive(true);
+        NewPlayer.Instance.cameraEffects.Shake(100, 1f);
 
-        if(Vector2.Distance(transform.position, NewPlayer.Instance.transform.position) <= 5f)
-        {
-            GameManager.Instance.EndGame("PlayerExplosion");
-        }
-        else
-        {
-            explosionEffect.SetActive(true);
-            smokeEffect.SetActive(true);
-            Graphics.SetActive(false);
-            dynamiteFx.PlayOneShot(explosionFx);
-            NewPlayer.Instance.cameraEffects.Shake(100, 1f);
-
-            StartCoroutine(Destruction());
-        }
-        
-        
+        StartCoroutine(Destruction());
         
     }
 
     IEnumerator Destruction()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
 }
