@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LogoIntro.unity
     guid: ae98fb7f6f10c4279b95db8643600d08
   - enabled: 1
+    path: Assets/Scenes/EndingScene.unity
+    guid: 9bb9d1a817d1fef4ab715cb5bc19cf0d
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 78d194e4a6a6e4b7b8c3849f8cce7a99
   - enabled: 1
@@ -17,12 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/World.unity
     guid: 3b2bb797b5f98324592f13ebfa23b006
-  - enabled: 0
-    path: Assets/Scenes/DemoLevel.unity
-    guid: 53953173316aa0a43a3912f541d85d08
-  - enabled: 1
-    path: Assets/Scenes/EndingScene.unity
-    guid: 1ab2309d1db25774288e0e85c4532a29
   - enabled: 1
     path: Assets/Scenes/LoadingScreen.unity
     guid: 0a7d28f110e67f44ca9439732655adff

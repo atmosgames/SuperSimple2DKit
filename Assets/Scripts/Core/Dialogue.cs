@@ -54,7 +54,7 @@ public class Dialogue : MonoBehaviour
             "",
             "Ignore"
         });
-
+        
         dialogue.Add("Seller2A", new string[] {
             "...",
             "Do you want to get another one?",
@@ -73,6 +73,13 @@ public class Dialogue : MonoBehaviour
             "Ignore"
         });
 
+        dialogue.Add("AccessA", new string[] {
+            "Access denied"
+        });
+
+        dialogue.Add("AccessB", new string[] {
+            "Access granted"
+        });
 
         dialogue.Add("ElevatorAUp", new string[] {
             "Where do you wanna go?",
