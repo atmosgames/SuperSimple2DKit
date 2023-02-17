@@ -36,6 +36,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private Sprite getItemSprite; //The sprite of the inventory item given, shown in HUD
     [SerializeField] private AudioClip getSound; //When the player is given an object, this sound will play
     [SerializeField] private bool instantGet; //Player can be immediately given an item the moment the conversation begins
+    [SerializeField] private bool removeRequiredItem;
     [SerializeField] private string requiredItem; //The required fetch quest item
     [SerializeField] private int requiredBugs; //Or the required coins (cannot require both an item and coins)
     public Animator useItemAnimator; //If the player uses an item, like a key, an animator can be fired (ie to open a door)
@@ -63,7 +64,7 @@ public class DialogueTrigger : MonoBehaviour
         activateObjectChoice2 = go;
     }
 
-    public void Reset()
+    public void ResetDialogue()
     {
 
         toReset = true;
@@ -133,7 +134,8 @@ public class DialogueTrigger : MonoBehaviour
 
             if (GameManager.Instance.inventory.ContainsKey(requiredItem))
             {
-                GameManager.Instance.RemoveInventoryItem(requiredItem);
+                if(removeRequiredItem)
+                    GameManager.Instance.RemoveInventoryItem(requiredItem);
             }
             else
             {
@@ -177,6 +179,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         if(toReset)
         {
+            toReset = false;
             sleeping = false;
             completed = false;
         }

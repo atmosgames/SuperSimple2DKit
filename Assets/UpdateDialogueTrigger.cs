@@ -18,6 +18,6 @@ public class UpdateDialogueTrigger : MonoBehaviour
         trigger.SetDialgueB(dialogueB);
         trigger.SetActivateObject1(toActivateA);
         trigger.SetActivateObject2(toActivateB);
-        trigger.Reset();
+        trigger.ResetDialogue();
     }
 }

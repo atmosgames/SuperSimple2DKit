@@ -156,7 +156,6 @@ public class DialogueBoxController : MonoBehaviour
         animator.SetBool("active", true);
         activated = true;
         NewPlayer.Instance.Freeze(true);
-        Debug.Log("KURWA CO");
         index = -1;
         StartCoroutine(Advance());
     }
