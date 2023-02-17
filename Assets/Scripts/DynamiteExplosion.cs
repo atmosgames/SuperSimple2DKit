@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class DynamiteExplosion : MonoBehaviour
 {
-
+    [SerializeField] AudioSource dynamiteFx;
+    [SerializeField] AudioClip explosionFx;
+    [SerializeField] GameObject smokeEffect;
+    [SerializeField] GameObject explosionEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -15,11 +18,11 @@ public class DynamiteExplosion : MonoBehaviour
     void OnCollisionEnter2D() 
     {
         Debug.Log("function works");
-        StartCoroutine(Wait());
+        StartCoroutine(Countdown());
         
     }
 
-    IEnumerator Wait()
+    IEnumerator Countdown()
     {
         yield return new WaitForSeconds(5);
         var hitColliders = Physics2D.OverlapCircleAll(transform.position, 1.5f);
@@ -37,6 +40,18 @@ public class DynamiteExplosion : MonoBehaviour
                 }
             }
         }
+        dynamiteFx.PlayOneShot(explosionFx);
+        explosionEffect.SetActive(true);
+        smokeEffect.SetActive(true);
+        NewPlayer.Instance.cameraEffects.Shake(100, 1f);
+
+        StartCoroutine(Destruction());
+        
+    }
+
+    IEnumerator Destruction()
+    {
+        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
 }

@@ -69,7 +69,7 @@ public class NewPlayer : PhysicsObject
     public int maxHealth;
     public int maxAmmo;
 
-    public GameObject dynamite;
+    public GameObject dynamitePrefab;
 
     [Header ("Sounds")]
     public AudioClip deathSound;
@@ -285,7 +285,7 @@ public class NewPlayer : PhysicsObject
     public void DynamiteAction(string name)
     {
         GameManager.Instance.RemoveInventoryItem(name);
-        Instantiate(dynamite, null);
+        Instantiate(dynamitePrefab, null);
 
     }
 
