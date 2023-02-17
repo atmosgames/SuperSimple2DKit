@@ -32,7 +32,7 @@ public class DynamiteExplosion : MonoBehaviour
 
     IEnumerator Countdown()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
         var hitColliders = Physics2D.OverlapCircleAll(transform.position, 1.5f);
         foreach (Collider2D hitCollider in hitColliders)
         {
@@ -51,17 +51,20 @@ public class DynamiteExplosion : MonoBehaviour
 
         if(Vector2.Distance(transform.position, NewPlayer.Instance.transform.position) <= 5f)
         {
-            Debug.Log("player explode");
+            GameManager.Instance.EndGame("PlayerExplosion");
         }
+        else
+        {
+            explosionEffect.SetActive(true);
+            smokeEffect.SetActive(true);
+            Graphics.SetActive(false);
+            dynamiteFx.PlayOneShot(explosionFx);
+            NewPlayer.Instance.cameraEffects.Shake(100, 1f);
 
+            StartCoroutine(Destruction());
+        }
         
-        explosionEffect.SetActive(true);
-        smokeEffect.SetActive(true);
-        Graphics.SetActive(false);
-        dynamiteFx.PlayOneShot(explosionFx);
-        NewPlayer.Instance.cameraEffects.Shake(100, 1f);
-
-        StartCoroutine(Destruction());
+        
         
     }
 
