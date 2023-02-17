@@ -7,5 +7,6 @@ public class ResetDialogue : MonoBehaviour
     private void OnEnable()
     {
         GetComponentInParent<DialogueTrigger>().ResetDialogue();
+        gameObject.SetActive(false);
     }
 }
