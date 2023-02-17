@@ -8,18 +8,26 @@ public class DynamiteExplosion : MonoBehaviour
     [SerializeField] AudioClip explosionFx;
     [SerializeField] GameObject smokeEffect;
     [SerializeField] GameObject explosionEffect;
+    [SerializeField] GameObject Graphics;
+
+    private Vector2 startPosition;
+    private bool explosionStarted = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.transform.position = NewPlayer.Instance.transform.position;
+        startPosition = NewPlayer.Instance.transform.position;
+        gameObject.transform.position = startPosition;
+        Debug.Log("dynamite exists");
     }
+
 
     void OnCollisionEnter2D() 
     {
         Debug.Log("function works");
-        StartCoroutine(Countdown());
-        
+        if(!explosionStarted) StartCoroutine(Countdown());
+        explosionStarted = true;
     }
 
     IEnumerator Countdown()
@@ -40,9 +48,17 @@ public class DynamiteExplosion : MonoBehaviour
                 }
             }
         }
-        dynamiteFx.PlayOneShot(explosionFx);
+
+        if(Vector2.Distance(transform.position, NewPlayer.Instance.transform.position) <= 5f)
+        {
+            Debug.Log("player explode");
+        }
+
+        
         explosionEffect.SetActive(true);
         smokeEffect.SetActive(true);
+        Graphics.SetActive(false);
+        dynamiteFx.PlayOneShot(explosionFx);
         NewPlayer.Instance.cameraEffects.Shake(100, 1f);
 
         StartCoroutine(Destruction());
@@ -51,7 +67,7 @@ public class DynamiteExplosion : MonoBehaviour
 
     IEnumerator Destruction()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5);
         Destroy(gameObject);
     }
 }
