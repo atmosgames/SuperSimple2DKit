@@ -101,8 +101,18 @@ public class Dialogue : MonoBehaviour
         });
         dialogue.Add("ElevatorABottom", new string[] {
             "Where do you wanna go?",
-        }); 
-       
+        });
+
+        dialogue.Add("ElevatorBUp", new string[] {
+            "Where do you wanna go?",
+        });
+        dialogue.Add("ElevatorBMiddle", new string[] {
+            "Where do you wanna go?",
+        });
+        dialogue.Add("ElevatorBBottom", new string[] {
+            "Where do you wanna go?",
+        });
+
         dialogue.Add("ElevatorAUpChoice1", new string[] {
             "Inside"
         });
@@ -122,6 +132,27 @@ public class Dialogue : MonoBehaviour
         });
         dialogue.Add("ElevatorABottomChoice2", new string[] {
             "Inside"
+        });
+
+        dialogue.Add("ElevatorBUpChoice1", new string[] {
+            "Street"
+        });
+        dialogue.Add("ElevatorBUpChoice2", new string[] {
+            "Underground"
+        });
+
+        dialogue.Add("ElevatorBMiddleChoice1", new string[] {
+            "Inside"
+        });
+        dialogue.Add("ElevatorBMiddleChoice2", new string[] {
+            "Underground"
+        });
+
+        dialogue.Add("ElevatorBBottomChoice1", new string[] {
+            "Inside"
+        });
+        dialogue.Add("ElevatorBBottomChoice2", new string[] {
+            "Street"
         });
 
     }
