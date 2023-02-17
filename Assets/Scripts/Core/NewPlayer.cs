@@ -24,8 +24,8 @@ public class NewPlayer : PhysicsObject
     [SerializeField] private GameObject pauseMenu;
     public RecoveryCounter recoveryCounter;
 
+    private int drinkedBeer = 0;
 
-    
 
     // Singleton instantiation
     private static NewPlayer instance;
@@ -286,6 +286,10 @@ public class NewPlayer : PhysicsObject
 
     public void BeerAction(string name)
     {
+        drinkedBeer++;
+        if (drinkedBeer == 2)
+            GameManager.Instance.EndGame("2Beers");
+
         drunkEffectActive = true;
         audioSource.PlayOneShot(drinkingSound);
         GameManager.Instance.RemoveInventoryItem(name);

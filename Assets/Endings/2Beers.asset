@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09bafd11350c2144abe52ae1e410e1f3, type: 3}
+  m_Name: 2Beers
+  m_EditorClassIdentifier: 
+  title: Alcoholism
+  description: AI could not stand the pressure and fell into alcoholism
+  cutscene: {fileID: 11400000, guid: b20edf5082c904d409f1bee7f0eb0ca1, type: 2}

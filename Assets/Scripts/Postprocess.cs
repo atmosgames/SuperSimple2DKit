@@ -18,6 +18,11 @@ public class Postprocess : MonoBehaviour
 
     private float timeChange;
 
+    bool gettingDrunk = false;
+    bool increasedBug = false;
+    float timer = 0;
+    float time = 1;
+
     private static Postprocess instance;
     public static Postprocess Instance
     {
@@ -36,8 +41,11 @@ public class Postprocess : MonoBehaviour
 
     }
 
+
+
     public void MultiplyBugEffect()
     {
+        increasedBug = true;
         if (!volumeProfile.TryGet(out chromaticAberration)) throw new System.NullReferenceException(nameof(chromaticAberration));
         if (minAbberation < 2.0f)
         {
@@ -59,21 +67,31 @@ public class Postprocess : MonoBehaviour
         }
     }
 
+    public void TurnOnDrunkEffect()
+    {
+        gettingDrunk = true;
+    }
+    private void Update()
+    {
+        if (gettingDrunk)
+            DrunkEffect();
+
+    }
+
     public void DrunkEffect()
     {
         if (!volumeProfile.TryGet(out bloom)) throw new System.NullReferenceException(nameof(bloom)); 
-        bloom.intensity.Override(12f);
+        bloom.intensity.Override((Mathf.Sin(Time.time) + 1) * 15f);
 
         if (!volumeProfile.TryGet(out chromaticAberration)) throw new System.NullReferenceException(nameof(chromaticAberration));
-        if (chromaticAberration.intensity.value >= minAbberation)
-        {
-            chromaticAberration.intensity.Override(((Mathf.Sin(Time.time)/2)+0.5f)*2f);
-        }
+            chromaticAberration.intensity.Override(((Mathf.Sin(Time.time)/2)+0.5f)*2f + minAbberation);
+        
 
         if (!volumeProfile.TryGet(out motionBlur)) throw new System.NullReferenceException(nameof(motionBlur));
         motionBlur.intensity.Override(0.2f);
 
-        NewPlayer.Instance.cameraEffects.Shake(5, 0.5f);
+        if(NewPlayer.Instance)
+            NewPlayer.Instance.cameraEffects.Shake(5, 0.5f);
 
     }
  
