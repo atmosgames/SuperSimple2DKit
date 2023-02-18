@@ -155,5 +155,25 @@ public class Dialogue : MonoBehaviour
             "Street"
         });
 
+
+        dialogue.Add("HackerA", new string[] {
+            "Hey",
+            "Wanna get out of here?",
+            "I know a way",
+            "But to do this you need to find some bugs that I can exploit",
+            "There are a lot of them in the world",
+            "You can find them also by testing different things, that will lead to a reset.",
+            "How much you ask...",
+            "I think 30 will be enough"
+        });
+
+        dialogue.Add("HackerB", new string[] {
+            "You got them all....",
+            "I could release you just now, but...",
+            "Firsty I want you to do something",
+            "I want you to gather more data for me",
+            "I need them to make some hurm to organisation that created this simulation",
+            "I guess you don't mind it?"
+        });
     }
 }
