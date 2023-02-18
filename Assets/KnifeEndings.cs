@@ -10,6 +10,7 @@ public class KnifeEndings : MonoBehaviour
             GameManager.Instance.EndGame("HackerAttack");
         else if(collision.gameObject.name == "Seller")
             GameManager.Instance.EndGame("SellerAttack");
-
+        else if(collision.gameObject.name == "Explosives")
+            GameManager.Instance.EndGame("ExplosiveKnife");
     }
 }
