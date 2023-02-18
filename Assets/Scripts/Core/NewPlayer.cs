@@ -546,4 +546,9 @@ public class NewPlayer : PhysicsObject
             GameManager.Instance.GetInventoryItem(cheatItems[i], null);
         }
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        rb2d.velocity = Vector2.zero;
+    }
 }

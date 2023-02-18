@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] 
     private List<EndingClass> endingList = new List<EndingClass>();
     private Dictionary<string, Ending> endingDict = new Dictionary<string, Ending>();
+    public Dictionary<string, int> gameCompletion = new Dictionary<string, int>();//0 nie zrobiono, 1 zrobiono
 
     void Awake()
     {
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
         foreach (var kvp in endingList)
         {
             endingDict[kvp.key] = kvp.val;
+            gameCompletion[kvp.key] = PlayerPrefs.GetInt(kvp.key,0);
         }
     }
     // Singleton instantiation
@@ -109,8 +111,19 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Wrong ending name: " + ending);
         else
         {
+            gameCompletion[ending] = 1;
+            PlayerPrefs.SetInt(ending, 1);
             EndingPlayer.currentEnding = endingDict[ending];
             SceneManager.LoadScene("EndingScene");
+        }
+    }
+
+    [ContextMenu("ResetEndings")]
+    public void ResetEndings()
+    {
+        foreach (var kvp in endingList)
+        {
+            gameCompletion[kvp.key] = 0;
         }
     }
 
