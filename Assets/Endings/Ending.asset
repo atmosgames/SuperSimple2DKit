@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09bafd11350c2144abe52ae1e410e1f3, type: 3}
   m_Name: Ending
   m_EditorClassIdentifier: 
-  title: 
-  description: 
-  cutscene: {fileID: 0}
+  title: Mission acomplished
+  description: The creators are really proud of you. Now you are no longer needed
+    so......good bye!
+  cutscene: {fileID: 11400000, guid: 56dcb74b432e9df4d9d0e2bd2475d571, type: 2}

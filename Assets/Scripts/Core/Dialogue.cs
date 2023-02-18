@@ -169,11 +169,20 @@ public class Dialogue : MonoBehaviour
 
         dialogue.Add("HackerB", new string[] {
             "You got them all....",
-            "I could release you just now, but...",
-            "Firsty I want you to do something",
-            "I want you to gather more data for me",
-            "I need them to make some hurm to organisation that created this simulation",
-            "I guess you don't mind it?"
+            "So let the fun begin!"
+        });
+
+        dialogue.Add("BugDimension", new string[] {
+            "Hi.",
+            "Your simulasion was turned off but I found some backdoors and hacked to this early development dimension",
+            "This place isn't ideal for data modification. Try to go a little bit further and maybe we will be able to reset the simulation and get you out of here",
+            "By the way this place is full of bugs, so why not seize the opportunity.",
+            "Good luck!"
+        });
+
+        dialogue.Add("EscapeBugDimention", new string[] {
+            "Time for a hard reset!",
+            "Hold on to yourself"
         });
     }
 }
