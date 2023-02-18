@@ -67,6 +67,18 @@ public class Postprocess : MonoBehaviour
         }
     }
 
+    public void ResetEffects()
+    {
+        if (!volumeProfile.TryGet(out bloom)) throw new System.NullReferenceException(nameof(bloom));
+        bloom.intensity.Override(0);
+
+        if (!volumeProfile.TryGet(out chromaticAberration)) throw new System.NullReferenceException(nameof(chromaticAberration));
+        chromaticAberration.intensity.Override(0);
+
+
+        if (!volumeProfile.TryGet(out motionBlur)) throw new System.NullReferenceException(nameof(motionBlur));
+        motionBlur.intensity.Override(0);
+    }
     public void TurnOnDrunkEffect()
     {
         gettingDrunk = true;
