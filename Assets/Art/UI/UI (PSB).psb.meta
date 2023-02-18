@@ -221,7 +221,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 3, y: 576}
-    spritePosition: {x: 317, y: 1932}
+    spritePosition: {x: 318, y: 1933}
   - name: IconCoin
     originalName: 
     pivot: {x: 0.5, y: 0.5}

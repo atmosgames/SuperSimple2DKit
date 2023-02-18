@@ -938,7 +938,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 443, y: 611}
-    spritePosition: {x: 1247, y: 1230}
+    spritePosition: {x: 1248, y: 1231}
   - name: BicepR
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1365,7 +1365,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 725, y: 611}
-    spritePosition: {x: 1015, y: 1230}
+    spritePosition: {x: 1016, y: 1231}
   - name: Chest
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1821,7 +1821,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 771, y: 3}
-    spritePosition: {x: 857, y: 891}
+    spritePosition: {x: 858, y: 892}
   - name: FootR
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2686,7 +2686,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 242, y: 609}
-    spritePosition: {x: 1056, y: 403}
+    spritePosition: {x: 1060, y: 406}
   - name: ThighR
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3396,7 +3396,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 0, y: 608}
-    spritePosition: {x: 989, y: 642}
+    spritePosition: {x: 993, y: 646}
   - name: FootL
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -4290,7 +4290,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 341, y: 609}
-    spritePosition: {x: 758, y: 403}
+    spritePosition: {x: 762, y: 406}
   - name: ThighL
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -4759,7 +4759,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 121, y: 608}
-    spritePosition: {x: 802, y: 642}
+    spritePosition: {x: 806, y: 646}
   - name: HandL
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -5531,7 +5531,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 442, y: 666}
-    spritePosition: {x: 393, y: 1229}
+    spritePosition: {x: 395, y: 1230}
   - name: BicepL
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -5958,7 +5958,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 724, y: 666}
-    spritePosition: {x: 625, y: 1229}
+    spritePosition: {x: 627, y: 1230}
   - name: Head
     originalName: 
     pivot: {x: 0.5, y: 0.5}
