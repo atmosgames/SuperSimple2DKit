@@ -19759,21 +19759,21 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  enemyBase: {fileID: 0}
+  enemyBase: {fileID: 428410395818371648}
   graphic: {fileID: 316122289150071992}
   layerMask:
     serializedVersion: 2
-    m_Bits: 16640
+    m_Bits: 256
   enemyType: 1
-  attentionRange: 1.09
+  attentionRange: 3
   changeDirectionEase: 2
   followPlayer: 0
   flipWhenTurning: 0
   hurtLaunchPower: 5
   jumping: 0
   jumpPower: 14
-  maxSpeed: 2
-  maxSpeedDeviation: 1
+  maxSpeed: 5
+  maxSpeedDeviation: 2
   neverStopFollowing: 0
   rayCastSize: {x: 1.5, y: 1}
   rayCastOffset: {x: 1, y: 0.46}
@@ -19814,7 +19814,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.24}
-  m_Size: {x: 1.37, y: 0.71}
+  m_Size: {x: 1, y: 0.71}
   m_Direction: 0
 --- !u!50 &347865018217599054
 Rigidbody2D:
