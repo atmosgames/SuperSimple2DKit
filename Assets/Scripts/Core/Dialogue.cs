@@ -192,5 +192,15 @@ public class Dialogue : MonoBehaviour
             "Time for a hard reset!",
             "Hold on to yourself"
         });
+
+        dialogue.Add("EscapeBugDimentionChoice1", new string[] {
+            "",
+            "OK"
+        });
+
+        dialogue.Add("EscapeBugDimentionChoice2", new string[] {
+            "",
+            "OK"
+        });
     }
 }
