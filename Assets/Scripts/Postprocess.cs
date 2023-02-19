@@ -15,6 +15,7 @@ public class Postprocess : MonoBehaviour
     private float minAbberation = 0f;
     private Bloom bloom;
     private MotionBlur motionBlur;
+    private AudioSource source;
 
     private float timeChange;
 
@@ -35,6 +36,7 @@ public class Postprocess : MonoBehaviour
 
     private void Start()
     {
+        source = GetComponent<AudioSource>();
         volumeProfile = GetComponent<Volume>()?.profile;
         if (!volumeProfile) throw new System.NullReferenceException(nameof(VolumeProfile));
         timeChange = Time.time;
@@ -107,5 +109,46 @@ public class Postprocess : MonoBehaviour
 
     }
  
-    
+    public void TrueEndingSequence()
+    {
+        NewPlayer.Instance.Freeze(true);
+        StartCoroutine("TrueEnding");
+    }
+
+
+    IEnumerator TrueEnding()
+    {
+        source.Play();
+        if (!volumeProfile.TryGet(out lensDistortion)) throw new System.NullReferenceException(nameof(lensDistortion));
+        
+        lensDistortion.scale.Override(lensDistortion.scale.value/2);
+        lensDistortion.intensity.Override(lensDistortion.intensity.value + 0.1f);
+        yield return new WaitForSeconds(2);
+
+        source.Play();
+        if (!volumeProfile.TryGet(out lensDistortion)) throw new System.NullReferenceException(nameof(lensDistortion));
+
+        lensDistortion.scale.Override(lensDistortion.scale.value / 2);
+        lensDistortion.intensity.Override(lensDistortion.intensity.value + 0.1f);
+        yield return new WaitForSeconds(2);
+        source.Play();
+        if (!volumeProfile.TryGet(out lensDistortion)) throw new System.NullReferenceException(nameof(lensDistortion));
+
+        lensDistortion.scale.Override(lensDistortion.scale.value / 2);
+        lensDistortion.intensity.Override(lensDistortion.intensity.value + 0.1f);
+        yield return new WaitForSeconds(2);
+        source.Play();
+        if (!volumeProfile.TryGet(out lensDistortion)) throw new System.NullReferenceException(nameof(lensDistortion));
+
+        lensDistortion.scale.Override(lensDistortion.scale.value / 2);
+        lensDistortion.intensity.Override(lensDistortion.intensity.value + 0.1f);
+        yield return new WaitForSeconds(2);
+        source.Play();
+        if (!volumeProfile.TryGet(out lensDistortion)) throw new System.NullReferenceException(nameof(lensDistortion));
+
+        lensDistortion.scale.Override(lensDistortion.scale.value / 2);
+        lensDistortion.intensity.Override(lensDistortion.intensity.value + 0.1f);
+        yield return new WaitForSeconds(0.2f);
+        GameManager.Instance.EndGame("TrueEnding");
+    }
 }

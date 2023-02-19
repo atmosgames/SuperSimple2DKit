@@ -67,7 +67,8 @@ public class NewPlayer : PhysicsObject
 
     [Header ("Inventory")]
     public float ammo;
-    public int bugs;
+    private int mBugs;
+    public int bugs { get { return mBugs; } set { mBugs = value; PlayerPrefs.SetInt("Bugs", value); } }
     public int health;
     public int maxHealth;
     public int maxAmmo;
@@ -94,6 +95,7 @@ public class NewPlayer : PhysicsObject
 
     void Start()
     {
+        bugs = PlayerPrefs.GetInt("Bugs",0);
         Cursor.visible = false;
         SetUpCheatItems();
         health = maxHealth;
@@ -394,8 +396,8 @@ public class NewPlayer : PhysicsObject
 
     public IEnumerator Die()
     {
-        yield return new WaitForSeconds(5f);
-        GameManager.Instance.EndGame("1");
+        yield return new WaitForSeconds(0.1f);
+        GameManager.Instance.EndGame("Death");
         /*if (!frozen)
         {
             dead = true;

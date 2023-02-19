@@ -32,12 +32,14 @@ public class GameManager : MonoBehaviour
     {
         public string key;
         public Ending val;
+        public int bugs;
     }
 
     [SerializeField] 
     private List<EndingClass> endingList = new List<EndingClass>();
     private Dictionary<string, Ending> endingDict = new Dictionary<string, Ending>();
     public Dictionary<string, int> gameCompletion = new Dictionary<string, int>();//0 nie zrobiono, 1 zrobiono
+    public Dictionary<string, int> reward = new Dictionary<string, int>();//0 nie zrobiono, 1 zrobiono
 
     void Awake()
     {
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
         {
             endingDict[kvp.key] = kvp.val;
             gameCompletion[kvp.key] = PlayerPrefs.GetInt(kvp.key,0);
+            reward[kvp.key] = kvp.bugs;
         }
     }
     // Singleton instantiation
@@ -112,6 +115,9 @@ public class GameManager : MonoBehaviour
         else
         {
             gameCompletion[ending] = 1;
+            if (PlayerPrefs.GetInt(ending) == 0)
+                NewPlayer.Instance.bugs += reward[ending];
+
             PlayerPrefs.SetInt(ending, 1);
             EndingPlayer.currentEnding = endingDict[ending];
             SceneManager.LoadScene("EndingScene");

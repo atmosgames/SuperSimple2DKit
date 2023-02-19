@@ -72,6 +72,7 @@ public class Collectable : MonoBehaviour
         {
             NewPlayer.Instance.bugs += itemAmount;
             Postprocess.Instance.MultiplyBugEffect();
+            PlayerPrefs.SetInt(gameObject.scene.name + transform.parent.gameObject.name, 1);
             ObjectDestroy();
         }
         else if (itemType == ItemType.Health)

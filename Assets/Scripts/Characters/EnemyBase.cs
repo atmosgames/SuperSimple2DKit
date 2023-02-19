@@ -96,7 +96,7 @@ public class EnemyBase : MonoBehaviour
         health = 0;
         deathParticles.SetActive(true);
         deathParticles.transform.parent = transform.parent;
-        instantiator.InstantiateObjects();
+        //instantiator.InstantiateObjects();
         Time.timeScale = 1f;
         Destroy(gameObject);
     }

@@ -170,6 +170,14 @@ public class Dialogue : MonoBehaviour
         dialogue.Add("HackerB", new string[] {
             "You got them all....",
             "So let the fun begin!"
+        }); 
+        dialogue.Add("HackerBChoice1", new string[] {
+            "",
+            "YES"
+        }); 
+        dialogue.Add("HackerBChoice2", new string[] {
+            "",
+            "YES"
         });
 
         dialogue.Add("BugDimension", new string[] {

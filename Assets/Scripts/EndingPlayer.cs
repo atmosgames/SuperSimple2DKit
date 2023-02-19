@@ -69,4 +69,44 @@ public class EndingPlayer : MonoBehaviour
         yield return lineWait;
         SceneManager.LoadScene("LoadingScreen");
     }
+
+    public void ReturnMenu()
+    {
+        StartCoroutine("ReturnText");
+    }
+
+
+    IEnumerator ReturnText()
+    {
+        WaitForSeconds charWait = new WaitForSeconds(.06f);
+        WaitForSeconds lineWait = new WaitForSeconds(1.3f);
+        WaitForSeconds dotWait = new WaitForSeconds(.7f);
+
+        foreach (char c in currentEnding.title)
+        {
+            title.text += c;
+            source.PlayOneShot(typeSounds[Random.Range(0, typeSounds.Length)], Random.Range(.3f, .5f));
+
+            if (c == '.')
+                yield return dotWait;
+            else
+                yield return charWait;
+        }
+        yield return lineWait;
+
+        foreach (char c in currentEnding.description)
+        {
+            description.text += c;
+            source.PlayOneShot(typeSounds[Random.Range(0, typeSounds.Length)], Random.Range(.3f, .5f));
+
+            if (c == '.')
+                yield return dotWait;
+            else
+                yield return charWait;
+        }
+
+        yield return lineWait;
+        yield return lineWait;
+        SceneManager.LoadScene("Menu");
+    }
 }
