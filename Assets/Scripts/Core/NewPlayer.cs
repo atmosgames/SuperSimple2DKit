@@ -61,6 +61,9 @@ public class NewPlayer : PhysicsObject
     private float nextAttack = 0f;
 
     public bool drunkEffectActive = false;
+    public bool enteredApartament = false;
+    public bool enteredBasement = false;
+    public bool enteredApartamentEntrance = false;
 
     [Header ("Inventory")]
     public float ammo;
@@ -110,6 +113,14 @@ public class NewPlayer : PhysicsObject
     {
         ComputeVelocity();
         if(drunkEffectActive == true) Postprocess.Instance.DrunkEffect();
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.name == "Apartament") enteredApartament = true;
+        if (collision.name == "Basement") enteredBasement = true;
+        if (collision.name == "ApartamentEntrance") enteredApartamentEntrance = true;
+
     }
 
     protected void ComputeVelocity()

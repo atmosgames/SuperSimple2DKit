@@ -19759,7 +19759,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  enemyBase: {fileID: 0}
+  enemyBase: {fileID: 428410395818371648}
   graphic: {fileID: 316122289150071992}
   layerMask:
     serializedVersion: 2
