@@ -26,6 +26,7 @@ public class NewPlayer : PhysicsObject
 
     private int drinkedBeer = 0;
 
+    public GameObject explosives;
 
     // Singleton instantiation
     private static NewPlayer instance;
@@ -310,6 +311,8 @@ public class NewPlayer : PhysicsObject
 
     public void DynamiteAction(string name)
     {
+        if (Vector2.Distance(transform.position, explosives.transform.position) < 5)
+            GameManager.Instance.EndGame("BigBoom");
         GameManager.Instance.RemoveInventoryItem(name);
         Instantiate(dynamitePrefab, null);
 

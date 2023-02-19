@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class LoadingScreenText : MonoBehaviour
 {
 
-
+    int numer;
     string[] text = new string[]{   "> Restarting simulation....",
-                                    "> Loading world4526.vw....",
+                                    "",
                                     "> Modifying test subjects...."};
 
     [SerializeField] private AudioClip[] typeSounds;
@@ -21,15 +21,20 @@ public class LoadingScreenText : MonoBehaviour
         textMesh = GetComponent<TextMeshProUGUI>();
         audioSource = GetComponent<AudioSource>();
 
+        numer = PlayerPrefs.GetInt("nr", 548);
+        numer++;
+        PlayerPrefs.SetInt("nr", numer);
+        text[1] = "> Loading world" + numer + ".vw....";
+
         StartCoroutine("TypeText");
     }
 
 
     IEnumerator TypeText()
     {
-        WaitForSeconds charWait = new WaitForSeconds(.06f);
-        WaitForSeconds lineWait = new WaitForSeconds(1.3f);
-        WaitForSeconds dotWait = new WaitForSeconds(.4f);
+        WaitForSeconds charWait = new WaitForSeconds(.04f);
+        WaitForSeconds lineWait = new WaitForSeconds(1f);
+        WaitForSeconds dotWait = new WaitForSeconds(.3f);
 
         foreach (string str in text)
         { 
