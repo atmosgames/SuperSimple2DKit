@@ -190,6 +190,9 @@ public class Walker : PhysicsObject
                     }
                 }
 
+                if( Mathf.Abs(transform.position.x - NewPlayer.Instance.transform.position.x) < Mathf.Abs(transform.position.y - NewPlayer.Instance.transform.position.y) )
+                    Jump();
+
                 //Check for ledges. Walker's height check is much higher! They will fall pretty far, but will not fall to death. 
                 rightLedge = Physics2D.Raycast(new Vector2(transform.position.x + rayCastOffset.x, transform.position.y), Vector2.down, rayCastSize.y, layerMask);
                 Debug.DrawRay(new Vector2(transform.position.x + rayCastOffset.x, transform.position.y), Vector2.down * rayCastSize.y, Color.blue);

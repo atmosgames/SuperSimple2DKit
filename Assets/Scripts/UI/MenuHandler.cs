@@ -18,4 +18,9 @@ public class MenuHandler : MonoBehaviour {
     {
         SceneManager.LoadScene(whichScene);
     }
+
+    public void ResetProgress()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }
