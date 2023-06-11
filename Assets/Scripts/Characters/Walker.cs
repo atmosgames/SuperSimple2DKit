@@ -24,7 +24,6 @@ public class Walker : PhysicsObject
     [SerializeField] private bool flipWhenTurning = false; //Should the graphic flip along localScale.x?
     private RaycastHit2D ground;
     public float hurtLaunchPower = 10; //How much force should be applied to the player when getting hurt?
-    [SerializeField] private bool jumping;
     public float jumpPower = 7;
     [System.NonSerialized] public bool jump = false;
     [System.NonSerialized] public float launch = 1; //The float added to x and y moveSpeed. This is set with hurtLaunchPower, and is always brought back to zero
@@ -164,7 +163,6 @@ public class Walker : PhysicsObject
                 //Check for walls
                 rightWall = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + rayCastOffset.y), Vector2.right, rayCastSize.x, layerMask);
                 Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + rayCastOffset.y), Vector2.right * rayCastSize.x, Color.yellow);
-
                 if (rightWall.collider != null)
                 {
                     if (!followPlayer)
@@ -179,8 +177,7 @@ public class Walker : PhysicsObject
                 }
 
                 leftWall = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + rayCastOffset.y), Vector2.left, rayCastSize.x, layerMask);
-                Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + rayCastOffset.y), Vector2.left * rayCastSize.x, Color.blue);
-
+                Debug.DrawRay(new Vector2(transform.position.x, transform.position.y + rayCastOffset.y), Vector2.left * rayCastSize.x, Color.yellow);
                 if (leftWall.collider != null)
                 {
                     if (!followPlayer)
