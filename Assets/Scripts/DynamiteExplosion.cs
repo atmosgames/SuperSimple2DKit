@@ -27,13 +27,18 @@ public class DynamiteExplosion : MonoBehaviour
     void OnCollisionEnter2D() 
     {
         Debug.Log("function works");
-        if(!explosionStarted) StartCoroutine(Countdown());
+        if(!explosionStarted)
+        {
+            dynamiteFx.Play();
+            StartCoroutine(Countdown());
+        }
         explosionStarted = true;
     }
 
     IEnumerator Countdown()
     {
         yield return new WaitForSeconds(4);
+        
         var hitColliders = Physics2D.OverlapCircleAll(transform.position, 1.5f);
         foreach (Collider2D hitCollider in hitColliders)
         {
@@ -60,6 +65,7 @@ public class DynamiteExplosion : MonoBehaviour
             explosionEffect.SetActive(true);
             smokeEffect.SetActive(true);
             Graphics.SetActive(false);
+            dynamiteFx.Stop();
             dynamiteFx.PlayOneShot(explosionFx);
             NewPlayer.Instance.cameraEffects.Shake(100, 1f);
 
