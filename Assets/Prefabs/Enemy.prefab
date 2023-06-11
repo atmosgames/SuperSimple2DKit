@@ -14761,10 +14761,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.1379627, y: 0.21427943}
-      - {x: -0.13796182, y: -0.05}
-      - {x: 0.13469917, y: -0.05}
-      - {x: 0.1357926, y: 0.2141543}
+    - - {x: -0.028779319, y: 0.14637114}
+      - {x: -0.07091985, y: 0.047088783}
+      - {x: -0.09795502, y: -0.17207775}
+      - {x: 0.081918135, y: -0.18306734}
+      - {x: 0.046460815, y: 0.15049037}
 --- !u!114 &428034039975925006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19759,21 +19760,22 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  enemyBase: {fileID: 0}
+  enemyBase: {fileID: 428410395818371648}
   graphic: {fileID: 316122289150071992}
   layerMask:
     serializedVersion: 2
-    m_Bits: 16640
+    m_Bits: 256
   enemyType: 1
-  attentionRange: 1.09
+  enemylocation: 0
+  attentionRange: 3
   changeDirectionEase: 2
   followPlayer: 0
   flipWhenTurning: 0
   hurtLaunchPower: 5
   jumping: 0
-  jumpPower: 14
-  maxSpeed: 2
-  maxSpeedDeviation: 1
+  jumpPower: 10
+  maxSpeed: 5
+  maxSpeedDeviation: 2
   neverStopFollowing: 0
   rayCastSize: {x: 1.5, y: 1}
   rayCastOffset: {x: 1, y: 0.46}
@@ -19796,7 +19798,7 @@ MonoBehaviour:
   instantiator: {fileID: 114817669851517066, guid: d6533720a596b4a05a30ed5beedd7f13,
     type: 3}
   deathParticles: {fileID: 316122489715981500}
-  health: 3
+  health: 2
   hitSound: {fileID: 8300000, guid: a6da7dd234fd74164bcdbdb0e1eb8fbc, type: 3}
   isBomb: 0
   requirePoundAttack: 0
@@ -19814,7 +19816,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.24}
-  m_Size: {x: 1.37, y: 0.71}
+  m_Size: {x: 1, y: 0.71}
   m_Direction: 0
 --- !u!50 &347865018217599054
 Rigidbody2D:
@@ -25076,7 +25078,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820278364232342766}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -25109,7 +25111,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -23
   m_Sprite: {fileID: -184654884, guid: afcc6b3634bfcbf4d96400aecfc68eeb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -26,6 +26,7 @@ public class NewPlayer : PhysicsObject
 
     private int drinkedBeer = 0;
 
+    public GameObject explosives;
 
     // Singleton instantiation
     private static NewPlayer instance;
@@ -61,10 +62,14 @@ public class NewPlayer : PhysicsObject
     private float nextAttack = 0f;
 
     public bool drunkEffectActive = false;
+    public bool enteredApartament = false;
+    public bool enteredBasement = false;
+    public bool enteredApartamentEntrance = false;
 
     [Header ("Inventory")]
     public float ammo;
-    public int bugs;
+    private int mBugs;
+    public int bugs { get { return mBugs; } set { mBugs = value; PlayerPrefs.SetInt("Bugs", value); } }
     public int health;
     public int maxHealth;
     public int maxAmmo;
@@ -91,6 +96,7 @@ public class NewPlayer : PhysicsObject
 
     void Start()
     {
+        bugs = PlayerPrefs.GetInt("Bugs",0);
         Cursor.visible = false;
         SetUpCheatItems();
         health = maxHealth;
@@ -110,6 +116,14 @@ public class NewPlayer : PhysicsObject
     {
         ComputeVelocity();
         if(drunkEffectActive == true) Postprocess.Instance.DrunkEffect();
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.name == "Apartament") enteredApartament = true;
+        if (collision.name == "Basement") enteredBasement = true;
+        if (collision.name == "ApartamentEntrance") enteredApartamentEntrance = true;
+
     }
 
     protected void ComputeVelocity()
@@ -297,6 +311,8 @@ public class NewPlayer : PhysicsObject
 
     public void DynamiteAction(string name)
     {
+        if (Vector2.Distance(transform.position, explosives.transform.position) < 5)
+            GameManager.Instance.EndGame("BigBoom");
         GameManager.Instance.RemoveInventoryItem(name);
         Instantiate(dynamitePrefab, null);
 
@@ -383,8 +399,8 @@ public class NewPlayer : PhysicsObject
 
     public IEnumerator Die()
     {
-        yield return new WaitForSeconds(5f);
-        GameManager.Instance.EndGame("1");
+        yield return new WaitForSeconds(0.1f);
+        GameManager.Instance.EndGame("Death");
         /*if (!frozen)
         {
             dead = true;

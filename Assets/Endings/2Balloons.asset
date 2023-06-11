@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: 2Balloons
   m_EditorClassIdentifier: 
   title: The more the better
-  description: You seem quite light, aren't you?
+  description: You seem quite light, don't you?
   cutscene: {fileID: 11400000, guid: 3f0bb5c72d410544fbbc65da31174569, type: 2}

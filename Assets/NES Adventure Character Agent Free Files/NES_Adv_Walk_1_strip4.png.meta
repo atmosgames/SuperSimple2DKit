@@ -101,6 +101,30 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -199,9 +223,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NES_Adv_Walk_1_strip4_2: -1769421214
-      NES_Adv_Walk_1_strip4_1: -365041592
       NES_Adv_Walk_1_strip4_0: -342233121
+      NES_Adv_Walk_1_strip4_1: -365041592
+      NES_Adv_Walk_1_strip4_2: -1769421214
       NES_Adv_Walk_1_strip4_3: 1428489246
   spritePackingTag: 
   pSDRemoveMatte: 0

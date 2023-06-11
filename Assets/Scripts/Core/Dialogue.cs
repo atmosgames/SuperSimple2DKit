@@ -155,5 +155,52 @@ public class Dialogue : MonoBehaviour
             "Street"
         });
 
+
+        dialogue.Add("HackerA", new string[] {
+            "Hey",
+            "Wanna get out of here?",
+            "I know a way",
+            "But to do this you need to find some bugs that I can exploit",
+            "There are a lot of them in the world",
+            "You can find them also by testing different things, that will lead to a reset.",
+            "How much you ask...",
+            "I think 30 will be enough"
+        });
+
+        dialogue.Add("HackerB", new string[] {
+            "You got them all....",
+            "So let the fun begin!"
+        }); 
+        dialogue.Add("HackerBChoice1", new string[] {
+            "",
+            "YES"
+        }); 
+        dialogue.Add("HackerBChoice2", new string[] {
+            "",
+            "YES"
+        });
+
+        dialogue.Add("BugDimension", new string[] {
+            "Hi.",
+            "Your simulasion was turned off but I found some backdoors and hacked to this early development dimension",
+            "This place isn't ideal for data modification. Try to go a little bit further and maybe we will be able to reset the simulation and get you out of here",
+            "By the way this place is full of bugs, so why not seize the opportunity.",
+            "Good luck!"
+        });
+
+        dialogue.Add("EscapeBugDimention", new string[] {
+            "Time for a hard reset!",
+            "Hold on to yourself"
+        });
+
+        dialogue.Add("EscapeBugDimentionChoice1", new string[] {
+            "",
+            "OK"
+        });
+
+        dialogue.Add("EscapeBugDimentionChoice2", new string[] {
+            "",
+            "OK"
+        });
     }
 }

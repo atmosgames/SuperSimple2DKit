@@ -25,6 +25,7 @@ public class AttackHit : MonoBehaviour
         if (isBomb) StartCoroutine(TempColliderDisable());
     }
 
+
     void OnTriggerStay2D(Collider2D col)
     {
         //Determine which side the attack is on

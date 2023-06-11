@@ -12,6 +12,8 @@ public class Walker : PhysicsObject
     [SerializeField] private LayerMask layerMask; //What can the Walker actually touch?
     [SerializeField] enum EnemyType { Bug, Zombie }; //Bugs will simply patrol. Zombie's will immediately start chasing you forever until you defeat them.
     [SerializeField] EnemyType enemyType;
+    [SerializeField] enum EnemyLocation { Apartament, ApartamentEntrance, Basement};
+    [SerializeField] EnemyLocation enemylocation;
    
     public float attentionRange;
     public float changeDirectionEase = 1; //How slowly should we change directions? A higher number is slower!
@@ -116,7 +118,10 @@ public class Walker : PhysicsObject
                 //Check if player is within range to follow
                 if (enemyType == EnemyType.Zombie)
                 {
-                    if ((Mathf.Abs(distanceFromPlayer.x) < attentionRange) && (Mathf.Abs(distanceFromPlayer.y) < attentionRange))
+                    //if ((Mathf.Abs(distanceFromPlayer.x) < attentionRange) && (Mathf.Abs(distanceFromPlayer.y) < attentionRange))
+                    if((enemylocation == EnemyLocation.Apartament && NewPlayer.Instance.enteredApartament == true) ||
+                        (enemylocation == EnemyLocation.ApartamentEntrance && NewPlayer.Instance.enteredApartamentEntrance) ||
+                        (enemylocation == EnemyLocation.Basement && NewPlayer.Instance.enteredBasement))
                     {
                         followPlayer = true;
                         sitStillMultiplier = 1;

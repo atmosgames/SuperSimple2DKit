@@ -18,6 +18,7 @@ public class DynamiteExplosion : MonoBehaviour
     void Start()
     {
         startPosition = NewPlayer.Instance.transform.position;
+        startPosition.y += 2f;
         gameObject.transform.position = startPosition;
         Debug.Log("dynamite exists");
     }
@@ -55,6 +56,7 @@ public class DynamiteExplosion : MonoBehaviour
         }
         else
         {
+            gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
             explosionEffect.SetActive(true);
             smokeEffect.SetActive(true);
             Graphics.SetActive(false);
