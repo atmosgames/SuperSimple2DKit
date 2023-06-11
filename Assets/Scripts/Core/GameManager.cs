@@ -79,6 +79,10 @@ public class GameManager : MonoBehaviour
             if (!isFull[i])
             {
                 Item item = new Item(image, i);
+                while(inventory.ContainsKey(name))
+                {
+                    name += "Copy";
+                }
                 inventory.Add(name, item);
                 keys = inventory.Keys;
                 isFull[i] = true;

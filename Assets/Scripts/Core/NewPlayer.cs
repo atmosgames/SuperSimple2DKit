@@ -213,7 +213,7 @@ public class NewPlayer : PhysicsObject
                             //Baloon
                             if (name == "RedBalloon" || name == "BlueBalloon") BalloonAction(name);
                             //Beer
-                            if (name == "LightBeer" || name == "DarkBeer") BeerAction(name);
+                            if (name == "LightBeer" || name == "LightBeerCopy") BeerAction(name);
                             //Dynamite
                             if (name == "Dynamite") DynamiteAction(name);
 
