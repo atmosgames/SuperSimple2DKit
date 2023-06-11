@@ -15,3 +15,4 @@ MonoBehaviour:
   title: Alcoholism
   description: AI could not stand the pressure and fell into alcoholism
   cutscene: {fileID: 11400000, guid: b20edf5082c904d409f1bee7f0eb0ca1, type: 2}
+  icon: {fileID: 21300000, guid: eded88ab7ee2ae340bfb9b84753eec99, type: 3}

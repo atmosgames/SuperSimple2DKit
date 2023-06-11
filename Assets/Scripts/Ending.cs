@@ -10,4 +10,5 @@ public class Ending : ScriptableObject
     [Multiline]
     public string description;
     public TimelineAsset cutscene;
+    public Sprite icon;
 }
