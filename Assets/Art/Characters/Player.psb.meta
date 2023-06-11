@@ -24,11 +24,13 @@ ScriptedImporter:
     convertToNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
     isReadable: 0
     streamingMipmaps: 1
     streamingMipmapsPriority: 0
     vTOnly: 0
-    ignoreMasterTextureLimit: 0
+    ignoreMipmapLimit: 0
     nPOTScale: 1
     sRGBTexture: 1
     spriteMode: 2
@@ -91,7 +93,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 0, y: 0}
     spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
@@ -124,7 +125,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 973, y: 400}
     spritePosition: {x: 882, y: 1361}
   - name: EyeR
@@ -164,7 +164,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 973, y: 448}
     spritePosition: {x: 994, y: 1361}
   - name: HandR
@@ -500,7 +499,6 @@ ScriptedImporter:
     - {x: 25, y: 24}
     - {x: 0, y: 25}
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 246, y: 903}
     spritePosition: {x: 1473, y: 1216}
   - name: ArmR
@@ -936,9 +934,8 @@ ScriptedImporter:
     - {x: 0, y: 25}
     - {x: 35, y: 16}
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 443, y: 611}
-    spritePosition: {x: 1247, y: 1230}
+    spritePosition: {x: 1248, y: 1231}
   - name: BicepR
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1363,9 +1360,8 @@ ScriptedImporter:
     - {x: 0, y: 25}
     - {x: 35, y: 16}
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 725, y: 611}
-    spritePosition: {x: 1015, y: 1230}
+    spritePosition: {x: 1016, y: 1231}
   - name: Chest
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1819,9 +1815,8 @@ ScriptedImporter:
     - {x: 30, y: 29}
     - {x: 0, y: 30}
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 771, y: 3}
-    spritePosition: {x: 857, y: 891}
+    spritePosition: {x: 858, y: 892}
   - name: FootR
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2144,7 +2139,6 @@ ScriptedImporter:
     - {x: 24, y: 23}
     - {x: 0, y: 24}
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 4, y: 931}
     spritePosition: {x: 1094, y: 368}
   - name: CalfR
@@ -2684,9 +2678,8 @@ ScriptedImporter:
     - {x: 44, y: 5}
     - {x: 7, y: 45}
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 242, y: 609}
-    spritePosition: {x: 1056, y: 403}
+    spritePosition: {x: 1060, y: 406}
   - name: ThighR
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3394,9 +3387,8 @@ ScriptedImporter:
     - {x: 61, y: 24}
     - {x: 62, y: 3}
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 0, y: 608}
-    spritePosition: {x: 989, y: 642}
+    spritePosition: {x: 993, y: 646}
   - name: FootL
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3719,7 +3711,6 @@ ScriptedImporter:
     - {x: 24, y: 23}
     - {x: 0, y: 24}
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 125, y: 931}
     spritePosition: {x: 740, y: 368}
   - name: CalfL
@@ -4288,9 +4279,8 @@ ScriptedImporter:
     - {x: 3, y: 47}
     - {x: 14, y: 48}
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 341, y: 609}
-    spritePosition: {x: 758, y: 403}
+    spritePosition: {x: 762, y: 406}
   - name: ThighL
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -4757,9 +4747,8 @@ ScriptedImporter:
     - {x: 0, y: 27}
     - {x: 39, y: 1}
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 121, y: 608}
-    spritePosition: {x: 802, y: 642}
+    spritePosition: {x: 806, y: 646}
   - name: HandL
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -5093,7 +5082,6 @@ ScriptedImporter:
     - {x: 25, y: 24}
     - {x: 0, y: 25}
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 345, y: 903}
     spritePosition: {x: 369, y: 1216}
   - name: ArmL
@@ -5529,9 +5517,8 @@ ScriptedImporter:
     - {x: 0, y: 25}
     - {x: 35, y: 16}
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 442, y: 666}
-    spritePosition: {x: 393, y: 1229}
+    spritePosition: {x: 395, y: 1230}
   - name: BicepL
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -5956,9 +5943,8 @@ ScriptedImporter:
     - {x: 0, y: 25}
     - {x: 35, y: 16}
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 724, y: 666}
-    spritePosition: {x: 625, y: 1229}
+    spritePosition: {x: 627, y: 1230}
   - name: Head
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -6330,7 +6316,6 @@ ScriptedImporter:
     - {x: 26, y: 25}
     - {x: 0, y: 26}
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 772, y: 400}
     spritePosition: {x: 863, y: 1303}
   - name: Blast
@@ -6361,7 +6346,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 4, y: 4}
     spritePosition: {x: 1101, y: 957}
   characterData:
@@ -6684,6 +6668,7 @@ ScriptedImporter:
       order: 0
     dimension: {x: 0, y: 0}
     characterGroups: []
+    pivot: {x: 0, y: 0}
     boneReadOnly: 0
   sharedRigSpriteImportData: []
   sharedRigCharacterData:
@@ -6691,6 +6676,7 @@ ScriptedImporter:
     parts: []
     dimension: {x: 0, y: 0}
     characterGroups: []
+    pivot: {x: 0, y: 0}
     boneReadOnly: 0
   platformSettings: []
   mosaicLayers: 1
@@ -6703,6 +6689,8 @@ ScriptedImporter:
   paperDollMode: 0
   keepDupilcateSpriteName: 0
   skeletonAssetReferenceID: 
+  padding: 4
+  spriteSizeExpand: 0
   spriteCategoryList:
     categories: []
   spritePackingTag: 
@@ -6891,6 +6879,9 @@ ScriptedImporter:
     isVisible: 0
   sharedRigPSDLayers: []
   pSDLayerImportSetting: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
   generateGOHierarchy: 0
   textureAssetName: PlayerTPose Texture
   prefabAssetName: PlayerTPose Prefab
