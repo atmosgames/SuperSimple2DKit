@@ -11,6 +11,8 @@ public class LoadingScreenText : MonoBehaviour
                                     "",
                                     "> Modifying test subjects...."};
 
+    bool skip = false;
+
     [SerializeField] private AudioClip[] typeSounds;
 
     TextMeshProUGUI textMesh;
@@ -29,12 +31,18 @@ public class LoadingScreenText : MonoBehaviour
         StartCoroutine("TypeText");
     }
 
+    private void Update()
+    {
+        if(Input.anyKey)
+            skip = true;
+    }
 
     IEnumerator TypeText()
     {
         WaitForSeconds charWait = new WaitForSeconds(.04f);
         WaitForSeconds lineWait = new WaitForSeconds(1f);
         WaitForSeconds dotWait = new WaitForSeconds(.3f);
+
 
         foreach (string str in text)
         { 
@@ -43,6 +51,13 @@ public class LoadingScreenText : MonoBehaviour
                 textMesh.text += c;
                 audioSource.PlayOneShot(typeSounds[Random.Range(0, typeSounds.Length)], Random.Range(.3f, .5f));
                 
+                if(skip)
+                {
+                    charWait = new WaitForSeconds(.008f);
+                    lineWait = new WaitForSeconds(0.5f);
+                    dotWait = new WaitForSeconds(.1f);
+                }
+
                 if(c == '.')
                     yield return dotWait;
                 else
