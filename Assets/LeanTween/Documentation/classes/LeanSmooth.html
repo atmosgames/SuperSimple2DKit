@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>LeanSmooth</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.8.0pr2/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-23694672-1', 'dentedpixel.com');
+      ga('send', 'pageview');
+
+    </script>
+    <script src="../assets/js/leantween.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.8.0pr2/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><a href="http://dentedpixel.com/developer-diary/leantween-speed-comparison-to-itween/"><img src="http://s3.amazonaws.com/dentedpixel.com/LeanTween/leantween-logo.png" title=""></a></h1> <div style="position:absolute; left:146px; top:90px;">- Developed by <a href="http://www.dentedpixel.com">Dented Pixel</a></div>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em style="margin-top:2px">API Docs for: LeanTween 2.50</em><br>
+            <table id="support">
+                <tr>
+                <td>
+                    <h3 style="margin:7px 0 3px 0; width: 200px;">Support LeanTween!</h3>
+            <!--<a href="http://www.amazon.com/?tag=carbcutt-20&camp=1&creative=4365&linkCode=ez&ref-refURL=" target="_blank">Click this link</a> before your<br>next Amazon shopping spree!<br>
+             -->
+                </td>
+                <td><!--
+                    <a href="http://www.amazon.com/?tag=carbcutt-20&camp=1&creative=4365&linkCode=ez&ref-refURL=" target="_blank"><img src="http://dentedpixel.com/LeanTweenDocumentation/assets/img/amz.gif" width="148" height="40" title="shop amazon" /></a>-->
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin-top:5px;">
+            <!--<div style="margin:2px 0px 6px 24px; float:left;">or </div>-->
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="YJPUT3RAK5VL8">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            
+            </form>
+                </td>
+            </tr>
+        </table>
+        </div>
+
+        <h4 style="position:absolute; top:80px; right:7px; width:500px; letter-spacing:normal; word-spacing:normal; font-size:9pt; text-align:right; font-style: italic;">Maintaining and adding new features takes time, your support is appreciated.</h4>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/LeanAudio.html">LeanAudio</a></li>
+                                <li><a href="../classes/LeanAudioOptions.html">LeanAudioOptions</a></li>
+                                <li><a href="../classes/LeanSmooth.html">LeanSmooth</a></li>
+                                <li><a href="../classes/LeanTween.html">LeanTween</a></li>
+                                <li><a href="../classes/LeanTweenType.html">LeanTweenType</a></li>
+                                <li><a href="../classes/LTBezierPath.html">LTBezierPath</a></li>
+                                <li><a href="../classes/LTDescr.html">LTDescr</a></li>
+                                <li><a href="../classes/LTEvent.html">LTEvent</a></li>
+                                <li><a href="../classes/LTRect.html">LTRect</a></li>
+                                <li><a href="../classes/LTSeq.html">LTSeq</a></li>
+                                <li><a href="../classes/LTSpline.html">LTSpline</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="advertising">
+                    <h2>More From<br><a href="http://www.dentedpixel.com">Dented Pixel</a></h2><br>
+                    <a href="https://www.assetstore.unity3d.com/en/#!/content/9455" target="_blank"><img src="http://dentedpixel.com/assets/LTEditor-doc-icon.jpg" width="175" height="175" /><br>Create tweens with: Visual Editor. Sculpt complex spline paths.</a>
+                    <br>
+                    <a href="https://itunes.apple.com/us/app/monkeyshines/id530998075?mt=8" target="_blank"><img src="http://a1.mzstatic.com/us/r30/Purple3/v4/d4/2b/ce/d42bce69-b3d3-d7f8-88e9-caa92664b5b1/icon350x350.jpeg" width="175" height="175" /><br>RIN - A swinging good time!</a>
+                    <br>
+                    <a href="https://itunes.apple.com/us/app/princess-piano/id445283531?mt=8" target="_blank"><img src="http://a3.mzstatic.com/us/r1000/096/Purple/v4/8c/1e/05/8c1e0590-db82-1d72-2956-2b6470f37ed0/mza_4230031260893485317.175x175-75.jpg" width="175" height="175" /><br>Princess Piano - Learn musical notation<br>in this melodious adventure!</a>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1>LeanSmooth Class</h1>
+                        <div class="box meta">
+                        
+                        
+                                <div class="foundat">
+                                    Defined in: <a href="../files/LeanSmooth.cs.html#l5"><code>LeanSmooth.cs:5</code></a>
+                                </div>
+                        
+                        
+                        </div>
+                        
+                        
+                        <div class="box intro">
+                            <p>Use these smooth methods to move one value towards another<br /><br />
+                        <strong>Example: </strong><br />fromY = LeanSmooth.spring(fromY, followArrow.localPosition.y, ref velocityY, 1.1f);<br />
+                        fromVec3 = LeanSmooth.damp(fromVec3, dude5Title.localPosition, ref velocityVec3, 1.1f);<br />
+                        fromColor = LeanSmooth.damp(fromColor, dude5Title.GetComponent<Renderer>().material.color, ref velocityColor, 1.1f);<br />
+                        Debug.Log(&quot;Smoothed y:&quot; + fromY + &quot; vec3:&quot; + fromVec3 + &quot; color:&quot; + fromColor);<br /></p>
+                        
+                        </div>
+                        
+                        
+                        <div id="classdocs" class="tabview">
+                            <ul class="api-class-tabs">
+                                <li class="api-class-tab index"><a href="#index">Index</a></li>
+                        
+                                    <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+                            </ul>
+                        
+                            <div>
+                                <div id="index" class="api-class-tabpanel index">
+                                    <h2 class="off-left">Item Index</h2>
+                        
+                                        <div class="index-section methods">
+                                            <h3>Methods</h3>
+                        
+                                            <ul class="index-list methods">
+                                                    <li class="index-item method">
+                                                        <a href="#method_LeanSmooth.bounceOut (Color)">LeanSmooth.bounceOut (Color)</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_LeanSmooth.bounceOut (float)">LeanSmooth.bounceOut (float)</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_LeanSmooth.bounceOut (Vector3)">LeanSmooth.bounceOut (Vector3)</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_LeanSmooth.damp (Color)">LeanSmooth.damp (Color)</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_LeanSmooth.damp (float)">LeanSmooth.damp (float)</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_LeanSmooth.damp (Vector3)">LeanSmooth.damp (Vector3)</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_LeanSmooth.linear (Color)">LeanSmooth.linear (Color)</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_LeanSmooth.linear (float)">LeanSmooth.linear (float)</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_LeanSmooth.linear (Vector3)">LeanSmooth.linear (Vector3)</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_LeanSmooth.spring (Color)">LeanSmooth.spring (Color)</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_LeanSmooth.spring (float)">LeanSmooth.spring (float)</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_LeanSmooth.spring (Vector3)">LeanSmooth.spring (Vector3)</a>
+                        
+                                                    </li>
+                                            </ul>
+                                        </div>
+                        
+                        
+                        
+                                </div>
+                        
+                                    <div id="methods" class="api-class-tabpanel">
+                                        <h2 class="off-left">Methods</h2>
+                        
+                                            <div id="method_LeanSmooth.bounceOut (Color)" class="method item">
+                                                <h3 class="name"><code>LeanSmooth.bounceOut (Color)</code></h3>
+                                            
+                                                    <div class="args">
+                                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                                            <li class="arg">
+                                                                    <code>current:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>target:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>currentVelocity:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>smoothTime:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>maxSpeed:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>deltaTime:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code class="optional">[friction]</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code class="optional">[accelRate]</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code class="optional">[hitDamping]</code>
+                                                            </li>
+                                                        </ul><span class="paren">)</span>
+                                                    </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/LeanSmooth.cs.html#l338"><code>LeanSmooth.cs:338</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <summary>Moves one color towards another (with an ease that bounces back some when it reaches it's destination)</summary>
+                                                </div>
+                                            
+                                                    <div class="params">
+                                                        <h4>Parameters:</h4>
+                                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">current:float</code>
+                                                                    <span class="type">Color</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">target:float</code>
+                                                                    <span class="type">Color</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the value we are trying to reach</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">currentVelocity:float</code>
+                                                                    <span class="type">Color</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current velocity of the value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">smoothTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>roughly the time it takes to reach the destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">maxSpeed:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the top speed you want the value to move at (defaults to unlimited -1f)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">deltaTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the difference in time since the method was called (defaults to Time.deltaTime)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name optional">[friction]</code>
+                                                                    <span class="type">Float</span>
+                                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>:float rate at which the spring is slowed down once it reaches it's destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name optional">[accelRate]</code>
+                                                                    <span class="type">Float</span>
+                                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>:float the rate it accelerates from it's initial position</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name optional">[hitDamping]</code>
+                                                                    <span class="type">Float</span>
+                                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>:float the rate at which to dampen the bounciness of when it reaches it's destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            
+                                            
+                                                    <div class="example">
+                                                        <h4>Example:</h4>
+                                            
+                                                        <div class="example-content">
+                                                            <p>fromColor = LeanSmooth.bounceOut(fromColor, transform.GetComponent<Renderer>().material.color, ref followVelocity, 1.1f);\n
+                                            Debug.Log(&quot;current:&quot; + fromColor);</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div id="method_LeanSmooth.bounceOut (float)" class="method item">
+                                                <h3 class="name"><code>LeanSmooth.bounceOut (float)</code></h3>
+                                            
+                                                    <div class="args">
+                                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                                            <li class="arg">
+                                                                    <code>current:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>target:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>currentVelocity:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>smoothTime:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>maxSpeed:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>deltaTime:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code class="optional">[friction]</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code class="optional">[accelRate]</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code class="optional">[hitDamping]</code>
+                                                            </li>
+                                                        </ul><span class="paren">)</span>
+                                                    </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/LeanSmooth.cs.html#l268"><code>LeanSmooth.cs:268</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <summary>Moves one value towards another (with an ease that bounces back some when it reaches it's destination)</summary>
+                                                </div>
+                                            
+                                                    <div class="params">
+                                                        <h4>Parameters:</h4>
+                                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">current:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">target:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the value we are trying to reach</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">currentVelocity:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current velocity of the value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">smoothTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>roughly the time it takes to reach the destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">maxSpeed:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the top speed you want the value to move at (defaults to unlimited -1f)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">deltaTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the difference in time since the method was called (defaults to Time.deltaTime)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name optional">[friction]</code>
+                                                                    <span class="type">Float</span>
+                                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>:float rate at which the spring is slowed down once it reaches it's destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name optional">[accelRate]</code>
+                                                                    <span class="type">Float</span>
+                                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>:float the rate it accelerates from it's initial position</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name optional">[hitDamping]</code>
+                                                                    <span class="type">Float</span>
+                                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>:float the rate at which to dampen the bounciness of when it reaches it's destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            
+                                            
+                                                    <div class="example">
+                                                        <h4>Example:</h4>
+                                            
+                                                        <div class="example-content">
+                                                            <p>followVar = LeanSmooth.bounceOut(followVar, destinationVar, ref followVelocity, 1.1f);\n
+                                            Debug.Log(&quot;current:&quot;+followVar);</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div id="method_LeanSmooth.bounceOut (Vector3)" class="method item">
+                                                <h3 class="name"><code>LeanSmooth.bounceOut (Vector3)</code></h3>
+                                            
+                                                    <div class="args">
+                                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                                            <li class="arg">
+                                                                    <code>current:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>target:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>currentVelocity:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>smoothTime:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>maxSpeed:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>deltaTime:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code class="optional">[friction]</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code class="optional">[accelRate]</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code class="optional">[hitDamping]</code>
+                                                            </li>
+                                                        </ul><span class="paren">)</span>
+                                                    </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/LeanSmooth.cs.html#l312"><code>LeanSmooth.cs:312</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <summary>Moves one value towards another (with an ease that bounces back some when it reaches it's destination)</summary>
+                                                </div>
+                                            
+                                                    <div class="params">
+                                                        <h4>Parameters:</h4>
+                                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">current:float</code>
+                                                                    <span class="type">Vector3</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">target:float</code>
+                                                                    <span class="type">Vector3</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the value we are trying to reach</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">currentVelocity:float</code>
+                                                                    <span class="type">Vector3</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current velocity of the value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">smoothTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>roughly the time it takes to reach the destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">maxSpeed:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the top speed you want the value to move at (defaults to unlimited -1f)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">deltaTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the difference in time since the method was called (defaults to Time.deltaTime)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name optional">[friction]</code>
+                                                                    <span class="type">Float</span>
+                                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>:float rate at which the spring is slowed down once it reaches it's destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name optional">[accelRate]</code>
+                                                                    <span class="type">Float</span>
+                                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>:float the rate it accelerates from it's initial position</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name optional">[hitDamping]</code>
+                                                                    <span class="type">Float</span>
+                                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>:float the rate at which to dampen the bounciness of when it reaches it's destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            
+                                            
+                                                    <div class="example">
+                                                        <h4>Example:</h4>
+                                            
+                                                        <div class="example-content">
+                                                            <p>transform.position = LeanSmooth.bounceOut(transform.position, followTrans.position, ref followVelocity, 1.1f);\n
+                                            Debug.Log(&quot;current:&quot;+transform.position);</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div id="method_LeanSmooth.damp (Color)" class="method item">
+                                                <h3 class="name"><code>LeanSmooth.damp (Color)</code></h3>
+                                            
+                                                    <div class="args">
+                                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                                            <li class="arg">
+                                                                    <code>current:Color</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>target:Color</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>currentVelocity:Color</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>smoothTime:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>maxSpeed:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>deltaTime:float</code>
+                                                            </li>
+                                                        </ul><span class="paren">)</span>
+                                                    </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/LeanSmooth.cs.html#l83"><code>LeanSmooth.cs:83</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <summary>Moves one color value towards another color (eases in and out to destination with no overshoot)</summary>
+                                                </div>
+                                            
+                                                    <div class="params">
+                                                        <h4>Parameters:</h4>
+                                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">current:Color</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">target:Color</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the value we are trying to reach</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">currentVelocity:Color</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current velocity of the value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">smoothTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>roughly the time it takes to reach the destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">maxSpeed:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the top speed you want the value to move at (defaults to unlimited -1f)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">deltaTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the difference in time since the method was called (defaults to Time.deltaTime)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            
+                                            
+                                                    <div class="example">
+                                                        <h4>Example:</h4>
+                                            
+                                                        <div class="example-content">
+                                                            <p>fromColor = LeanSmooth.damp(fromColor, transform.GetComponent<Renderer>().material.color, ref velocityColor, 1.1f);\n
+                                            Debug.Log(&quot;current:&quot;+fromColor);</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div id="method_LeanSmooth.damp (float)" class="method item">
+                                                <h3 class="name"><code>LeanSmooth.damp (float)</code></h3>
+                                            
+                                                    <div class="args">
+                                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                                            <li class="arg">
+                                                                    <code>current:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>target:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>currentVelocity:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>smoothTime:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>maxSpeed:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>deltaTime:float</code>
+                                                            </li>
+                                                        </ul><span class="paren">)</span>
+                                                    </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/LeanSmooth.cs.html#l18"><code>LeanSmooth.cs:18</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <summary>Moves one value towards another (eases in and out to destination with no overshoot)</summary>
+                                                </div>
+                                            
+                                                    <div class="params">
+                                                        <h4>Parameters:</h4>
+                                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">current:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">target:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the value we are trying to reach</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">currentVelocity:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current velocity of the value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">smoothTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>roughly the time it takes to reach the destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">maxSpeed:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the top speed you want the value to move at (defaults to unlimited -1f)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">deltaTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the difference in time since the method was called (defaults to Time.deltaTime)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            
+                                            
+                                                    <div class="example">
+                                                        <h4>Example:</h4>
+                                            
+                                                        <div class="example-content">
+                                                            <p>followVar = LeanSmooth.damp(followVar, destinationVar, ref followVelocity, 1.1f);\n
+                                            Debug.Log(&quot;current:&quot;+followVar);</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div id="method_LeanSmooth.damp (Vector3)" class="method item">
+                                                <h3 class="name"><code>LeanSmooth.damp (Vector3)</code></h3>
+                                            
+                                                    <div class="args">
+                                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                                            <li class="arg">
+                                                                    <code>current:Vector3</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>target:Vector3</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>currentVelocity:Vector3</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>smoothTime:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>maxSpeed:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>deltaTime:float</code>
+                                                            </li>
+                                                        </ul><span class="paren">)</span>
+                                                    </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/LeanSmooth.cs.html#l60"><code>LeanSmooth.cs:60</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <summary>Moves one value towards another (eases in and out to destination with no overshoot)</summary>
+                                                </div>
+                                            
+                                                    <div class="params">
+                                                        <h4>Parameters:</h4>
+                                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">current:Vector3</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">target:Vector3</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the value we are trying to reach</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">currentVelocity:Vector3</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current velocity of the value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">smoothTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>roughly the time it takes to reach the destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">maxSpeed:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the top speed you want the value to move at (defaults to unlimited -1f)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">deltaTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the difference in time since the method was called (defaults to Time.deltaTime)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            
+                                            
+                                                    <div class="example">
+                                                        <h4>Example:</h4>
+                                            
+                                                        <div class="example-content">
+                                                            <p>transform.position = LeanSmooth.damp(transform.position, destTrans.position, ref followVelocity, 1.1f);\n
+                                            Debug.Log(&quot;current:&quot;+transform.position);</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div id="method_LeanSmooth.linear (Color)" class="method item">
+                                                <h3 class="name"><code>LeanSmooth.linear (Color)</code></h3>
+                                            
+                                                    <div class="args">
+                                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                                            <li class="arg">
+                                                                    <code>current:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>target:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>moveSpeed:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>deltaTime:float</code>
+                                                            </li>
+                                                        </ul><span class="paren">)</span>
+                                                    </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/LeanSmooth.cs.html#l246"><code>LeanSmooth.cs:246</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <summary>Moves one color towards another (at a constant speed)</summary>
+                                                </div>
+                                            
+                                                    <div class="params">
+                                                        <h4>Parameters:</h4>
+                                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">current:float</code>
+                                                                    <span class="type">Color</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">target:float</code>
+                                                                    <span class="type">Color</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the value we are trying to reach</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">moveSpeed:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the speed at which to move towards the target</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">deltaTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the difference in time since the method was called (defaults to Time.deltaTime)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            
+                                            
+                                                    <div class="example">
+                                                        <h4>Example:</h4>
+                                            
+                                                        <div class="example-content">
+                                                            <p>fromColor = LeanSmooth.linear(fromColor, transform.GetComponent<Renderer>().material.color, 50f);\n
+                                            Debug.Log(&quot;current:&quot;+fromColor);</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div id="method_LeanSmooth.linear (float)" class="method item">
+                                                <h3 class="name"><code>LeanSmooth.linear (float)</code></h3>
+                                            
+                                                    <div class="args">
+                                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                                            <li class="arg">
+                                                                    <code>current:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>target:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>moveSpeed:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>deltaTime:float</code>
+                                                            </li>
+                                                        </ul><span class="paren">)</span>
+                                                    </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/LeanSmooth.cs.html#l193"><code>LeanSmooth.cs:193</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <summary>Moves one value towards another (at a constant speed)</summary>
+                                                </div>
+                                            
+                                                    <div class="params">
+                                                        <h4>Parameters:</h4>
+                                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">current:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">target:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the value we are trying to reach</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">moveSpeed:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the speed at which to move towards the target</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">deltaTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the difference in time since the method was called (defaults to Time.deltaTime)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            
+                                            
+                                                    <div class="example">
+                                                        <h4>Example:</h4>
+                                            
+                                                        <div class="example-content">
+                                                            <p>followVar = LeanSmooth.linear(followVar, destinationVar, 50f);\n
+                                            Debug.Log(&quot;current:&quot;+followVar);</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div id="method_LeanSmooth.linear (Vector3)" class="method item">
+                                                <h3 class="name"><code>LeanSmooth.linear (Vector3)</code></h3>
+                                            
+                                                    <div class="args">
+                                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                                            <li class="arg">
+                                                                    <code>current:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>target:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>moveSpeed:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>deltaTime:float</code>
+                                                            </li>
+                                                        </ul><span class="paren">)</span>
+                                                    </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/LeanSmooth.cs.html#l225"><code>LeanSmooth.cs:225</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <summary>Moves one value towards another (at a constant speed)</summary>
+                                                </div>
+                                            
+                                                    <div class="params">
+                                                        <h4>Parameters:</h4>
+                                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">current:float</code>
+                                                                    <span class="type">Vector3</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">target:float</code>
+                                                                    <span class="type">Vector3</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the value we are trying to reach</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">moveSpeed:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the speed at which to move towards the target</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">deltaTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the difference in time since the method was called (defaults to Time.deltaTime)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            
+                                            
+                                                    <div class="example">
+                                                        <h4>Example:</h4>
+                                            
+                                                        <div class="example-content">
+                                                            <p>transform.position = LeanSmooth.linear(transform.position, followTrans.position, 50f);\n
+                                            Debug.Log(&quot;current:&quot;+transform.position);</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div id="method_LeanSmooth.spring (Color)" class="method item">
+                                                <h3 class="name"><code>LeanSmooth.spring (Color)</code></h3>
+                                            
+                                                    <div class="args">
+                                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                                            <li class="arg">
+                                                                    <code>current:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>target:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>currentVelocity:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>smoothTime:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>maxSpeed:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>deltaTime:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code class="optional">[friction]</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code class="optional">[accelRate]</code>
+                                                            </li>
+                                                        </ul><span class="paren">)</span>
+                                                    </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/LeanSmooth.cs.html#l167"><code>LeanSmooth.cs:167</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <summary>Moves one color towards another (eases in and out to destination with possible overshoot bounciness)</summary>
+                                                </div>
+                                            
+                                                    <div class="params">
+                                                        <h4>Parameters:</h4>
+                                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">current:float</code>
+                                                                    <span class="type">Color</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">target:float</code>
+                                                                    <span class="type">Color</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the value we are trying to reach</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">currentVelocity:float</code>
+                                                                    <span class="type">Color</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current velocity of the value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">smoothTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>roughly the time it takes to reach the destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">maxSpeed:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the top speed you want the value to move at (defaults to unlimited -1f)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">deltaTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the difference in time since the method was called (defaults to Time.deltaTime)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name optional">[friction]</code>
+                                                                    <span class="type">Float</span>
+                                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>:float rate at which the spring is slowed down once it reaches it's destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name optional">[accelRate]</code>
+                                                                    <span class="type">Float</span>
+                                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>:float the rate it accelerates from it's initial position</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            
+                                            
+                                                    <div class="example">
+                                                        <h4>Example:</h4>
+                                            
+                                                        <div class="example-content">
+                                                            <p>fromColor = LeanSmooth.spring(fromColor, transform.GetComponent<Renderer>().material.color, ref velocityColor, 1.1f);\n
+                                            Debug.Log(&quot;current:&quot;+fromColor);</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div id="method_LeanSmooth.spring (float)" class="method item">
+                                                <h3 class="name"><code>LeanSmooth.spring (float)</code></h3>
+                                            
+                                                    <div class="args">
+                                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                                            <li class="arg">
+                                                                    <code>current:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>target:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>currentVelocity:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>smoothTime:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>maxSpeed:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>deltaTime:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code class="optional">[friction]</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code class="optional">[accelRate]</code>
+                                                            </li>
+                                                        </ul><span class="paren">)</span>
+                                                    </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/LeanSmooth.cs.html#l107"><code>LeanSmooth.cs:107</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <summary>Moves one value towards another (eases in and out to destination with possible overshoot bounciness)</summary>
+                                                </div>
+                                            
+                                                    <div class="params">
+                                                        <h4>Parameters:</h4>
+                                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">current:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">target:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the value we are trying to reach</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">currentVelocity:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current velocity of the value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">smoothTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>roughly the time it takes to reach the destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">maxSpeed:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the top speed you want the value to move at (defaults to unlimited -1f)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">deltaTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the difference in time since the method was called (defaults to Time.deltaTime)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name optional">[friction]</code>
+                                                                    <span class="type">Float</span>
+                                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>:float rate at which the spring is slowed down once it reaches it's destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name optional">[accelRate]</code>
+                                                                    <span class="type">Float</span>
+                                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>:float the rate it accelerates from it's initial position</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            
+                                            
+                                                    <div class="example">
+                                                        <h4>Example:</h4>
+                                            
+                                                        <div class="example-content">
+                                                            <p>followVar = LeanSmooth.spring(followVar, destinationVar, ref followVelocity, 1.1f);\n
+                                            Debug.Log(&quot;current:&quot;+followVar);</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div id="method_LeanSmooth.spring (Vector3)" class="method item">
+                                                <h3 class="name"><code>LeanSmooth.spring (Vector3)</code></h3>
+                                            
+                                                    <div class="args">
+                                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                                            <li class="arg">
+                                                                    <code>current:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>target:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>currentVelocity:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>smoothTime:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>maxSpeed:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>deltaTime:float</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code class="optional">[friction]</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code class="optional">[accelRate]</code>
+                                                            </li>
+                                                        </ul><span class="paren">)</span>
+                                                    </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/LeanSmooth.cs.html#l142"><code>LeanSmooth.cs:142</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <summary>Moves one value towards another (eases in and out to destination with possible overshoot bounciness)</summary>
+                                                </div>
+                                            
+                                                    <div class="params">
+                                                        <h4>Parameters:</h4>
+                                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">current:float</code>
+                                                                    <span class="type">Vector3</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">target:float</code>
+                                                                    <span class="type">Vector3</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the value we are trying to reach</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">currentVelocity:float</code>
+                                                                    <span class="type">Vector3</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the current velocity of the value</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">smoothTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>roughly the time it takes to reach the destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">maxSpeed:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the top speed you want the value to move at (defaults to unlimited -1f)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">deltaTime:float</code>
+                                                                    <span class="type">Float</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>the difference in time since the method was called (defaults to Time.deltaTime)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name optional">[friction]</code>
+                                                                    <span class="type">Float</span>
+                                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>:float rate at which the spring is slowed down once it reaches it's destination</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name optional">[accelRate]</code>
+                                                                    <span class="type">Float</span>
+                                                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>:float the rate it accelerates from it's initial position</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            
+                                            
+                                                    <div class="example">
+                                                        <h4>Example:</h4>
+                                            
+                                                        <div class="example-content">
+                                                            <p>transform.position = LeanSmooth.spring(transform.position, destTrans.position, ref followVelocity, 1.1f);\n
+                                            Debug.Log(&quot;current:&quot;+transform.position);</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                    </div>
+                        
+                        
+                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

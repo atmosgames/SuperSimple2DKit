@@ -126,6 +126,8 @@ public class GameManager : MonoBehaviour
             EndingPlayer.currentEnding = endingDict[ending];
             SceneManager.LoadScene("EndingScene");
         }
+
+        PlayerPrefs.SetString("CurrendEnding", ending);
     }
 
     [ContextMenu("ResetEndings")]

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>LeanAudio</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.8.0pr2/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-23694672-1', 'dentedpixel.com');
+      ga('send', 'pageview');
+
+    </script>
+    <script src="../assets/js/leantween.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.8.0pr2/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><a href="http://dentedpixel.com/developer-diary/leantween-speed-comparison-to-itween/"><img src="http://s3.amazonaws.com/dentedpixel.com/LeanTween/leantween-logo.png" title=""></a></h1> <div style="position:absolute; left:146px; top:90px;">- Developed by <a href="http://www.dentedpixel.com">Dented Pixel</a></div>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em style="margin-top:2px">API Docs for: LeanTween 2.50</em><br>
+            <table id="support">
+                <tr>
+                <td>
+                    <h3 style="margin:7px 0 3px 0; width: 200px;">Support LeanTween!</h3>
+            <!--<a href="http://www.amazon.com/?tag=carbcutt-20&camp=1&creative=4365&linkCode=ez&ref-refURL=" target="_blank">Click this link</a> before your<br>next Amazon shopping spree!<br>
+             -->
+                </td>
+                <td><!--
+                    <a href="http://www.amazon.com/?tag=carbcutt-20&camp=1&creative=4365&linkCode=ez&ref-refURL=" target="_blank"><img src="http://dentedpixel.com/LeanTweenDocumentation/assets/img/amz.gif" width="148" height="40" title="shop amazon" /></a>-->
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin-top:5px;">
+            <!--<div style="margin:2px 0px 6px 24px; float:left;">or </div>-->
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="YJPUT3RAK5VL8">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            
+            </form>
+                </td>
+            </tr>
+        </table>
+        </div>
+
+        <h4 style="position:absolute; top:80px; right:7px; width:500px; letter-spacing:normal; word-spacing:normal; font-size:9pt; text-align:right; font-style: italic;">Maintaining and adding new features takes time, your support is appreciated.</h4>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/LeanAudio.html">LeanAudio</a></li>
+                                <li><a href="../classes/LeanAudioOptions.html">LeanAudioOptions</a></li>
+                                <li><a href="../classes/LeanSmooth.html">LeanSmooth</a></li>
+                                <li><a href="../classes/LeanTween.html">LeanTween</a></li>
+                                <li><a href="../classes/LeanTweenType.html">LeanTweenType</a></li>
+                                <li><a href="../classes/LTBezierPath.html">LTBezierPath</a></li>
+                                <li><a href="../classes/LTDescr.html">LTDescr</a></li>
+                                <li><a href="../classes/LTEvent.html">LTEvent</a></li>
+                                <li><a href="../classes/LTRect.html">LTRect</a></li>
+                                <li><a href="../classes/LTSeq.html">LTSeq</a></li>
+                                <li><a href="../classes/LTSpline.html">LTSpline</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="advertising">
+                    <h2>More From<br><a href="http://www.dentedpixel.com">Dented Pixel</a></h2><br>
+                    <a href="https://www.assetstore.unity3d.com/en/#!/content/9455" target="_blank"><img src="http://dentedpixel.com/assets/LTEditor-doc-icon.jpg" width="175" height="175" /><br>Create tweens with: Visual Editor. Sculpt complex spline paths.</a>
+                    <br>
+                    <a href="https://itunes.apple.com/us/app/monkeyshines/id530998075?mt=8" target="_blank"><img src="http://a1.mzstatic.com/us/r30/Purple3/v4/d4/2b/ce/d42bce69-b3d3-d7f8-88e9-caa92664b5b1/icon350x350.jpeg" width="175" height="175" /><br>RIN - A swinging good time!</a>
+                    <br>
+                    <a href="https://itunes.apple.com/us/app/princess-piano/id445283531?mt=8" target="_blank"><img src="http://a3.mzstatic.com/us/r1000/096/Purple/v4/8c/1e/05/8c1e0590-db82-1d72-2956-2b6470f37ed0/mza_4230031260893485317.175x175-75.jpg" width="175" height="175" /><br>Princess Piano - Learn musical notation<br>in this melodious adventure!</a>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1>LeanAudio Class</h1>
+                        <div class="box meta">
+                        
+                        
+                                <div class="foundat">
+                                    Defined in: <a href="../files/LeanAudio.cs.html#l30"><code>LeanAudio.cs:30</code></a>
+                                </div>
+                        
+                        
+                        </div>
+                        
+                        
+                        <div class="box intro">
+                            <p>Create Audio dynamically and easily playback</p>
+                        
+                        </div>
+                        
+                            <div class="constructor">
+                                <h2>Constructor</h2>
+                                <div id="method_LeanAudio" class="method item">
+                                    <h3 class="name"><code>LeanAudio</code></h3>
+                                
+                                        <span class="paren">()</span>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                    <div class="meta">
+                                                <p>
+                                                Defined in
+                                        <a href="../files/LeanAudio.cs.html#l30"><code>LeanAudio.cs:30</code></a>
+                                        </p>
+                                
+                                
+                                
+                                    </div>
+                                
+                                    <div class="description">
+                                        
+                                    </div>
+                                
+                                
+                                
+                                </div>
+                            </div>
+                        
+                        <div id="classdocs" class="tabview">
+                            <ul class="api-class-tabs">
+                                <li class="api-class-tab index"><a href="#index">Index</a></li>
+                        
+                                    <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+                            </ul>
+                        
+                            <div>
+                                <div id="index" class="api-class-tabpanel index">
+                                    <h2 class="off-left">Item Index</h2>
+                        
+                                        <div class="index-section methods">
+                                            <h3>Methods</h3>
+                        
+                                            <ul class="index-list methods">
+                                                    <li class="index-item method">
+                                                        <a href="#method_createAudio">createAudio</a>
+                        
+                                                    </li>
+                                            </ul>
+                                        </div>
+                        
+                        
+                        
+                                </div>
+                        
+                                    <div id="methods" class="api-class-tabpanel">
+                                        <h2 class="off-left">Methods</h2>
+                        
+                                            <div id="method_createAudio" class="method item">
+                                                <h3 class="name"><code>createAudio</code></h3>
+                                            
+                                                    <div class="args">
+                                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                                            <li class="arg">
+                                                                    <code>volumeCurve:AnimationCurve</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>frequencyCurve:AnimationCurve</code>
+                                                            </li>
+                                                            <li class="arg">
+                                                                    <code>options:LeanAudioOptions</code>
+                                                            </li>
+                                                        </ul><span class="paren">)</span>
+                                                    </div>
+                                            
+                                                    <span class="returns-inline">
+                                                        <span class="type">AudioClip</span>
+                                                    </span>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/LeanAudio.cs.html#l65"><code>LeanAudio.cs:65</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <p>Create dynamic audio from a set of Animation Curves and other options.</p>
+                                            
+                                                </div>
+                                            
+                                                    <div class="params">
+                                                        <h4>Parameters:</h4>
+                                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">volumeCurve:AnimationCurve</code>
+                                                                    <span class="type">AnimationCurve</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>describing the shape of the audios volume (from 0-1). The length of the audio is dicated by the end value here.</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">frequencyCurve:AnimationCurve</code>
+                                                                    <span class="type">AnimationCurve</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>describing the width of the oscillations between the sound waves in seconds. Large numbers mean a lower note, while higher numbers mean a tighter frequency and therefor a higher note. Values are usually between 0.01 and 0.000001 (or smaller)</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                            <li class="param">
+                                                                    <code class="param-name">options:LeanAudioOptions</code>
+                                                                    <span class="type"><a href="../classes/LeanAudioOptions.html" class="crosslink">LeanAudioOptions</a></span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>You can pass any other values in here like vibrato or the frequency you would like the sound to be encoded at. See <a href="LeanAudioOptions.html">LeanAudioOptions</a> for more details.</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            
+                                                    <div class="returns">
+                                                        <h4>Returns:</h4>
+                                            
+                                                        <div class="returns-description">
+                                                                    <span class="type">AudioClip</span>:
+                                                                <p>AudioClip of the procedurally generated audio</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            
+                                                    <div class="example">
+                                                        <h4>Example:</h4>
+                                            
+                                                        <div class="example-content">
+                                                            <p>AnimationCurve volumeCurve = new AnimationCurve( new Keyframe(0f, 1f, 0f, -1f), new Keyframe(1f, 0f, -1f, 0f));<br>
+                                            AnimationCurve frequencyCurve = new AnimationCurve( new Keyframe(0f, 0.003f, 0f, 0f), new Keyframe(1f, 0.003f, 0f, 0f));<br>
+                                            AudioClip audioClip = LeanAudio.createAudio(volumeCurve, frequencyCurve, LeanAudio.options().setVibrato( new Vector3[]{ new Vector3(0.32f,0f,0f)} ));<br></p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                    </div>
+                        
+                        
+                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

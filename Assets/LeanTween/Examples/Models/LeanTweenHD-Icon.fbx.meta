@@ -1,0 +1,90 @@
+fileFormatVersion: 2
+guid: 7d6f6aee277594029851a7cc81d550d5
+ModelImporter:
+  fileIDToRecycleName:
+    4300000: Plane.003
+    4300002: Plane.002
+    4300004: Circle.010
+    4300006: Cylinder.006
+    4300008: Circle.008
+    4300010: Circle.007
+    4300012: Cylinder.005
+    4300014: Cylinder.004
+    4300016: Cylinder.003
+    4300018: Plane.001
+    4300020: Circle.006
+    4300022: Cube
+    4300024: Cube.002
+    4300026: Plane
+    4300028: Lean
+    4300030: Tween
+  serializedVersion: 10
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    generateAnimations: 0
+    bakeSimulation: 0
+    splitAnimations: 1
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations: []
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMesh: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 4
+    splitTangentsAcrossUV: 1
+    normalImportMode: 1
+    tangentImportMode: 1
+  textMetaNamesToFileIDs:
+    //RootNode:
+      data:
+        first: 1
+        second: a2860100
+      data:
+        first: 4
+        second: 821a0600
+      data:
+        first: 111
+        second: 605fa900
+    Lean:
+      data:
+        first: 1
+        second: a4860100
+      data:
+        first: 4
+        second: 841a0600
+      data:
+        first: 23
+        second: 62182300
+      data:
+        first: 33
+        second: a25a3200
+    Tween:
+      data:
+        first: 1
+        second: a0860100
+      data:
+        first: 4
+        second: 801a0600
+      data:
+        first: 23
+        second: 60182300
+      data:
+        first: 33
+        second: a05a3200
