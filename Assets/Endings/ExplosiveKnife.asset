@@ -15,3 +15,4 @@ MonoBehaviour:
   title: BOOM
   description: You know what exclamation mark sign means, right?
   cutscene: {fileID: 11400000, guid: 1473a1eb2c07aa74dbec26673cacfa6c, type: 2}
+  icon: {fileID: 21300000, guid: c35ede1e4349ae841883f55246f79196, type: 3}

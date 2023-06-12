@@ -16,3 +16,4 @@ MonoBehaviour:
   description: What would happen if I Jump from this high building. This is what
     this AI propably thought of.
   cutscene: {fileID: 11400000, guid: f0536658c86ec4b4b8a2ccecb0261bf8, type: 2}
+  icon: {fileID: 21300000, guid: b4fff12bb747b2144b4ca3a49845fd9c, type: 3}

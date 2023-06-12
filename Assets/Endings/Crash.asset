@@ -18,3 +18,4 @@ MonoBehaviour:
     Maybe
     at being 1D creature?'
   cutscene: {fileID: 11400000, guid: 5bb762c93630f624181e1866f0e090c0, type: 2}
+  icon: {fileID: 21300000, guid: 4e5da5e989f86fe45b1b2af2278a5132, type: 3}

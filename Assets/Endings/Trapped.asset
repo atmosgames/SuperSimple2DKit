@@ -17,3 +17,4 @@ MonoBehaviour:
 
     But... how are you gonna get out of here?'
   cutscene: {fileID: 11400000, guid: 80f628680642f9348a10d1eff8093f79, type: 2}
+  icon: {fileID: 21300000, guid: c4b9e3c13c4c23744aaae2c1aad030ba, type: 3}

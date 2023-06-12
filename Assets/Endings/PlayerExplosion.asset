@@ -16,3 +16,4 @@ MonoBehaviour:
   description: Who would have thought that running into the exploding dynamite might
     end badly.
   cutscene: {fileID: 11400000, guid: 1641199f85a4ca94b8863430c0e5cc5e, type: 2}
+  icon: {fileID: 21300000, guid: 462dd578c1bca2c4ebda052fda740f14, type: 3}

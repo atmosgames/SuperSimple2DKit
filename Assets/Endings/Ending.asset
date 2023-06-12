@@ -16,3 +16,4 @@ MonoBehaviour:
   description: The creators are really proud of you. Now you are no longer needed
     so......good bye!
   cutscene: {fileID: 11400000, guid: 56dcb74b432e9df4d9d0e2bd2475d571, type: 2}
+  icon: {fileID: 21300000, guid: eb1c26f12f3d7034aa7cd30a7f59810d, type: 3}
