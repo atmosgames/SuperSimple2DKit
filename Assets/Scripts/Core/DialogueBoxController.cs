@@ -135,7 +135,8 @@ public class DialogueBoxController : MonoBehaviour
         audioLines = audioL;
         audioChoices = audioC;
 
-        if (useItemAfterClose)
+        //IDK WHY BUT IT FIXED SOME BUGS
+        //if (useItemAfterClose)
         {
             currentDialogueTrigger = dialogueTrigger;
         }
