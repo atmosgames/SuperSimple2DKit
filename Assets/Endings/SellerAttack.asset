@@ -16,3 +16,4 @@ MonoBehaviour:
   description: Tha AI decided to become a seller. Unfortunately creators of this
     world weren't happy with this outcome so they reset the simulation once again.
   cutscene: {fileID: 11400000, guid: 6a26f32bd62563f4297107a325868785, type: 2}
+  icon: {fileID: 21300000, guid: ed314758d3905b1439e72ed5c6684dcd, type: 3}

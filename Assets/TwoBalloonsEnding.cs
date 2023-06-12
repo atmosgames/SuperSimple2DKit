@@ -15,6 +15,6 @@ public class TwoBalloonsEnding : MonoBehaviour
     IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(2f);
-        GameManager.Instance.EndGame("2balloons");
+        GameManager.Instance.EndGame("2Balloons");
     }
 }

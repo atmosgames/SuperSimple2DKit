@@ -16,3 +16,4 @@ MonoBehaviour:
   description: Who would guess that attacking a hacker as an AI in simulation isn't
     a good idea....
   cutscene: {fileID: 11400000, guid: 3a46d24f83f4d89458b21537693be240, type: 2}
+  icon: {fileID: 21300000, guid: 83ddb81bda97e25468b8f5640ffb9959, type: 3}

@@ -15,3 +15,4 @@ MonoBehaviour:
   title: WELCOME TO THE REAL WORLD
   description: 
   cutscene: {fileID: 11400000, guid: c219c116b80c4b9468f9b6b1eeed1aa0, type: 2}
+  icon: {fileID: 21300000, guid: 290396a2a89a2354ea29f4430b6e26b1, type: 3}
