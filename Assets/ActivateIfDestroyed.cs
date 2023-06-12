@@ -12,6 +12,10 @@ public class ActivateIfDestroyed : MonoBehaviour
     {
         x++;
         if (x == y)
+        {
             go.SetActive(true);
+            x = 0;
+        }
+            
     }
 }
