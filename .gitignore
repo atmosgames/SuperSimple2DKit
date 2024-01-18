@@ -24,6 +24,7 @@ ProjectSettings/ProjectVersion.txt
 *.sln
 SwitchIL2CPPStats
 SwitchIL2CPPCache
+exec*
 
 .vs/
 obj/Debug/Assembly-CSharp-firstpass.csproj.CoreCompileInputs.cache

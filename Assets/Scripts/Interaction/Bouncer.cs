@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static GameManager;
 
 /*Causes a bouncy platform to appear via animation if player is within range, allowing the player to bounce!*/
 
@@ -10,7 +11,7 @@ public class Trampoline : MonoBehaviour
 
     private Animator animator;
     [SerializeField] float appearRange = 1f;
-    [SerializeField] string requiredItem;
+    [SerializeField] ItemName requiredItem;
     [SerializeField] private float playerDifferenceX = 1f;
     [SerializeField] float jumpPower = 1.4f;
 

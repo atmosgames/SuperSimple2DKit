@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public class RemoveItemFromInventory : MonoBehaviour
 {
     public string invName = "LightBeer";
@@ -11,3 +11,4 @@ public class RemoveItemFromInventory : MonoBehaviour
         GameManager.Instance.RemoveInventoryItem(invName);
     }
 }
+*/

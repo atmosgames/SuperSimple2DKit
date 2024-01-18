@@ -7,6 +7,25 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public enum ItemName
+    {
+        None,
+        Copy,
+        KeyCard,
+        RedBalloon, BlueBalloon, Melee, Dynamite, LightBeer, Chair, Flamethrower
+    };
+
+
+
+    public int balloons
+    {
+        get
+        {
+            var r = System.Convert.ToInt32(GameManager.Instance.IsItemInInventory(ItemName.RedBalloon)) + System.Convert.ToInt32(GameManager.Instance.IsItemInInventory(ItemName.BlueBalloon));
+            Debug.Log(r);
+            return r;
+        }
+    }
     public class Item
     {
         public Sprite itemImage;
@@ -20,8 +39,8 @@ public class GameManager : MonoBehaviour
     public AudioSource audioSource; //A primary audioSource a large portion of game sounds are passed through
     public DialogueBoxController dialogueBoxController;
     public HUD hud; //A reference to the HUD holding your health UI, coins, dialogue, etc.
-    public Dictionary<string, Item> inventory = new Dictionary<string, Item>();
-    public Dictionary<string, Item>.KeyCollection keys;
+    public Dictionary<ItemName, Item> inventory = new Dictionary<ItemName, Item>();
+    public Dictionary<ItemName, Item>.KeyCollection keys { get; private set; }
     public bool[] isFull;
     private static GameManager instance;
     [SerializeField] public AudioTrigger gameMusic;
@@ -35,7 +54,7 @@ public class GameManager : MonoBehaviour
         public int bugs;
     }
 
-    [SerializeField] 
+    [SerializeField]
     private List<EndingClass> endingList = new List<EndingClass>();
     private Dictionary<string, Ending> endingDict = new Dictionary<string, Ending>();
     public Dictionary<string, int> gameCompletion = new Dictionary<string, int>();//0 nie zrobiono, 1 zrobiono
@@ -43,12 +62,12 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if(Instance != this) Destroy(gameObject);
+        if (Instance != this) Destroy(gameObject);
 
         foreach (var kvp in endingList)
         {
             endingDict[kvp.key] = kvp.val;
-            gameCompletion[kvp.key] = PlayerPrefs.GetInt(kvp.key,0);
+            gameCompletion[kvp.key] = PlayerPrefs.GetInt(kvp.key, 0);
             reward[kvp.key] = kvp.bugs;
         }
     }
@@ -71,20 +90,26 @@ public class GameManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    public bool IsItemInInventory(ItemName name)
+    {
+        return inventory.ContainsKey(name);
+    }
+    void AddItemToInventory(ItemName name, Item value)
+    {
+        inventory.Add(name, value);
+        keys = inventory.Keys;
+
+    }
+
     // Use this for initialization
-    public void GetInventoryItem(string name, Sprite image)
+    public void GetInventoryItem(ItemName name, Sprite image)
     {
         for (int i = 0; i < isFull.Length; i++)
         {
             if (!isFull[i])
             {
                 Item item = new Item(image, i);
-                while(inventory.ContainsKey(name))
-                {
-                    name += "Copy";
-                }
-                inventory.Add(name, item);
-                keys = inventory.Keys;
+                AddItemToInventory(name, item);
                 isFull[i] = true;
                 if (image != null)
                 {
@@ -92,12 +117,12 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             }
-            
+
         }
 
     }
 
-    public void RemoveInventoryItem(string name)
+    public void RemoveInventoryItem(ItemName name)
     {
         hud.SetInventoryImage(hud.blankUI, inventory[name].slotNumber);
         isFull[inventory[name].slotNumber] = false;
@@ -107,7 +132,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void ClearInventory()
-    {   
+    {
         inventory.Clear();
         hud.SetInventoryImage(hud.blankUI, 0);
     }

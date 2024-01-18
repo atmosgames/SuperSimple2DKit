@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static GameManager;
+using static GameManager.ItemName;
 
 /*Adds player functionality to a physics object*/
 
@@ -9,7 +12,7 @@ using UnityEngine.SceneManagement;
 
 public class NewPlayer : PhysicsObject
 {
-    [Header ("Reference")]
+    [Header("Reference")]
     public AudioSource audioSource;
     [SerializeField] private Animator animator;
     private AnimatorFunctions animatorFunctions;
@@ -40,13 +43,13 @@ public class NewPlayer : PhysicsObject
     }
 
     [Header("Properties")]
-    [SerializeField] private string[] cheatItems;
+    [SerializeField] private ItemName[] cheatItems;
     public bool dead = false;
     public bool frozen = false;
     private float fallForgivenessCounter; //Counts how long the player has fallen off a ledge
     [SerializeField] private float fallForgiveness = .2f; //How long the player can fall from a ledge and still jump
     [System.NonSerialized] public string groundType = "grass";
-    [System.NonSerialized] public RaycastHit2D ground; 
+    [System.NonSerialized] public RaycastHit2D ground;
     [SerializeField] Vector2 hurtLaunchPower; //How much force should be applied to the player when getting hurt?
     private float launch; //The float added to x and y moveSpeed. This is set with hurtLaunchPower, and is always brought back to zero
     [SerializeField] private float launchRecovery; //How slow should recovering from the launch be? (Higher the number, the longer the launch will last)
@@ -66,7 +69,7 @@ public class NewPlayer : PhysicsObject
     public bool enteredBasement = false;
     public bool enteredApartamentEntrance = false;
 
-    [Header ("Inventory")]
+    [Header("Inventory")]
     public float ammo;
     private int mBugs;
     public int bugs { get { return mBugs; } set { mBugs = value; PlayerPrefs.SetInt("Bugs", value); } }
@@ -76,7 +79,7 @@ public class NewPlayer : PhysicsObject
 
     public GameObject dynamitePrefab;
 
-    [Header ("Sounds")]
+    [Header("Sounds")]
     public AudioClip deathSound;
     public AudioClip equipSound;
     public AudioClip grassSound;
@@ -94,9 +97,12 @@ public class NewPlayer : PhysicsObject
     public AudioClip drinkingSound;
     [System.NonSerialized] public int whichHurtSound;
 
+    public List<float> gravities = new() {
+        3.2f, 1.8f, -1.5f};
+
     void Start()
     {
-        bugs = PlayerPrefs.GetInt("Bugs",0);
+        bugs = PlayerPrefs.GetInt("Bugs", 0);
         Cursor.visible = false;
         SetUpCheatItems();
         health = maxHealth;
@@ -104,8 +110,8 @@ public class NewPlayer : PhysicsObject
         origLocalScale = transform.localScale;
         recoveryCounter = GetComponent<RecoveryCounter>();
 
-        
-        
+
+
         //Find all sprites so we can hide them when the player dies.
         graphicSprites = GetComponentsInChildren<SpriteRenderer>();
 
@@ -115,7 +121,7 @@ public class NewPlayer : PhysicsObject
     private void Update()
     {
         ComputeVelocity();
-        if(drunkEffectActive == true) Postprocess.Instance.DrunkEffect();
+        if (drunkEffectActive == true) Postprocess.Instance.DrunkEffect();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -128,6 +134,7 @@ public class NewPlayer : PhysicsObject
 
     protected void ComputeVelocity()
     {
+        GameManager gm = GameManager.Instance;
         //Player movement & attack
         Vector2 move = Vector2.zero;
         ground = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), -Vector2.up);
@@ -139,20 +146,8 @@ public class NewPlayer : PhysicsObject
         {
             pauseMenu.SetActive(true);
         }
+        gravityModifier = gravities[GameManager.Instance.balloons];
 
-        if (GameManager.Instance.inventory.ContainsKey("RedBalloon") || GameManager.Instance.inventory.ContainsKey("BlueBalloon"))
-        {
-            gravityModifier = 1.8f;
-        }
-        else
-        {
-            gravityModifier = 3.2f;
-        }
-
-        if (GameManager.Instance.inventory.ContainsKey("RedBalloon") && GameManager.Instance.inventory.ContainsKey("BlueBalloon"))
-        {
-            gravityModifier = -1.5f;
-        }
         //Movement, jumping, and attacking!
         if (!frozen)
         {
@@ -161,22 +156,22 @@ public class NewPlayer : PhysicsObject
             if (Input.GetButtonDown("Jump") && animator.GetBool("grounded") == true && !jumping)
             {
                 animator.SetBool("pounded", false);
-                if (GameManager.Instance.inventory.ContainsKey("RedBalloon") || GameManager.Instance.inventory.ContainsKey("BlueBalloon"))
+                if (GameManager.Instance.balloons > 0)
                 {
                     Jump(1.0f);
                 }
                 else Jump(1f);
-                
+
             }
 
             //Flip the graphic's localScale
             if (move.x > 0.01f)
             {
-               graphic.transform.localScale = new Vector3(origLocalScale.x, transform.localScale.y, transform.localScale.z);
+                graphic.transform.localScale = new Vector3(origLocalScale.x, transform.localScale.y, transform.localScale.z);
             }
             else if (move.x < -0.01f)
             {
-               graphic.transform.localScale = new Vector3(-origLocalScale.x, transform.localScale.y, transform.localScale.z);
+                graphic.transform.localScale = new Vector3(-origLocalScale.x, transform.localScale.y, transform.localScale.z);
             }
 
 
@@ -184,18 +179,20 @@ public class NewPlayer : PhysicsObject
             {
                 if (Input.GetKeyDown(KeyCode.Z))
                 {
-                    foreach (string name in GameManager.Instance.keys)
+                    foreach (var name in GameManager.Instance.keys)
                     {
                         if (GameManager.Instance.inventory[name].slotNumber == 0)
                         {
                             //Punch
-                            if (name == "Melee") MeleeAction();
+                            if (name == Melee) MeleeAction();
                             //Baloon
-                            if (name == "RedBalloon" || name == "BlueBalloon") BalloonAction(name);
+                            if (name == RedBalloon || name == BlueBalloon) BalloonAction(name);
                             //Beer
-                            if (name == "LightBeer" || name == "LightBeerCopy") BeerAction(name);
+                            if (name == LightBeer) BeerAction(name);
                             //Dynamite
-                            if (name == "Dynamite") DynamiteAction(name);
+                            if (name == Dynamite) DynamiteAction(name);
+                            
+                            
 
                             break;
                         }
@@ -204,18 +201,18 @@ public class NewPlayer : PhysicsObject
 
                 if (Input.GetKeyDown(KeyCode.X))
                 {
-                    foreach (string name in GameManager.Instance.keys)
+                    foreach (var name in GameManager.Instance.keys)
                     {
                         if (GameManager.Instance.inventory[name].slotNumber == 1)
                         {
                             //Punch
-                            if (name == "Melee") MeleeAction();
+                            if (name == Melee) MeleeAction();
                             //Baloon
-                            if (name == "RedBalloon" || name == "BlueBalloon") BalloonAction(name);
+                            if (name == RedBalloon || name == BlueBalloon) BalloonAction(name);
                             //Beer
-                            if (name == "LightBeer" || name == "LightBeerCopy") BeerAction(name);
+                            if (name == LightBeer) BeerAction(name);
                             //Dynamite
-                            if (name == "Dynamite") DynamiteAction(name);
+                            if (name == Dynamite) DynamiteAction(name);
 
                             break;
                         }
@@ -262,7 +259,7 @@ public class NewPlayer : PhysicsObject
             animator.SetFloat("velocityY", velocity.y);
             animator.SetInteger("attackDirectionY", (int)Input.GetAxis("VerticalDirection"));
             animator.SetInteger("moveDirection", (int)Input.GetAxis("HorizontalDirection"));
-            animator.SetBool("hasChair", GameManager.Instance.inventory.ContainsKey("chair"));
+            animator.SetBool("hasChair", GameManager.Instance.inventory.ContainsKey(Chair));
             targetVelocity = move * maxSpeed;
 
 
@@ -286,7 +283,7 @@ public class NewPlayer : PhysicsObject
         }
     }
 
-    public void BalloonAction(string name)
+    public void BalloonAction(ItemName name)
     {
         GameManager.Instance.RemoveInventoryItem(name);
         audioSource.PlayOneShot(balloonBreakSound);
@@ -298,7 +295,7 @@ public class NewPlayer : PhysicsObject
         }
     }
 
-    public void BeerAction(string name)
+    public void BeerAction(ItemName name)
     {
         drinkedBeer++;
         if (drinkedBeer == 2)
@@ -308,22 +305,22 @@ public class NewPlayer : PhysicsObject
         audioSource.PlayOneShot(drinkingSound);
 
         //WHY?!?!?!?!?
-        if (name == "LightBeer")
-        {
-            foreach (string kname in GameManager.Instance.keys)
-            {
-                if (kname == "LightBeerCopy")
-                {
-                    GameManager.Instance.RemoveInventoryItem(kname);
-                    return;
-                }
-            }
-        }
+        // if (name == LightBeer)
+        // {
+        //     foreach (var kname in GameManager.Instance.keys)
+        //     {
+        //         if (kname == LightBeerCopy)
+        //         {
+        //             GameManager.Instance.RemoveInventoryItem(kname);
+        //             return;
+        //         }
+        //     }
+        // }
 
         GameManager.Instance.RemoveInventoryItem(name);
     }
 
-    public void DynamiteAction(string name)
+    public void DynamiteAction(ItemName name)
     {
         if (Vector2.Distance(transform.position, explosives.transform.position) < 5)
             GameManager.Instance.EndGame("BigBoom");
@@ -459,13 +456,13 @@ public class NewPlayer : PhysicsObject
     public void PlayStepSound()
     {
         //Play a step sound at a random pitch between two floats, while also increasing the volume based on the Horizontal axis
-        audioSource.pitch = (Random.Range(0.9f, 1.1f));
+        audioSource.pitch = (UnityEngine.Random.Range(0.9f, 1.1f));
         audioSource.PlayOneShot(stepSound, Mathf.Abs(Input.GetAxis("Horizontal") / 10));
     }
 
     public void PlayJumpSound()
     {
-        audioSource.pitch = (Random.Range(1f, 1f));
+        audioSource.pitch = (UnityEngine.Random.Range(1f, 1f));
         GameManager.Instance.audioSource.PlayOneShot(jumpSound, .1f);
     }
 
@@ -473,7 +470,7 @@ public class NewPlayer : PhysicsObject
     public void JumpEffect()
     {
         jumpParticles.Emit(1);
-        audioSource.pitch = (Random.Range(0.6f, 1f));
+        audioSource.pitch = (UnityEngine.Random.Range(0.6f, 1f));
         audioSource.PlayOneShot(landSound);
     }
 
@@ -482,7 +479,7 @@ public class NewPlayer : PhysicsObject
         if (jumping)
         {
             jumpParticles.Emit(1);
-            audioSource.pitch = (Random.Range(0.6f, 1f));
+            audioSource.pitch = (UnityEngine.Random.Range(0.6f, 1f));
             audioSource.PlayOneShot(landSound);
             jumping = false;
         }
@@ -506,7 +503,7 @@ public class NewPlayer : PhysicsObject
                 velocity = new Vector3(velocity.x, hurtLaunchPower.y / 2, 0.0f);
             }
 
-            GameManager.Instance.audioSource.PlayOneShot(poundActivationSounds[Random.Range(0, poundActivationSounds.Length)]);
+            GameManager.Instance.audioSource.PlayOneShot(poundActivationSounds[UnityEngine.Random.Range(0, poundActivationSounds.Length)]);
             pounding = true;
             FreezeFrameEffect(.3f);
         }
@@ -543,7 +540,7 @@ public class NewPlayer : PhysicsObject
     public void Shoot(bool equip)
     {
         //Flamethrower ability
-        if (GameManager.Instance.inventory.ContainsKey("flamethrower"))
+        if (GameManager.Instance.inventory.ContainsKey(Flamethrower))
         {
             if (equip)
             {

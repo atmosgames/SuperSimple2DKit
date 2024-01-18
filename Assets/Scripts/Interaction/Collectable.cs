@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 /*Used for coins, health, inventory items, and even ammo if you want to create a gun shooting mechanic!*/
 
@@ -13,7 +14,7 @@ public class Collectable : MonoBehaviour
     [SerializeField] private AudioClip bounceSound;
     [SerializeField] private AudioClip[] collectSounds;
     [SerializeField] private int itemAmount;
-    [SerializeField] private string itemName; //If an inventory item, what is its name?
+    [SerializeField] private ItemName itemName; //If an inventory item, what is its name?
     [SerializeField] private Sprite UIImage; //What image will be displayed if we collect an inventory item?
     void Start()
     {
@@ -59,7 +60,7 @@ public class Collectable : MonoBehaviour
         {
             if(GameManager.Instance.isFull[0] == false || GameManager.Instance.isFull[1] == false)
             {
-                if (itemName != "")
+                if (itemName != ItemName.None)
                 {
                     GameManager.Instance.GetInventoryItem(itemName, UIImage);
                 }

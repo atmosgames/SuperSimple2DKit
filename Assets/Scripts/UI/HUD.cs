@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class HUD : MonoBehaviour
 {
-    [Header ("Reference")]
+    [Header("Reference")]
     public Animator animator;
     [SerializeField] private GameObject ammoBar;
     public TextMeshProUGUI coinsMesh;
@@ -53,7 +53,7 @@ public class HUD : MonoBehaviour
 
         //Controls the width of the health bar based on the player's total health
         healthBarWidth = (float)NewPlayer.Instance.health / (float)NewPlayer.Instance.maxHealth;
-        healthBarWidthEased += (healthBarWidth - healthBarWidthEased) * Time.deltaTime*2 * healthBarWidthEased;
+        healthBarWidthEased += (healthBarWidth - healthBarWidthEased) * Time.deltaTime * 2 * healthBarWidthEased;
         healthBar.transform.localScale = new Vector2(healthBarWidthEased, 1);
 
         //Controls the width of the ammo bar based on the player's total ammo
@@ -63,7 +63,7 @@ public class HUD : MonoBehaviour
             ammoBarWidthEased += (ammoBarWidth - ammoBarWidthEased) * Time.deltaTime * ammoBarWidthEased;
             ammoBar.transform.localScale = new Vector2(ammoBarWidthEased, transform.localScale.y);
         }
-        
+
     }
 
     public void HealthBarHurt()
@@ -76,18 +76,6 @@ public class HUD : MonoBehaviour
         inventoryItemGraphic[slotNumber].sprite = image;
     }
 
-    void ResetScene()
-    {
-        if (GameManager.Instance.inventory.ContainsKey("reachedCheckpoint"))
-        {
-            //Send player back to the checkpoint if they reached one!
-            NewPlayer.Instance.ResetLevel();
-        }
-        else
-        {
-            //Reload entire scene
-            SceneManager.LoadScene(loadSceneName);
-        }
-    }
+    public void ResetScene() => SceneManager.LoadScene(loadSceneName);
 
 }
